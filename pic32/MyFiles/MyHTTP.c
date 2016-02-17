@@ -159,8 +159,23 @@ HTTP_IO_RESULT HTTPExecuteGet(void)
 	// Make sure BYTE filename[] above is large enough for your longest name
 	MPFSGetFilename(curHTTP.file, filename, 20);
 	
+    if(!memcmppgm2ram(filename, "index.htm", 9))
+	{
+		// Seek out each of the four LED strings, and if it exists set the LED states
+		ptr = HTTPGetROMArg(curHTTP.data, (ROM BYTE *)"Level_select");
+		if(ptr) {
+            if (*ptr == '1') MyDif_Level="Easy";
+            else if (*ptr == '2') MyDif_Level="Medium";
+            else if (*ptr == '3') MyDif_Level="Hard";
+            else MyConsole_SendMsg("Wrong level, try again\n>");
+        }
+        
+        ptr = HTTPGetROMArg(curHTTP.data, (ROM BYTE *)"Idiot_msg");
+        if(ptr) {MyConsole_SendMsg(ptr); MyConsole_SendMsg("\r");}
+	}
+    
 	// If its the forms.htm page
-	if(!memcmppgm2ram(filename, "forms.htm", 9))
+	else if(!memcmppgm2ram(filename, "forms.htm", 9))
 	{
 		// Seek out each of the four LED strings, and if it exists set the LED states
 		ptr = HTTPGetROMArg(curHTTP.data, (ROM BYTE *)"led4");
@@ -1847,6 +1862,13 @@ void HTTPPrint_status_fail(void)
 #endif
 
 void HTTPPrint_MyLevel(void)
+{
+    BYTE theStr[44];
+    sprintf(theStr, "%s", MyDif_Level);
+    TCPPutString(sktHTTP,theStr);
+}
+
+void HTTPPrint_level(void)
 {
     BYTE theStr[44];
     sprintf(theStr, "%s", MyDif_Level);

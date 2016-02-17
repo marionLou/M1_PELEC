@@ -45,11 +45,21 @@ feedback.</p>
 
 <p>Difficulty level : <span id="MyLevel" style="font-weight:normal">?</span></p>
 
-<select id="Level_select">
-    <option value="1">easy</option>
-    <option value="2" selected="selected">medium</option>
-    <option value="3">hard</option>
-</select>
+
+<form method="get" action="index.htm">
+<div class="ChooseLevel">
+	Any stupid comment to show on the console in
+	the mean time as you choose your level?: <br />
+	<input type="text" name="Idiot_msg" value="" maxlength="100" /> <br />
+	<select name="Level_select">
+		<option value="1" ~level(1)~>easy</option>
+		<option value="2" ~level(2)~>medium</option>
+		<option value="3" ~level(3)~>hard</option>
+	</select>&nbsp;
+
+	<br /><input type="submit" value="Save" style="margin-top:5px;">
+</div>
+</form>
 
 <p>This site is provided as a tutorial for the various features of the HTTP
 web server, including:</p>

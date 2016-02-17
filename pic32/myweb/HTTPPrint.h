@@ -52,6 +52,7 @@ void HTTPPrint_write_comm(WORD);
 void HTTPPrint_smtps_en(void);
 void HTTPPrint_snmp_en(void);
 void HTTPPrint_MyLevel(void);
+void HTTPPrint_level(WORD);
 
 void HTTPPrint(DWORD callbackID)
 {
@@ -233,6 +234,15 @@ void HTTPPrint(DWORD callbackID)
 			break;
         case 0x0000004a:
 			HTTPPrint_MyLevel();
+			break;
+        case 0x0000004b:
+			HTTPPrint_level(1);
+			break;
+        case 0x0000004c:
+			HTTPPrint_level(2);
+			break;
+        case 0x0000004d:
+			HTTPPrint_level(3);
 			break;
 		default:
 			// Output notification for undefined values
