@@ -1,0 +1,5 @@
+Chapitre 2: commit and stage changes
+https://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository
+
+Chapitre 3: branches
+https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging
