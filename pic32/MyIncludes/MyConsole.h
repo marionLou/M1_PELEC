@@ -39,8 +39,8 @@ void ConsolePutROMString(ROM char* str);
 #ifdef   MyCONSOLE
 
 char theCmd[64], *ptrCmd;
-BOOL MIWI_BMsg, MIWI_UMsg, Level_bool;
-
+BOOL MIWI_BMsg, MIWI_UMsg, Level_bool, MIWI_Check;
+int MIWI_Counter;
 
 #endif
 
