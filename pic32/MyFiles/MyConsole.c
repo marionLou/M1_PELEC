@@ -36,6 +36,8 @@ void MyConsole_Init(void)
     UARTEnable(UART2A, UART_ENABLE_FLAGS(UART_PERIPHERAL | UART_RX | UART_TX));
 
     ptrCmd = theCmd;
+	MIWI_Counter = 0;
+    MIWI_Check = 0;
 }
 
 void MyConsole_SendMsg(const char *theMsg)
@@ -76,7 +78,15 @@ BOOL MyConsole_GetCmd(void)
 
 void MyConsole_Task(void)
 {
-    unsigned char theStr[64];
+    unsigned char theStr[64], theData[64];
+	
+	    if (MyMIWI_RxMsg(theData) && strcmp(theData, "Ack MIWI") == 0){
+            sprintf(theStr, "%d MIWI-tests \n>", MIWI_Counter);
+            MyConsole_SendMsg(theStr);
+            MIWI_Check = 0;
+            MIWI_Counter =0;
+//            MyConsole_SendMsg("Communication OK \n");
+    } 
 
     if (!MyConsole_GetCmd()) return;
 
@@ -88,6 +98,19 @@ void MyConsole_Task(void)
 
         MyCAN_TxMsg(0x200, "0123456");
         MyConsole_SendMsg("Send CAN Msg 0x200 '0123456'\n>");
+		
+	else if (strcmp(theCmd, "MyMIWI-U") == 0 ) {
+        MIWI_Check = 1;
+        MIWI_Counter++;
+        MyMIWI_TxMsg(myMIWI_DisableBroadcast, "Incroyable");
+        MyConsole_SendMsg("Send MIWI Unicast Msg 'Incroyable'\n>");
+    
+    } else if(MIWI_Check){
+					MyMIWI_TxMsg(myMIWI_DisableBroadcast, "Incroyable");
+//					MyConsole_SendMsg("Send MIWI Unicast Msg 'Incroyable'\n>");
+					MIWI_Counter++;
+					
+     
 
     } else if (strcmp(theCmd, "Miwi_B") == 0 || MIWI_BMsg) {
         
