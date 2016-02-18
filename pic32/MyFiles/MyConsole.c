@@ -102,8 +102,7 @@ void MyConsole_Task(void)
 
         if(MIWI_UMsg) {
             MyMIWI_TxMsg(myMIWI_DisableBroadcast, theCmd);
-            MyConsole_SendMsg("Send MIWI Unicast Msg 'sth, ask to receiver' :p\n>");
-            MIWI_UMsg = 0;
+            hudzahuidazhiuzahduazhdiuahdazuidhzuadhzauidhuaz
         }
         else MIWI_UMsg=1;
 
