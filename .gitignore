@@ -52,4 +52,4 @@ pic32/nbproject/
 pic32/.dep.inc
 pic32/Makefile
 Slides
-pic32\MyConfig\MyConfig_WIFI\WF_Config.h
+pic32/MyConfig/MyConfig_WIFI/WF_Config.h
