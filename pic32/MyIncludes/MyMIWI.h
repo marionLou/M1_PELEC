@@ -93,6 +93,10 @@ extern BYTE             TxData;
 
 #ifdef   MyMIWI
 
+fifo_t * fifo_buf;
+int acks[128];
+int done[128];
+
 /*******************************************************************/
 // AdditionalNodeID variable array defines the additional
 // information to identify a device on a P2P connection. This array

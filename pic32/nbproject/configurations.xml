@@ -36,6 +36,7 @@
         <itemPath>MyIncludes/MyTemperature.h</itemPath>
         <itemPath>MyIncludes/MyWIFI.h</itemPath>
         <itemPath>MyIncludes/MyCamera.h</itemPath>
+        <itemPath>MyIncludes/MyFifo.h</itemPath>
       </logicalFolder>
       <itemPath>MyIncludes/MyApp.h</itemPath>
     </logicalFolder>
@@ -144,6 +145,7 @@
         <itemPath>MyFiles/MyTemperature.c</itemPath>
         <itemPath>MyFiles/MyWIFI.c</itemPath>
         <itemPath>MyFiles/MyCamera.c</itemPath>
+        <itemPath>MyFiles/MyFifo.c</itemPath>
       </logicalFolder>
       <itemPath>MyFiles/MyApp.c</itemPath>
     </logicalFolder>
@@ -153,6 +155,10 @@
       <itemPath>Makefile</itemPath>
     </logicalFolder>
   </logicalFolder>
+  <sourceRootList>
+    <Elem>MyFiles</Elem>
+    <Elem>MyIncludes</Elem>
+  </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
     <conf name="default" type="2">

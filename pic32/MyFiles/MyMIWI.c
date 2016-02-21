@@ -51,6 +51,12 @@ void MyMIWI_Init(void) {
     INTClearFlag(INT_INT3);
     // Enable INT3
     INTEnable(INT_INT3, INT_ENABLED);
+    
+    // Starts the fifo to enhance the connection stability
+    fifo_buf = fifo_new();
+    int i = 0;
+    for (i; i<128;i++) acks[i] = 0;
+   
 
     // WARNING : Change in file MRF24J40.c in Microchip Application Library
     // the line : void __ISR(_EXTERNAL_1_VECTOR, ipl4) _INT1Interrupt(void)
@@ -267,6 +273,10 @@ void MyMIWI_TxMsg(BOOL enableBroadcast, char *theMsg)
         if( MiApp_UnicastConnection(0, FALSE) == FALSE )
             Printf("\r\nUnicast Failed\r\n");
     }
+    
+    // For each new message sent, we add it in the buffer
+    fifo_add(fifo_buf, theMsg);
+    
 }
 
 /******************************************************************************/
@@ -283,8 +293,23 @@ void MyMIWI_Task(void) {
     char theData[64], theStr[128];
 
     if (MyMIWI_RxMsg(theData)) {
+        char * ReSend;
+        char *theRest;
+        int id = strtol(theData, &theRest, 10);
+        int future_send = fifo_getID(fifo_buf);
+        
+        if (strcmp(theData, "Ack_MIWI") == 0) acks[id-1] = 1;
+        else MyMIWI_TxMsg(myMIWI_EnableBroadcast, strcat(id,"Ack_MIWI"));
+        
+        while (!future_send && acks[future_send] == 1) {
+            fifo_remove(fifo_buf);
+            future_send = fifo_getID(fifo_buf);
+        }
+        ReSend = fifo_getString(fifo_buf);
+        if (!ReSend) MyMIWI_TxMsg(myMIWI_DisableBroadcast, theData);
+
         char * token;
-        token = strtok (theData," ,.-:");
+        token = strtok (theRest," ,.-:");
         if (strcmp(token, "YourLevel") == 0) {
             token = strtok(NULL, " ,.-:");
             if (strcmp(token, "1")==0){
@@ -311,8 +336,7 @@ void MyMIWI_Task(void) {
             MyConsole_SendMsg(theStr);
         }
         
-        if (strcmp(theData, "Ack MIWI") != 0)
-            MyMIWI_TxMsg(myMIWI_EnableBroadcast, "Ack MIWI");
+        
     }
 }
 

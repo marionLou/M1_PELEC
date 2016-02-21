@@ -17,6 +17,7 @@
 #include "MyRTCC.h"
 #include "MyIO.h"
 #include "MyFlash.h"
+#include "MyFifo.h"
 #include "MyMIWI.h"
 #include "MyWIFI.h"
 #include "MyTemperature.h"

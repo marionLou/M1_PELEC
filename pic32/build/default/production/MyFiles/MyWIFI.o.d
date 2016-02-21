@@ -52,11 +52,12 @@ MyIncludes/MyCAN.h  \
 MyIncludes/MyRTCC.h  \
  MyIncludes/MyIO.h  \
 MyIncludes/MyFlash.h  \
-MyIncludes/MyMIWI.h  \
- MyIncludes/MyWIFI.h  \
+MyIncludes/MyFifo.h  \
+ MyIncludes/MyMIWI.h  \
+MyIncludes/MyWIFI.h  \
 MyIncludes/MyTemperature.h  \
-MyIncludes/MyMDDFS.h  \
- Microchip/Include/MDD\ File\ System/FSIO.h  \
+ MyIncludes/MyMDDFS.h  \
+Microchip/Include/MDD\ File\ System/FSIO.h  \
  MyConfig/MyConfig_MDDFS/FSconfig.h  \
  Microchip/Include/MDD\ File\ System/FSDefs.h  \
  Microchip/Include/MDD\ File\ System/SD-SPI.h  \
