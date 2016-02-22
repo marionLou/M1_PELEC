@@ -71,6 +71,12 @@ int fifo_remove(fifo_t *f)
 	return 1;
 }
 
+int fifo_isEmpty(fifo_t *f)
+{
+	if (f->f_head == NULL) return 1;
+    else return 0;
+}
+
 /* Get id */
 int fifo_getID(fifo_t *f)
 {

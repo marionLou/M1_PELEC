@@ -350,15 +350,17 @@ void MyMIWI_Task(void) {
         
     }
 
-    while (!future_send && acks[future_send] == 1) {
-        fifo_remove(fifo_buf);
-        acks[future_send]=0;
-        future_send = fifo_getID(fifo_buf);
-        limit = 0;
-    }
+    if (!fifo_isEmpty(fifo_buf))
+    {
+        while (!future_send && acks[future_send] == 1)
+        {
+            fifo_remove(fifo_buf);
+            acks[future_send]=0;
+            future_send = fifo_getID(fifo_buf);
+            limit = 0;
+        }
 
-    ReSend = fifo_getString(fifo_buf);
-    if (ReSend!=NULL) {
+        ReSend = fifo_getString(fifo_buf);
         char State[64];
         int id_tmp = fifo_getID(fifo_buf);
         limit = limit+1;

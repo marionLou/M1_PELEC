@@ -90,21 +90,27 @@ void MyConsole_Task(void)
         MyCAN_TxMsg(0x200, "0123456");
         MyConsole_SendMsg("Send CAN Msg 0x200 '0123456'\n>");
 
-    } else if (strcmp(theCmd, "MB") == 0) {
-        char *TxtMsg;
-        sprintf(TxtMsg,"%d%s",MIWI_Counter,theCmd);
-        MyMIWI_TxMsg(myMIWI_EnableBroadcast, TxtMsg);
-        MyConsole_SendMsg("Send MIWI Broadcast Msg 'sth, ask to receiver :p' \n>");
-        if (MIWI_Counter<32) MIWI_Counter = MIWI_Counter + 1;
-        else MIWI_Counter = 0;
+    } else if (strcmp(theCmd, "MB") == 0 || MB_bool) {
+        if (MB_bool) {
+            char *TxtMsg;
+            sprintf(TxtMsg,"%d%s",MIWI_Counter,theCmd);
+            MyMIWI_TxMsg(myMIWI_EnableBroadcast, TxtMsg);
+            MyConsole_SendMsg("Send MIWI Broadcast Msg 'sth, ask to receiver :p' \n>");
+            if (MIWI_Counter<32) MIWI_Counter = MIWI_Counter + 1;
+            else MIWI_Counter = 0;
+            MB_bool = 0;
+        } else MB_bool = 1;
 
-    } else if (strcmp(theCmd, "MU") == 0) {
-        char *TxtMsg;
-        sprintf(TxtMsg,"%d%s",MIWI_Counter,theCmd);
-        MyMIWI_TxMsg(myMIWI_DisableBroadcast, TxtMsg);
-        MyConsole_SendMsg("Send MIWI Unicast Msg 'sth, ask to receiver :p' \n>");
-        if (MIWI_Counter<32) MIWI_Counter = MIWI_Counter + 1;
-        else MIWI_Counter = 0;
+    } else if (strcmp(theCmd, "MU") == 0 || MU_bool) {
+        if (MU_bool) {
+            char *TxtMsg;
+            sprintf(TxtMsg,"%d%s",MIWI_Counter,theCmd);
+            MyMIWI_TxMsg(myMIWI_DisableBroadcast, TxtMsg);
+            MyConsole_SendMsg("Send MIWI Unicast Msg 'sth, ask to receiver :p' \n>");
+            if (MIWI_Counter<32) MIWI_Counter = MIWI_Counter + 1;
+            else MIWI_Counter = 0;
+            MU_bool = 0;
+        } else MU_bool = 1;
 
     } else if (strcmp(theCmd, "MyLevel") == 0 || Level_bool) {
         if(Level_bool) {
