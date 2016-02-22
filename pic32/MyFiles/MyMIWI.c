@@ -295,13 +295,15 @@ void MyMIWI_Task(void) {
     char theData[64], theStr[128];
     char * ReSend;
     int future_send = fifo_getID(fifo_buf);
-    MyConsole_SendMsg("step 1");
+
     
     if (MyMIWI_RxMsg(theData)) {
         char *theRest;
         int id = strtol(theData, &theRest, 10);
         
         if (strcmp(theRest, "Ack_MIWI") == 0) {
+            MyConsole_SendMsg("\nAck reçu de msg");
+                MyConsole_SendMsg(theData);
             acks[id] = 1;
             if (id==future_send) {
                 fifo_remove(fifo_buf);
@@ -347,16 +349,16 @@ void MyMIWI_Task(void) {
         } 
         
     }
-    MyConsole_SendMsg("step 2");
+
     while (!future_send && acks[future_send] == 1) {
         fifo_remove(fifo_buf);
         acks[future_send]=0;
         future_send = fifo_getID(fifo_buf);
         limit = 0;
     }
-    MyConsole_SendMsg("step 3");
+
     ReSend = fifo_getString(fifo_buf);
-    if (ReSend==NULL) {
+    if (ReSend!=NULL) {
         char State[64];
         int id_tmp = fifo_getID(fifo_buf);
         limit = limit+1;
@@ -370,7 +372,6 @@ void MyMIWI_Task(void) {
             limit=0;
         }
     }
-    MyConsole_SendMsg("step 4");
 }
 
 /******************************************************************************/
