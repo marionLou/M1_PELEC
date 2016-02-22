@@ -55,7 +55,9 @@ void MyMIWI_Init(void) {
     // Starts the fifo to enhance the connection stability
     fifo_buf = fifo_new();
     int i = 0;
-    for (i; i<128;i++) acks[i] = 0;
+    for (i; i<32;i++) acks[i] = 0;
+    limit = 0;
+    lim_max = 10;
    
 
     // WARNING : Change in file MRF24J40.c in Microchip Application Library
@@ -291,53 +293,84 @@ BYTE SPIGet(void)   { return ((BYTE) MySPI_GetC()); }
 void MyMIWI_Task(void) {
 
     char theData[64], theStr[128];
-
+    char * ReSend;
+    int future_send = fifo_getID(fifo_buf);
+    MyConsole_SendMsg("step 1");
+    
     if (MyMIWI_RxMsg(theData)) {
-        char * ReSend;
         char *theRest;
         int id = strtol(theData, &theRest, 10);
-        int future_send = fifo_getID(fifo_buf);
         
-        if (strcmp(theData, "Ack_MIWI") == 0) acks[id-1] = 1;
+        if (strcmp(theRest, "Ack_MIWI") == 0) {
+            acks[id] = 1;
+            if (id==future_send) {
+                fifo_remove(fifo_buf);
+                acks[future_send]=0;
+                future_send = fifo_getID(fifo_buf);
+                limit = 0;
+            }
+        }
         else MyMIWI_TxMsg(myMIWI_EnableBroadcast, strcat(id,"Ack_MIWI"));
-        
-        while (!future_send && acks[future_send] == 1) {
-            fifo_remove(fifo_buf);
-            future_send = fifo_getID(fifo_buf);
-        }
-        ReSend = fifo_getString(fifo_buf);
-        if (!ReSend) MyMIWI_TxMsg(myMIWI_DisableBroadcast, theData);
 
-        char * token;
-        token = strtok (theRest," ,.-:");
-        if (strcmp(token, "YourLevel") == 0) {
-            token = strtok(NULL, " ,.-:");
-            if (strcmp(token, "1")==0){
-                MyDif_Level="Easy";
-                mPORTBSetPinsDigitalIn(USD_CD);
-                MyMDDFS_loadOneshow(1);
-            }
-            else if (strcmp(token, "2")==0) {
-                MyDif_Level="Medium";
-                mPORTBSetPinsDigitalIn(USD_CD);
-                MyMDDFS_loadOneshow(2);
-            }
-            else if (strcmp(token, "3")==0) {
-                MyDif_Level="Hard";
-                mPORTBSetPinsDigitalIn(USD_CD);
-                MyMDDFS_loadOneshow(3);
-            }
-            else MyConsole_SendMsg("Fuck it");
+        if (done[id]==0)
+        {
+            char * token;
+            token = strtok (theRest," ,.-:");
+            if (strcmp(token, "YourLevel") == 0) {
+                token = strtok(NULL, " ,.-:");
+                if (strcmp(token, "1")==0){
+                    MyDif_Level="Easy";
+                    mPORTBSetPinsDigitalIn(USD_CD);
+                    MyMDDFS_loadOneshow(1);
+                }
+                else if (strcmp(token, "2")==0) {
+                    MyDif_Level="Medium";
+                    mPORTBSetPinsDigitalIn(USD_CD);
+                    MyMDDFS_loadOneshow(2);
+                }
+                else if (strcmp(token, "3")==0) {
+                    MyDif_Level="Hard";
+                    mPORTBSetPinsDigitalIn(USD_CD);
+                    MyMDDFS_loadOneshow(3);
+                }
+                else MyConsole_SendMsg("Fuck it");
             
-            MyConsole_SendMsg("Your difficulty level has been adapted, except if I said fuck it before!\n>");
-        }
-        else {
+                MyConsole_SendMsg("Your difficulty level has been adapted, except if I said fuck it before!\n>");
+            }
+            else {
             sprintf(theStr, "Receive MIWI Msg '%s'\n>", theData);
             MyConsole_SendMsg(theStr);
-        }
-        
+            }
+            done[id]=1;
+            if (id==1) done[31] = 0;
+            else done[id-1]=0;
+        } 
         
     }
+    MyConsole_SendMsg("step 2");
+    while (!future_send && acks[future_send] == 1) {
+        fifo_remove(fifo_buf);
+        acks[future_send]=0;
+        future_send = fifo_getID(fifo_buf);
+        limit = 0;
+    }
+    MyConsole_SendMsg("step 3");
+    ReSend = fifo_getString(fifo_buf);
+    if (ReSend==NULL) {
+        char State[64];
+        int id_tmp = fifo_getID(fifo_buf);
+        limit = limit+1;
+        if (limit<lim_max) {
+            MyMIWI_TxMsg(myMIWI_DisableBroadcast, ReSend);
+            sprintf(State,"Try # %d for message with id %d", limit, id_tmp);
+            MyConsole_SendMsg(State);
+        }
+        else {
+            fifo_remove(fifo_buf);
+            limit=0;
+        }
+    }
+    MyConsole_SendMsg("step 4");
 }
 
 /******************************************************************************/

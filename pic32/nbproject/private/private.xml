@@ -8,7 +8,10 @@
             <file>file:/C:/UCL/M1_PELEC/pic32/MyIncludes/MyFifo.h</file>
             <file>file:/C:/UCL/M1_PELEC/pic32/MyFiles/MyFifo.c</file>
             <file>file:/C:/UCL/M1_PELEC/pic32/MyFiles/MyMIWI.c</file>
-            <file>file:/C:/UCL/M1_PELEC/pic32/MyIncludes/MyApp.h</file>
+            <file>file:/C:/UCL/M1_PELEC/pic32/MyFiles/MyConsole.c</file>
+            <file>file:/C:/UCL/M1_PELEC/pic32/MyIncludes/MyConsole.h</file>
+            <file>file:/C:/UCL/M1_PELEC/pic32/MyFiles/MyApp.c</file>
+            <file>file:/C:/UCL/M1_PELEC/pic32/MyFiles/MyWIFI.c</file>
         </group>
     </open-files>
 </project-private>

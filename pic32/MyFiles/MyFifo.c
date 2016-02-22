@@ -58,8 +58,9 @@ int fifo_remove(fifo_t *f)
 	fifonode_t *fn;
 	char *data;
 
-	if ((fn = f->f_head) == NULL)
-		return 0;
+	if ((fn = f->f_head) == NULL){
+        free(fn); return 0;
+    }
 
 	data = fn->fn_data;
 	if ((f->f_head = fn->fn_next) == NULL)
@@ -84,11 +85,14 @@ int fifo_getID(fifo_t *f)
 char * fifo_getString(fifo_t *f)
 {
     fifonode_t *fn;
-	char *data;
 //    int id;
 //    char idS[sizeof(int)];
-	if ((fn = f->f_head) == NULL) return (NULL);
+	if ((fn = f->f_head) == NULL) {
+        free(fn);
+        return (NULL);
+    }
 	else {
+        char *data;
 //        id = fn->fn_id;
         data = fn->fn_data;
         free(fn);

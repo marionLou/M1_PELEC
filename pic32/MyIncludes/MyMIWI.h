@@ -94,8 +94,10 @@ extern BYTE             TxData;
 #ifdef   MyMIWI
 
 fifo_t * fifo_buf;
-int acks[128];
-int done[128];
+int acks[32];
+int done[32];
+int limit;
+int lim_max;
 
 /*******************************************************************/
 // AdditionalNodeID variable array defines the additional
