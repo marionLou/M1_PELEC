@@ -276,9 +276,11 @@ void MyMIWI_TxMsg(BOOL enableBroadcast, char *theMsg)
             Printf("\r\nUnicast Failed\r\n");
     }
     
-    // For each new message sent, we add it in the buffer
+}
+
+// For each new message sent, we add it in the buffer
+void MyMIWI_InsertMsg(char *theMsg){
     fifo_add(fifo_buf, theMsg);
-    
 }
 
 /******************************************************************************/
@@ -295,7 +297,7 @@ void MyMIWI_Task(void) {
     char theData[64], theStr[128];
     char * ReSend;
     int future_send = fifo_getID(fifo_buf);
-
+    
     
     if (MyMIWI_RxMsg(theData)) {
         char *theRest;
@@ -316,6 +318,7 @@ void MyMIWI_Task(void) {
 
         if (done[id]==0)
         {
+            MyConsole_SendMsg("Step_1\n");
             char * token;
             token = strtok (theRest," ,.-:");
             if (strcmp(token, "YourLevel") == 0) {
@@ -352,6 +355,7 @@ void MyMIWI_Task(void) {
 
     if (!fifo_isEmpty(fifo_buf))
     {
+        MyConsole_SendMsg("Step_2\n");
         while (!future_send && acks[future_send] == 1)
         {
             fifo_remove(fifo_buf);
@@ -365,12 +369,16 @@ void MyMIWI_Task(void) {
         int id_tmp = fifo_getID(fifo_buf);
         limit = limit+1;
         if (limit<lim_max) {
-            MyMIWI_TxMsg(myMIWI_DisableBroadcast, ReSend);
-            sprintf(State,"Try # %d for message with id %d", limit, id_tmp);
+            MyMIWI_TxMsg(myMIWI_EnableBroadcast, ReSend);
+            sprintf(State,"Try # %d for message with id %d\n", limit, id_tmp);
             MyConsole_SendMsg(State);
         }
         else {
-            fifo_remove(fifo_buf);
+            MyConsole_SendMsg("come on");
+            int rTest = fifo_remove(fifo_buf);
+ //           char *info;
+            sprintf(State, "Result du remove: %d", rTest);
+            MyConsole_SendMsg(State);
             limit=0;
         }
     }

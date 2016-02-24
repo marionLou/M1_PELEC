@@ -95,9 +95,11 @@ void MyConsole_Task(void)
             char *TxtMsg;
             sprintf(TxtMsg,"%d%s",MIWI_Counter,theCmd);
             MyMIWI_TxMsg(myMIWI_EnableBroadcast, TxtMsg);
-            MyConsole_SendMsg("Send MIWI Broadcast Msg 'sth, ask to receiver :p' \n>");
+            MyMIWI_InsertMsg(TxtMsg);
+            MyConsole_SendMsg("Send MIWI Broadcast Msg: ");
+            MyConsole_SendMsg(TxtMsg); MyConsole_SendMsg("\n>");
             if (MIWI_Counter<32) MIWI_Counter = MIWI_Counter + 1;
-            else MIWI_Counter = 0;
+            else MIWI_Counter = 1;
             MB_bool = 0;
         } else MB_bool = 1;
 
@@ -106,9 +108,11 @@ void MyConsole_Task(void)
             char *TxtMsg;
             sprintf(TxtMsg,"%d%s",MIWI_Counter,theCmd);
             MyMIWI_TxMsg(myMIWI_DisableBroadcast, TxtMsg);
-            MyConsole_SendMsg("Send MIWI Unicast Msg 'sth, ask to receiver :p' \n>");
+            MyMIWI_InsertMsg(TxtMsg);
+            MyConsole_SendMsg("Send MIWI Unicast Msg: ");
+            MyConsole_SendMsg(TxtMsg); MyConsole_SendMsg("\n>");
             if (MIWI_Counter<32) MIWI_Counter = MIWI_Counter + 1;
-            else MIWI_Counter = 0;
+            else MIWI_Counter = 1;
             MU_bool = 0;
         } else MU_bool = 1;
 

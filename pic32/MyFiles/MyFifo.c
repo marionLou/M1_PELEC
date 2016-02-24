@@ -10,7 +10,7 @@
 
 #include <stdlib.h>
 
-#include "Myfifo.h"
+#include "MyFifo.h"
 
 typedef struct fifonode {
 	int fn_id;
@@ -37,15 +37,15 @@ void fifo_add(fifo_t *f, char *data)
 {
 	fifonode_t *fn = malloc(sizeof (fifonode_t));
     
-    char * split;
-    split = strtok (data," =.-:");
-    fn->fn_id = split;
-	fn->fn_data = data;
-	fn->fn_next = NULL;
+    	char * split;
+    	int id = strtol(data, &split, 10);
+    	fn->fn_id = id;
+        fn->fn_data = split;
+        fn->fn_next = NULL;
 
-	if (f->f_tail == NULL)
-		f->f_head = f->f_tail = fn;
-	else {
+	if (f->f_tail == NULL)	f->f_head = f->f_tail = fn;
+	else
+	{
 		f->f_tail->fn_next = fn;
 		f->f_tail = fn;
 	}
@@ -58,53 +58,50 @@ int fifo_remove(fifo_t *f)
 	fifonode_t *fn;
 	char *data;
 
-	if ((fn = f->f_head) == NULL){
-        free(fn); return 0;
-    }
+	if ((fn = f->f_head) == NULL)
+	{
+        free(fn);
+		return 0;
+	}
 
 	data = fn->fn_data;
-	if ((f->f_head = fn->fn_next) == NULL)
-		f->f_tail = NULL;
+	if ((f->f_head = fn->fn_next) == NULL)	f->f_tail = NULL;
 
 	free(fn);
-
 	return 1;
 }
 
 int fifo_isEmpty(fifo_t *f)
 {
 	if (f->f_head == NULL) return 1;
-    else return 0;
+	else return 0;
 }
 
 /* Get id */
 int fifo_getID(fifo_t *f)
 {
-	if (f->f_head == NULL) return (NULL);
-	else {
-        int id = f->f_head->fn_id;
-        return id;
-    }
+	if (f->f_head == NULL) return 0;
+	else
+	{
+	        int id = f->f_head->fn_id;
+	        return id;
+	}
 }
 
 /* Get string */
 char * fifo_getString(fifo_t *f)
 {
-    fifonode_t *fn;
-//    int id;
-//    char idS[sizeof(int)];
-	if ((fn = f->f_head) == NULL) {
-        free(fn);
-        return (NULL);
-    }
-	else {
-        char *data;
-//        id = fn->fn_id;
-        data = fn->fn_data;
-        free(fn);
-        return data;
-//        sprintf(idS,"%d",id);
-//        return strcat(idS,data);
-    }
+    	fifonode_t *fn;
+
+	if ((fn = f->f_head) == NULL)
+	{
+        	return NULL;
+	}
+	else
+	{
+	        char *data;
+	        data = fn->fn_data;
+        	return data;
+	}
     
 }

@@ -22,6 +22,7 @@ void    MyMIWI_Init(void);
 void    MyMIWI_Start(void);
 BOOL    MyMIWI_RxMsg(char *theMsg);
 void    MyMIWI_TxMsg(BOOL enableBroadcast, char *theMsg);
+void    MyMIWI_InsertMsg(char *theMsg);
 void    MyMIWI_Task(void);
 
 /*******************************************************************************
