@@ -1,0 +1,10 @@
+*.class
+*.exe
+*.ddl
+*.o
+*.d
+*.mk
+*.properties
+*.jar
+*.rar
+pic32/MyConfig/MyConfig_WIFI/WF_Config.h
