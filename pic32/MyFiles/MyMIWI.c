@@ -320,7 +320,11 @@ void MyMIWI_Task(void) {
                 limit = 0;
             }
         }
-        else MyMIWI_TxMsg(myMIWI_EnableBroadcast, strcat(id,"Ack_MIWI"));
+        else {
+            char NewTxt[32];
+            sprintf(NewTxt, "%dAck_MIWI", id);
+            MyMIWI_TxMsg(myMIWI_EnableBroadcast, NewTxt);
+        }
 
         if (done[id]==0)
         {
