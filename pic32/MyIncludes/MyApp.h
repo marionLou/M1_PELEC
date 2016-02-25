@@ -7,6 +7,7 @@
 
 // Adds support for PIC32 Peripheral library functions and macros
 #include <plib.h>
+#include <stdlib.h>
 
 // My Includes
 #include "MySPI.h"

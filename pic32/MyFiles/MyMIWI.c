@@ -51,14 +51,17 @@ void MyMIWI_Init(void) {
     INTClearFlag(INT_INT3);
     // Enable INT3
     INTEnable(INT_INT3, INT_ENABLED);
-    
+
     // Starts the fifo to enhance the connection stability
     fifo_buf = fifo_new();
     int i = 0;
-    for (i; i<32;i++) acks[i] = 0;
+    for (i; i<32;i++) {
+        acks[i] = 0;
+        done[i] = 0;
+    }
     limit = 0;
     lim_max = 10;
-   
+
 
     // WARNING : Change in file MRF24J40.c in Microchip Application Library
     // the line : void __ISR(_EXTERNAL_1_VECTOR, ipl4) _INT1Interrupt(void)
@@ -66,7 +69,7 @@ void MyMIWI_Init(void) {
 }
 
 void MyMIWI_Start(void) {
-    
+
     BYTE    i;
     char    theStr[64];
 
@@ -126,35 +129,35 @@ void MyMIWI_Start(void) {
         MyConsole_SendMsg(theStr);
     }
     else {
-        
+
     /*******************************************************************/
-    // If no network can be found and join, we need to start a new 
+    // If no network can be found and join, we need to start a new
     // network by calling function MiApp_StartConnection
     //
-    // The first parameter is the mode of start connection. There are 
+    // The first parameter is the mode of start connection. There are
     // two valid connection modes:
-    //   - START_CONN_DIRECT        start the connection on current 
+    //   - START_CONN_DIRECT        start the connection on current
     //                              channel
-    //   - START_CONN_ENERGY_SCN    perform an energy scan first, 
-    //                              before starting the connection on 
+    //   - START_CONN_ENERGY_SCN    perform an energy scan first,
+    //                              before starting the connection on
     //                              the channel with least noise
-    //   - START_CONN_CS_SCN        perform a carrier sense scan 
-    //                              first, before starting the 
-    //                              connection on the channel with 
+    //   - START_CONN_CS_SCN        perform a carrier sense scan
+    //                              first, before starting the
+    //                              connection on the channel with
     //                              least carrier sense noise. Not
     //                              supported for current radios
     //
-    // The second parameter is the scan duration, which has the same 
-    //     definition in Energy Scan. 10 is roughly 1 second. 9 is a 
-    //     half second and 11 is 2 seconds. Maximum scan duration is 
+    // The second parameter is the scan duration, which has the same
+    //     definition in Energy Scan. 10 is roughly 1 second. 9 is a
+    //     half second and 11 is 2 seconds. Maximum scan duration is
     //     14, or roughly 16 seconds.
     //
-    // The third parameter is the channel map. Bit 0 of the 
-    //     double word parameter represents channel 0. For the 2.4GHz 
-    //     frequency band, all possible channels are channel 11 to 
-    //     channel 26. As the result, the bit map is 0x07FFF800. Stack 
-    //     will filter out all invalid channels, so the application 
-    //     only needs to pay attention to the channels that are not 
+    // The third parameter is the channel map. Bit 0 of the
+    //     double word parameter represents channel 0. For the 2.4GHz
+    //     frequency band, all possible channels are channel 11 to
+    //     channel 26. As the result, the bit map is 0x07FFF800. Stack
+    //     will filter out all invalid channels, so the application
+    //     only needs to pay attention to the channels that are not
     //     preferred.
     /*******************************************************************/
         MiApp_StartConnection(START_CONN_DIRECT, 10, 0);
@@ -275,7 +278,7 @@ void MyMIWI_TxMsg(BOOL enableBroadcast, char *theMsg)
         if( MiApp_UnicastConnection(0, FALSE) == FALSE )
             Printf("\r\nUnicast Failed\r\n");
     }
-    
+
 }
 
 // For each new message sent, we add it in the buffer
@@ -297,20 +300,23 @@ void MyMIWI_Task(void) {
     char theData[64], theStr[128];
     char * ReSend;
     int future_send = fifo_getID(fifo_buf);
-    
-    
+
+
     if (MyMIWI_RxMsg(theData)) {
         char *theRest;
         int id = strtol(theData, &theRest, 10);
-        
+
         if (strcmp(theRest, "Ack_MIWI") == 0) {
             MyConsole_SendMsg("\nAck reçu de msg");
                 MyConsole_SendMsg(theData);
             acks[id] = 1;
             if (id==future_send) {
+                char State[64];
                 fifo_remove(fifo_buf);
                 acks[future_send]=0;
                 future_send = fifo_getID(fifo_buf);
+                sprintf(State,"There has been %d tries for message with id %d\n", limit, id);
+                MyConsole_SendMsg(State);
                 limit = 0;
             }
         }
@@ -339,7 +345,7 @@ void MyMIWI_Task(void) {
                     MyMDDFS_loadOneshow(3);
                 }
                 else MyConsole_SendMsg("Fuck it");
-            
+
                 MyConsole_SendMsg("Your difficulty level has been adapted, except if I said fuck it before!\n>");
             }
             else {
@@ -349,13 +355,12 @@ void MyMIWI_Task(void) {
             done[id]=1;
             if (id==1) done[31] = 0;
             else done[id-1]=0;
-        } 
-        
+        }
+
     }
 
     if (!fifo_isEmpty(fifo_buf))
     {
-        MyConsole_SendMsg("Step_2\n");
         while (!future_send && acks[future_send] == 1)
         {
             fifo_remove(fifo_buf);
@@ -370,15 +375,13 @@ void MyMIWI_Task(void) {
         limit = limit+1;
         if (limit<lim_max) {
             MyMIWI_TxMsg(myMIWI_EnableBroadcast, ReSend);
-            sprintf(State,"Try # %d for message with id %d\n", limit, id_tmp);
-            MyConsole_SendMsg(State);
+
         }
         else {
-            MyConsole_SendMsg("come on");
             int rTest = fifo_remove(fifo_buf);
- //           char *info;
-            sprintf(State, "Result du remove: %d", rTest);
-            MyConsole_SendMsg(State);
+            char Info[64];
+            sprintf(Info, "The message #%d was never received: failed 10 times in a row\n", id_tmp);
+            MyConsole_SendMsg(Info);
             limit=0;
         }
     }

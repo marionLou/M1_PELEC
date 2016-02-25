@@ -8,9 +8,7 @@
  * Routines for manipulating a FIFO queue
  */
 
-#include <stdlib.h>
-
-#include "MyFifo.h"
+#include "MyApp.h"
 
 typedef struct fifonode {
 	int fn_id;
