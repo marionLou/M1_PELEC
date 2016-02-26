@@ -57,10 +57,16 @@ void MyMIWI_Init(void) {
     int i = 0;
     for (i; i<32;i++) {
         acks[i] = 0;
-        done[i] = 0;
+     //   done[i] = 0;
     }
+    done = 0;
+    OldID = 0;
+    acquis = 0;
     limit = 0;
     lim_max = 10;
+    
+    Delay_Message = (SYS_FREQ/2000)*500;
+    FirstTime = ReadCoreTimer();
 
 
     // WARNING : Change in file MRF24J40.c in Microchip Application Library
@@ -299,7 +305,7 @@ void MyMIWI_Task(void) {
 
     char theData[64], theStr[128];
     char * ReSend;
-    int future_send = fifo_getID(fifo_buf);
+    int future_send = fifo_getID(fifo_buf); 
 
 
     if (MyMIWI_RxMsg(theData)) {
@@ -307,26 +313,23 @@ void MyMIWI_Task(void) {
         int id = strtol(theData, &theRest, 10);
 
         if (strcmp(theRest, "Ack_MIWI") == 0) {
-            MyConsole_SendMsg("\nAck reçu de msg");
-                MyConsole_SendMsg(theData);
-            acks[id] = 1;
-            if (id==future_send) {
-                char State[64];
-                fifo_remove(fifo_buf);
-                acks[future_send]=0;
-                future_send = fifo_getID(fifo_buf);
-                sprintf(State,"There has been %d tries for message with id %d\n", limit, id);
-                MyConsole_SendMsg(State);
-                limit = 0;
-            }
+            MyConsole_SendMsg("\nAck reçu de msg ");
+            MyConsole_SendMsg(theData);
+            char State[64];
+            fifo_remove(fifo_buf);
+            sprintf(State,"\nThere has been %d tries for message with id %d\n", limit, id);
+            MyConsole_SendMsg(State);
+            limit = 0;
+            acquis = 1;
         }
         else {
             char NewTxt[32];
             sprintf(NewTxt, "%dAck_MIWI", id);
             MyMIWI_TxMsg(myMIWI_EnableBroadcast, NewTxt);
-        }
+            if (OldID != id) done = 0;
+        
 
-        if (done[id]==0)
+        if (!done)
         {
             MyConsole_SendMsg("Step_1\n");
             char * token;
@@ -356,35 +359,29 @@ void MyMIWI_Task(void) {
             sprintf(theStr, "Receive MIWI Msg '%s'\n>", theData);
             MyConsole_SendMsg(theStr);
             }
-            done[id]=1;
-            if (id==1) done[31] = 0;
-            else done[id-1]=0;
+            OldID = id;
+        }
         }
 
     }
 
     if (!fifo_isEmpty(fifo_buf))
     {
-        while (!future_send && acks[future_send] == 1)
-        {
-            fifo_remove(fifo_buf);
-            acks[future_send]=0;
-            future_send = fifo_getID(fifo_buf);
-            limit = 0;
-        }
-
         ReSend = fifo_getString(fifo_buf);
         char State[64];
         int id_tmp = fifo_getID(fifo_buf);
-        limit = limit+1;
         if (limit<lim_max) {
-            MyMIWI_TxMsg(myMIWI_EnableBroadcast, ReSend);
-
+            int delay_time = ((ReadCoreTimer()-FirstTime) > Delay_Message);
+            if (limit==0 || (limit>0 && delay_time)){
+                MyMIWI_TxMsg(myMIWI_EnableBroadcast, ReSend);
+                limit++;
+                FirstTime = ReadCoreTimer();
+            }
         }
         else {
-            int rTest = fifo_remove(fifo_buf);
+            fifo_remove(fifo_buf);
             char Info[64];
-            sprintf(Info, "The message #%d was never received: failed 10 times in a row\n", id_tmp);
+            sprintf(Info, "\nThe message #%d was never received: failed 10 times in a row\n", id_tmp);
             MyConsole_SendMsg(Info);
             limit=0;
         }

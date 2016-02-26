@@ -96,9 +96,15 @@ extern BYTE             TxData;
 
 fifo_t * fifo_buf;
 int acks[32];
-int done[32];
+//int done[32];
+int done;
+int acquis;
 int limit;
 int lim_max;
+int OldID;
+
+unsigned int FirstTime;
+unsigned int Delay_Message;
 
 /*******************************************************************/
 // AdditionalNodeID variable array defines the additional
