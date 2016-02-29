@@ -38,7 +38,7 @@ void fifo_add(fifo_t *f, char *data)
     	char * split;
     	int id = strtol(data, &split, 10);
     	fn->fn_id = id;
-        fn->fn_data = split;
+        fn->fn_data = data;
         fn->fn_next = NULL;
 
 	if (f->f_tail == NULL)	f->f_head = f->f_tail = fn;

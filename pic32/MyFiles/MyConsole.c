@@ -99,7 +99,7 @@ void MyConsole_Task(void)
         if (MB_bool) {
             char *TxtMsg;
             sprintf(TxtMsg,"%d%s",MIWI_Counter,theCmd);
-            MyMIWI_TxMsg(myMIWI_EnableBroadcast, TxtMsg);
+//            MyMIWI_TxMsg(myMIWI_EnableBroadcast, TxtMsg);
             MyMIWI_InsertMsg(TxtMsg);
             MyConsole_SendMsg("Send MIWI Broadcast Msg: ");
             MyConsole_SendMsg(TxtMsg); MyConsole_SendMsg("\n>");
@@ -112,7 +112,7 @@ void MyConsole_Task(void)
         if (MU_bool) {
             char *TxtMsg;
             sprintf(TxtMsg,"%d%s",MIWI_Counter,theCmd);
-            MyMIWI_TxMsg(myMIWI_DisableBroadcast, TxtMsg);
+//            MyMIWI_TxMsg(myMIWI_DisableBroadcast, TxtMsg);
             MyMIWI_InsertMsg(TxtMsg);
             MyConsole_SendMsg("Send MIWI Unicast Msg: ");
             MyConsole_SendMsg(TxtMsg); MyConsole_SendMsg("\n>");
