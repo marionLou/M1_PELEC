@@ -77,8 +77,11 @@ BOOL MyConsole_GetCmd(void)
 
 void MyConsole_Task(void)
 {
-    unsigned char theStr[64], theData[64], theSuper[64];
-	
+    unsigned char theStr[64], theData[64];
+	unsigned char theSuper[64], theCool[64];
+    
+   // MyCyclone_Write(2,MyCyclone_Read(16));
+    
     if (!MyConsole_GetCmd()) return;
 
     if (strcmp(theCmd, "MyTest") == 0) {
@@ -90,10 +93,15 @@ void MyConsole_Task(void)
         MyCAN_TxMsg(0x200, "0123456");
         MyConsole_SendMsg("Send CAN Msg 0x200 '0123456'\n>");
 
-    } else if (strcmp(theCmd, "Leds") == 0){
-        MyCyclone_Write(2,8);
+    } else if (strcmp(theCmd, "L") == 0){
+        MyCyclone_Write(2,255);
         sprintf(theSuper, "C est trop cool '%d'\n>", MyCyclone_Read(2));
         MyConsole_SendMsg(theSuper);
+        
+    }else if (strcmp(theCmd, "B") == 0){
+     //   MyCyclone_Write(2,255);
+        sprintf(theCool, "un compteur magique : '%d'\n>", MyCyclone_Read(16));
+        MyConsole_SendMsg(theCool);
         
     } else if (strcmp(theCmd, "MB") == 0 || MB_bool) {
         if (MB_bool) {
