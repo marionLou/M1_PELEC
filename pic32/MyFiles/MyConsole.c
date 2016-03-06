@@ -36,8 +36,7 @@ void MyConsole_Init(void)
     UARTEnable(UART2A, UART_ENABLE_FLAGS(UART_PERIPHERAL | UART_RX | UART_TX));
 
     ptrCmd = theCmd;
-	MIWI_Counter = 0;
-    MIWI_Check = 0;
+	MIWI_Counter = 1;
 }
 
 void MyConsole_SendMsg(const char *theMsg)
@@ -78,25 +77,8 @@ BOOL MyConsole_GetCmd(void)
 
 void MyConsole_Task(void)
 {
-    unsigned char theStr[64], theData[64];
+    unsigned char theStr[64], theData[64], theSuper[64];
 	
-	if (MyMIWI_RxMsg(theData) && strcmp(theData, "Ack MIWI") == 0){
-        sprintf(theStr, "%d MIWI-tests \n>", MIWI_Counter);
-        MyConsole_SendMsg(theStr);
-        MIWI_Check = 0;
-        MIWI_Counter =0;
-//        MyConsole_SendMsg("Communication OK \n");
-        
-    } else if(MIWI_Check){
-		MyMIWI_TxMsg(myMIWI_DisableBroadcast, "Incroyable");
-//		MyConsole_SendMsg("Send MIWI Unicast Msg 'Incroyable'\n>");
-		MIWI_Counter++;
-        if(MIWI_Counter>5) {
-            MIWI_Check=0;
-            MIWI_Counter=0;
-            MyConsole_SendMsg("Retransmission failed\n>");
-        }
-    }
     if (!MyConsole_GetCmd()) return;
 
     if (strcmp(theCmd, "MyTest") == 0) {
@@ -107,36 +89,40 @@ void MyConsole_Task(void)
 
         MyCAN_TxMsg(0x200, "0123456");
         MyConsole_SendMsg("Send CAN Msg 0x200 '0123456'\n>");
-		
-	} else if (strcmp(theCmd, "MyMIWI-U") == 0 ) {
-        MIWI_Check = 1;
-        MIWI_Counter++;
-        MyMIWI_TxMsg(myMIWI_DisableBroadcast, "Incroyable");
-        MyConsole_SendMsg("Send MIWI Unicast Msg 'Incroyable'\n>");
         
-    } else if (strcmp(theCmd, "MyMIWI-B") == 0 ) {
-        MIWI_Check = 1;
-        MIWI_Counter++;
-        MyMIWI_TxMsg(myMIWI_EnableBroadcast, "Incroyable");
-        MyConsole_SendMsg("Send MIWI Unicast Msg 'Incroyable'\n>");
-
-    } else if (strcmp(theCmd, "Miwi_B") == 0 || MIWI_BMsg) {
+    } else if (strcmp(theCmd, "Leds") == 0){
+        MyCyclone_Write(2,8);
+        sprintf(theSuper, "C est trop cool '%d'\n>", MyCyclone_Read(2));
+        MyConsole_SendMsg(theSuper);
         
-        if(MIWI_BMsg) {
-            MyMIWI_TxMsg(myMIWI_EnableBroadcast, theCmd);
-            MyConsole_SendMsg("Send MIWI Broadcast Msg 'sth, ask to receiver :p' \n>");
-            MIWI_BMsg = 0;
-        }
-        else MIWI_BMsg=1;
+    }
+	// MB_bool (1 or 0) enables to send a personnalized msg
+	// At first we enter the condition because we wrote MB on the Console,
+	// then we enter because "MB_bool"==1 and "theCmd" is our message
+	else if (strcmp(theCmd, "MB") == 0 || MB_bool) {
+        if (MB_bool) {
+            char *TxtMsg;
+            sprintf(TxtMsg,"%d%s",MIWI_Counter,theCmd);
+			// Add message to the fifo (id, followed by the text)
+            MyMIWI_InsertMsg(TxtMsg);
+            MyConsole_SendMsg("Send MIWI Broadcast Msg: ");
+            MyConsole_SendMsg(TxtMsg); MyConsole_SendMsg("\n>");
+            if (MIWI_Counter<32) MIWI_Counter = MIWI_Counter + 1;
+            else MIWI_Counter = 1;
+            MB_bool = 0;
+        } else MB_bool = 1;
 
-    } else if (strcmp(theCmd, "Miwi_U") == 0 || MIWI_UMsg) {
-
-        if(MIWI_UMsg) {
-            MyMIWI_TxMsg(myMIWI_DisableBroadcast, theCmd);
-            MyConsole_SendMsg("Send MIWI Unicast Msg 'sth, ask to receiver :p' \n>");
-            MIWI_BMsg = 0;
-        }
-        else MIWI_UMsg=1;
+    } else if (strcmp(theCmd, "MU") == 0 || MU_bool) {
+        if (MU_bool) {
+            char *TxtMsg;
+            sprintf(TxtMsg,"%d%s",MIWI_Counter,theCmd);
+            MyMIWI_InsertMsg(TxtMsg);
+            MyConsole_SendMsg("Send MIWI Unicast Msg: ");
+            MyConsole_SendMsg(TxtMsg); MyConsole_SendMsg("\n>");
+            if (MIWI_Counter<32) MIWI_Counter = MIWI_Counter + 1;
+            else MIWI_Counter = 1;
+            MU_bool = 0;
+        } else MU_bool = 1;
 
     } else if (strcmp(theCmd, "MyLevel") == 0 || Level_bool) {
         if(Level_bool) {

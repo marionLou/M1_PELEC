@@ -22,6 +22,7 @@ void    MyMIWI_Init(void);
 void    MyMIWI_Start(void);
 BOOL    MyMIWI_RxMsg(char *theMsg);
 void    MyMIWI_TxMsg(BOOL enableBroadcast, char *theMsg);
+void    MyMIWI_InsertMsg(char *theMsg);
 void    MyMIWI_Task(void);
 
 /*******************************************************************************
@@ -92,6 +93,18 @@ extern BYTE             TxData;
 *******************************************************************************/
 
 #ifdef   MyMIWI
+
+fifo_t * fifo_buf;
+int acks[32];
+//int done[32];
+int done;
+int acquis;
+int limit;
+int lim_max;
+int OldID;
+
+unsigned int FirstTime;
+unsigned int Delay_Message;
 
 /*******************************************************************/
 // AdditionalNodeID variable array defines the additional

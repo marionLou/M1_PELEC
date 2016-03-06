@@ -92,7 +92,7 @@
 /*--------------------------------------------*/
 /* Default settings for Connection Management */
 /*--------------------------------------------*/
-#define MY_DEFAULT_SSID_NAME                "LouisM"
+#define MY_DEFAULT_SSID_NAME                "FOKOU"
 
 #define MY_DEFAULT_NETWORK_TYPE             WF_INFRASTRUCTURE   /* WF_INFRASTRUCTURE or WF_ADHOC     */
 
@@ -143,7 +143,7 @@
 
 // Default pass phrase used for WF_SECURITY_WPA_WITH_PASS_PHRASE and
 // WF_SECURITY_WPA2_WITH_PASS_PHRASE security modes
-#define MY_DEFAULT_PSK_PHRASE               "2103Password"
+#define MY_DEFAULT_PSK_PHRASE               "alphabeta"
 
 
 // If using security mode of WF_SECURITY_WPA_WITH_KEY or WF_SECURITY_WPA2_WITH_KEY, then this section

@@ -7,6 +7,7 @@
 
 // Adds support for PIC32 Peripheral library functions and macros
 #include <plib.h>
+#include <stdlib.h>
 
 // My Includes
 #include "MySPI.h"
@@ -17,6 +18,7 @@
 #include "MyRTCC.h"
 #include "MyIO.h"
 #include "MyFlash.h"
+#include "MyFifo.h"
 #include "MyMIWI.h"
 #include "MyWIFI.h"
 #include "MyTemperature.h"
