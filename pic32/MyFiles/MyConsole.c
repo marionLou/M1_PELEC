@@ -77,7 +77,7 @@ BOOL MyConsole_GetCmd(void)
 
 void MyConsole_Task(void)
 {
-    unsigned char theStr[64], theData[64];
+    unsigned char theStr[64], theData[64], theSuper[64];
 	
     if (!MyConsole_GetCmd()) return;
 
@@ -96,6 +96,11 @@ void MyConsole_Task(void)
         char Leds_on[32]; sprintf(Leds_on, "There are %d leds on", MyCyclone_Read(2));
         MyConsole_SendMsg(Leds_on);
 
+    } else if (strcmp(theCmd, "Leds") == 0){
+        MyCyclone_Write(2,8);
+        sprintf(theSuper, "C est trop cool '%d'\n>", MyCyclone_Read(2));
+        MyConsole_SendMsg(theSuper);
+        
     }
 	// MB_bool (1 or 0) enables to send a personnalized msg
 	// At first we enter the condition because we wrote MB on the Console,
