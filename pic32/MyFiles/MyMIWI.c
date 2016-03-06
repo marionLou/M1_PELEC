@@ -52,21 +52,34 @@ void MyMIWI_Init(void) {
     // Enable INT3
     INTEnable(INT_INT3, INT_ENABLED);
 
-    // Starts the fifo to enhance the connection stability
+	// Start of modified part in "MyMIWI_Init"
+    // Creates a new fifo
     fifo_buf = fifo_new();
-    int i = 0;
-    for (i; i<32;i++) {
-        acks[i] = 0;
-     //   done[i] = 0;
-    }
+	
+	// Instation of variables used to enhance the communication
+	// "done", "OldID" and "acquis" make sure we don't apply twice
+	// the action of the same message we would get twice by mistake
     done = 0;
     OldID = 0;
     acquis = 0;
+	// "limit" and "lim_max" are there to prevent sending the same message
+	// too many times if we don't receive any ack.
     limit = 0;
     lim_max = 10;
+	
+	// Creates a tab to record acks you receives,
+	// not used anymore (but I kepp it there just in case)
+    int i = 0;
+    for (i; i<32;i++) {
+        acks[i] = 0;
+    }
     
+	// We wait "Delay_Message" before sending the same message again
+	// if we did not get any ack
     Delay_Message = (SYS_FREQ/2000)*500;
     FirstTime = ReadCoreTimer();
+	
+	// End of modified part in "MyMIWI_Init"
 
 
     // WARNING : Change in file MRF24J40.c in Microchip Application Library
@@ -287,7 +300,8 @@ void MyMIWI_TxMsg(BOOL enableBroadcast, char *theMsg)
 
 }
 
-// For each new message sent, we add it in the buffer
+// When we want to send a new message, we add it in the FIFO,
+// only called from "MyConsole.c"
 void MyMIWI_InsertMsg(char *theMsg){
     fifo_add(fifo_buf, theMsg);
 }
@@ -304,17 +318,18 @@ BYTE SPIGet(void)   { return ((BYTE) MySPI_GetC()); }
 void MyMIWI_Task(void) {
 
     char theData[64], theStr[128];
-    char * ReSend;
+	// ID of the item in the buffer
     int future_send = fifo_getID(fifo_buf); 
 
-
+	// If we received a message
     if (MyMIWI_RxMsg(theData)) {
         char *theRest;
+		We separate the ID from the rest of the message we received
         int id = strtol(theData, &theRest, 10);
 
+		// If it is an ack, we remove the message from the FIFO and
+		// print how many times we tried to send it before getting an ack
         if (strcmp(theRest, "Ack_MIWI") == 0) {
-            MyConsole_SendMsg("\nAck reçu de msg ");
-            MyConsole_SendMsg(theData);
             char State[64];
             fifo_remove(fifo_buf);
             sprintf(State,"\nThere has been %d tries for message with id %d\n", limit, id);
@@ -322,55 +337,72 @@ void MyMIWI_Task(void) {
             limit = 0;
             acquis = 1;
         }
+		// If not, we send an ack for this message and
+		// aplly the instruction given by the message if not done already
+		// (see comparison between OldID and id, and the value of done)
         else {
             char NewTxt[32];
             sprintf(NewTxt, "%dAck_MIWI", id);
             MyMIWI_TxMsg(myMIWI_EnableBroadcast, NewTxt);
             if (OldID != id) done = 0;
         
+			
+			if (!done)
+			{
+				// The only instruction we have so far is "YourLevel:#"
+				// If it is this one, we happly it,
+				// else we just print the message we got on the terminal
+				char * token;
+				token = strtok (theRest," ,.-:");
+				if (strcmp(token, "YourLevel") == 0) {
+					token = strtok(NULL, " ,.-:");
+					if (strcmp(token, "1")==0){
+						MyDif_Level="Easy";
+						mPORTBSetPinsDigitalIn(USD_CD);
+						MyMDDFS_loadOneshow(1);
+					}
+					else if (strcmp(token, "2")==0) {
+						MyDif_Level="Medium";
+						mPORTBSetPinsDigitalIn(USD_CD);
+						MyMDDFS_loadOneshow(2);
+					}
+					else if (strcmp(token, "3")==0) {
+						MyDif_Level="Hard";
+						mPORTBSetPinsDigitalIn(USD_CD);
+						MyMDDFS_loadOneshow(3);
+					}
+					else MyConsole_SendMsg("Fuck it");
 
-        if (!done)
-        {
-            MyConsole_SendMsg("Step_1\n");
-            char * token;
-            token = strtok (theRest," ,.-:");
-            if (strcmp(token, "YourLevel") == 0) {
-                token = strtok(NULL, " ,.-:");
-                if (strcmp(token, "1")==0){
-                    MyDif_Level="Easy";
-                    mPORTBSetPinsDigitalIn(USD_CD);
-                    MyMDDFS_loadOneshow(1);
-                }
-                else if (strcmp(token, "2")==0) {
-                    MyDif_Level="Medium";
-                    mPORTBSetPinsDigitalIn(USD_CD);
-                    MyMDDFS_loadOneshow(2);
-                }
-                else if (strcmp(token, "3")==0) {
-                    MyDif_Level="Hard";
-                    mPORTBSetPinsDigitalIn(USD_CD);
-                    MyMDDFS_loadOneshow(3);
-                }
-                else MyConsole_SendMsg("Fuck it");
-
-                MyConsole_SendMsg("Your difficulty level has been adapted, except if I said fuck it before!\n>");
-            }
-            else {
-            sprintf(theStr, "Receive MIWI Msg '%s'\n>", theData);
-            MyConsole_SendMsg(theStr);
-            }
-            OldID = id;
-        }
+					MyConsole_SendMsg("Your difficulty level has been adapted, except if I said fuck it before!\n>");
+				}
+				else {
+				sprintf(theStr, "Receive MIWI Msg '%s'\n>", theRest);
+				MyConsole_SendMsg(theStr);
+				}
+				// We set OldID to id, so we know the instruction of
+				// the message with this ID has already been executed
+				OldID = id;
+			}
         }
 
     }
 
+	// If the FIFO is not empty, we'll try to send a message
     if (!fifo_isEmpty(fifo_buf))
     {
+		char * ReSend;
+		char State[64];
+		// We get the ID and the message we want to send (first one in the FIFO)
         ReSend = fifo_getString(fifo_buf);
-        char State[64];
         int id_tmp = fifo_getID(fifo_buf);
+		// If we tried to send it less than lim_max times, we enter the "if"
         if (limit<lim_max) {
+			// If it is the first time or if there has been more than
+			// "Delay_Message" time between two sending of the same message,
+			// we send it again
+			// Frcs: si on envoie le message pour la 1ere fois ou
+			// qu'il y a eu suffisament de temps entre 2 essais d'envoi,
+			// on réessaie de l'envoyer
             int delay_time = ((ReadCoreTimer()-FirstTime) > Delay_Message);
             if (limit==0 || (limit>0 && delay_time)){
                 MyMIWI_TxMsg(myMIWI_EnableBroadcast, ReSend);
@@ -378,6 +410,8 @@ void MyMIWI_Task(void) {
                 FirstTime = ReadCoreTimer();
             }
         }
+		// If we tried too many times, we drop the message
+		// by removing it from the FIFO
         else {
             fifo_remove(fifo_buf);
             char Info[64];
