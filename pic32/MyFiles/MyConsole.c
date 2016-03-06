@@ -92,22 +92,21 @@ void MyConsole_Task(void)
 
         MyCAN_TxMsg(0x200, "0123456");
         MyConsole_SendMsg("Send CAN Msg 0x200 '0123456'\n>");
-
-    } else if (strcmp(theCmd, "L") == 0){
-        MyCyclone_Write(2,255);
+        
+    } else if (strcmp(theCmd, "Leds") == 0){
+        MyCyclone_Write(2,8);
         sprintf(theSuper, "C est trop cool '%d'\n>", MyCyclone_Read(2));
         MyConsole_SendMsg(theSuper);
         
-    }else if (strcmp(theCmd, "B") == 0){
-     //   MyCyclone_Write(2,255);
-        sprintf(theCool, "un compteur magique : '%d'\n>", MyCyclone_Read(16));
-        MyConsole_SendMsg(theCool);
-        
-    } else if (strcmp(theCmd, "MB") == 0 || MB_bool) {
+    }
+	// MB_bool (1 or 0) enables to send a personnalized msg
+	// At first we enter the condition because we wrote MB on the Console,
+	// then we enter because "MB_bool"==1 and "theCmd" is our message
+	else if (strcmp(theCmd, "MB") == 0 || MB_bool) {
         if (MB_bool) {
             char *TxtMsg;
             sprintf(TxtMsg,"%d%s",MIWI_Counter,theCmd);
-//            MyMIWI_TxMsg(myMIWI_EnableBroadcast, TxtMsg);
+			// Add message to the fifo (id, followed by the text)
             MyMIWI_InsertMsg(TxtMsg);
             MyConsole_SendMsg("Send MIWI Broadcast Msg: ");
             MyConsole_SendMsg(TxtMsg); MyConsole_SendMsg("\n>");
@@ -120,7 +119,6 @@ void MyConsole_Task(void)
         if (MU_bool) {
             char *TxtMsg;
             sprintf(TxtMsg,"%d%s",MIWI_Counter,theCmd);
-//            MyMIWI_TxMsg(myMIWI_DisableBroadcast, TxtMsg);
             MyMIWI_InsertMsg(TxtMsg);
             MyConsole_SendMsg("Send MIWI Unicast Msg: ");
             MyConsole_SendMsg(TxtMsg); MyConsole_SendMsg("\n>");
