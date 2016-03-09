@@ -1,0 +1,42 @@
+20:05:32 **** Incremental Build of configuration Nios II for project LT24_SW ****
+make all 
+Info: Building ../LT24_SW_bsp/
+C:/altera/15.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../LT24_SW_bsp/
+[BSP build complete]
+Info: Compiling main.c to obj/default/main.o
+nios2-elf-gcc -xc -MP -MMD -c -I../LT24_SW_bsp//HAL/inc -I../LT24_SW_bsp/ -I../LT24_SW_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_C_PLUS_PLUS -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mhw-mul -mno-hw-mulx  -o obj/default/main.o main.c
+main.c: In function 'main':
+main.c:50:6: warning: pointer targets in passing argument 2 of 'Touch_GetXY' differ in signedness [-Wpointer-sign]
+   if(Touch_GetXY(pTouch, &X, &Y)){
+      ^
+In file included from main.c:9:0:
+terasic_lib/touch_spi.h:13:5: note: expected 'int *' but argument is of type 'unsigned int *'
+ int Touch_GetXY(TOUCH_HANDLE p, int *x, int *y);
+     ^
+main.c:50:6: warning: pointer targets in passing argument 3 of 'Touch_GetXY' differ in signedness [-Wpointer-sign]
+   if(Touch_GetXY(pTouch, &X, &Y)){
+      ^
+In file included from main.c:9:0:
+terasic_lib/touch_spi.h:13:5: note: expected 'int *' but argument is of type 'unsigned int *'
+ int Touch_GetXY(TOUCH_HANDLE p, int *x, int *y);
+     ^
+main.c:45:6: warning: unused variable 'insert' [-Wunused-variable]
+  int insert = 11;
+      ^
+main.c:44:15: warning: unused variable 'test' [-Wunused-variable]
+  unsigned int test;
+               ^
+main.c:18:20: warning: unused variable 'Display' [-Wunused-variable]
+  alt_video_display Display;
+                    ^
+Info: Linking LT24_SW.elf
+nios2-elf-g++  -T'../LT24_SW_bsp//linker.x' -msys-crt0='../LT24_SW_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../LT24_SW_bsp/  -msmallc  -Wl,-Map=LT24_SW.map   -O0 -g -Wall   -mno-hw-div -mhw-mul -mno-hw-mulx  -o LT24_SW.elf obj/default/demo/gui.o obj/default/demo/gui_vpg.o obj/default/fonts/tahomabold_20.o obj/default/fonts/tahomabold_32.o obj/default/graphic_lib/ILI9341.o obj/default/graphic_lib/geometry.o obj/default/graphic_lib/simple_graphics.o obj/default/graphic_lib/simple_text.o obj/default/main.o obj/default/terasic_lib/touch_spi.o -lm -msys-lib=m
+nios2-elf-insert LT24_SW.elf --thread_model hal --cpu_name CPU --qsys true --simulation_enabled false --stderr_dev JTAG_UART --stdin_dev JTAG_UART --stdout_dev JTAG_UART --sopc_system_name DE0_LT24_SOPC --quartus_project_dir "C:/UCL/DE0_LT24_student" --jdi C:/UCL/DE0_LT24_student/software/LT24_SW_bsp/../../DE0_Nano.jdi --sopcinfo C:/UCL/DE0_LT24_student/software/LT24_SW_bsp/../../DE0_LT24_SOPC.sopcinfo
+Info: (LT24_SW.elf) 160 KBytes program size (code + initialized data).
+Info:               32598 KBytes free for stack + heap.
+Info: Creating LT24_SW.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source LT24_SW.elf >LT24_SW.objdump
+[LT24_SW build complete]
+
+20:05:35 Build Finished (took 2s.982ms)
+
