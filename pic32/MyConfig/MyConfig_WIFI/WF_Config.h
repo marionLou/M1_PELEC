@@ -92,7 +92,7 @@
 /*--------------------------------------------*/
 /* Default settings for Connection Management */
 /*--------------------------------------------*/
-#define MY_DEFAULT_SSID_NAME                "FOKOU"
+#define MY_DEFAULT_SSID_NAME                "LouisM"
 
 #define MY_DEFAULT_NETWORK_TYPE             WF_INFRASTRUCTURE   /* WF_INFRASTRUCTURE or WF_ADHOC     */
 
@@ -143,7 +143,7 @@
 
 // Default pass phrase used for WF_SECURITY_WPA_WITH_PASS_PHRASE and
 // WF_SECURITY_WPA2_WITH_PASS_PHRASE security modes
-#define MY_DEFAULT_PSK_PHRASE               "alphabeta"
+#define MY_DEFAULT_PSK_PHRASE               "2103Password"
 
 
 // If using security mode of WF_SECURITY_WPA_WITH_KEY or WF_SECURITY_WPA2_WITH_KEY, then this section
@@ -156,11 +156,12 @@
 //\x40\xC8\x88\xC6\xE9\x7A\x4A\xD5\
 //\xE5\x6D\xDA\x44\x8E\xFB\x9C\x0A\
 //\xE1\x47\x81\x52\x31\x1C\x13\x7C"
+
 #define MY_DEFAULT_PSK "\
-\x6F\xD7\xE3\x47\x17\xBA\x2F\x3B\
-\x6D\x56\xAD\x26\xC1\xBD\xCE\xC4\
-\x59\xA6\x32\xEE\x27\xF4\x7F\x36\
-\x3A\x9E\x12\x76\xAE\x2D\x3E\x59"
+\x42\x6b\xd3\x55\x24\xaa\x56\x18\
+\xf6\x0b\xcc\x3f\xdd\xa4\x13\x7e\
+\xae\xea\x08\x3c\x48\x78\xb9\x3b\
+\xd5\x02\x0a\xf6\xb9\x31\x35\x66"
 
 //-----------------------------------------------------------------------------------
 // Default WEP keys used in WF_SECURITY_WEP_40  and WF_SECURITY_WEP_104 security mode

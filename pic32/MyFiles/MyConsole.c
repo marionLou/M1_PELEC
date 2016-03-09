@@ -95,7 +95,21 @@ void MyConsole_Task(void)
         sprintf(theSuper, "C est trop cool '%d'\n>", MyCyclone_Read(2));
         MyConsole_SendMsg(theSuper);
         
+    } else if (strcmp(theCmd, "Lecture") == 0){
+        sprintf(theSuper, "Value read on SPI is: %d,\n", MyCyclone_Read(1));
+        MyConsole_SendMsg(theSuper);
+        
+    } else if (strcmp(theCmd, "Ecriture") == 0 || Write_bool){
+        if (Write_bool) {
+            char missed[10];
+            int write_test = strtol(theCmd, &missed, 10);
+            sprintf(theSuper, "Value written on SPI is: %d,\n",  MyCyclone_Write(1, write_test));
+            MyConsole_SendMsg(theSuper);
+            Write_bool = 0;
+        }
+        else Write_bool = 1;
     }
+    
 	// MB_bool (1 or 0) enables to send a personnalized msg
 	// At first we enter the condition because we wrote MB on the Console,
 	// then we enter because "MB_bool"==1 and "theCmd" is our message

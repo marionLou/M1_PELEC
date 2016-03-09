@@ -78,6 +78,8 @@ void MyMIWI_Init(void) {
 	// if we did not get any ack
     Delay_Message = (SYS_FREQ/2000)*500;
     FirstTime = ReadCoreTimer();
+    
+    MyConsole_SendMsg("End of MIWI_init");
 	
 	// End of modified part in "MyMIWI_Init"
 
@@ -324,7 +326,7 @@ void MyMIWI_Task(void) {
 	// If we received a message
     if (MyMIWI_RxMsg(theData)) {
         char *theRest;
-		We separate the ID from the rest of the message we received
+		// We separate the ID from the rest of the message we received
         int id = strtol(theData, &theRest, 10);
 
 		// If it is an ack, we remove the message from the FIFO and
