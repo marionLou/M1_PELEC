@@ -62,6 +62,7 @@ void MyMIWI_Init(void) {
     done = 0;
     OldID = 0;
     acquis = 0;
+    MIWI_Counter = 1;
 	// "limit" and "lim_max" are there to prevent sending the same message
 	// too many times if we don't receive any ack.
     limit = 0;
@@ -305,7 +306,14 @@ void MyMIWI_TxMsg(BOOL enableBroadcast, char *theMsg)
 // When we want to send a new message, we add it in the FIFO,
 // only called from "MyConsole.c"
 void MyMIWI_InsertMsg(char *theMsg){
-    fifo_add(fifo_buf, theMsg);
+    char *TxtMsg;
+    sprintf(TxtMsg,"%d%s",MIWI_Counter,theMsg);
+	// Add message to the fifo (id, followed by the text)
+    fifo_add(fifo_buf, TxtMsg);
+    MyConsole_SendMsg("Send MIWI Broadcast Msg: ");
+    MyConsole_SendMsg(theMsg); MyConsole_SendMsg("\n>");
+    if (MIWI_Counter<32) MIWI_Counter = MIWI_Counter + 1;
+    else MIWI_Counter = 1;
 }
 
 /******************************************************************************/

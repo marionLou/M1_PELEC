@@ -36,7 +36,6 @@ void MyConsole_Init(void)
     UARTEnable(UART2A, UART_ENABLE_FLAGS(UART_PERIPHERAL | UART_RX | UART_TX));
 
     ptrCmd = theCmd;
-	MIWI_Counter = 1;
 }
 
 void MyConsole_SendMsg(const char *theMsg)
@@ -103,7 +102,8 @@ void MyConsole_Task(void)
         if (Write_bool) {
             char missed[10];
             int write_test = strtol(theCmd, &missed, 10);
-            sprintf(theSuper, "Value written on SPI is: %d,\n",  MyCyclone_Write(1, write_test));
+            MyCyclone_Write(1, write_test);
+            sprintf(theSuper, "Value %d was written on the SPI\n", write_test );
             MyConsole_SendMsg(theSuper);
             Write_bool = 0;
         }
@@ -115,26 +115,13 @@ void MyConsole_Task(void)
 	// then we enter because "MB_bool"==1 and "theCmd" is our message
 	else if (strcmp(theCmd, "MB") == 0 || MB_bool) {
         if (MB_bool) {
-            char *TxtMsg;
-            sprintf(TxtMsg,"%d%s",MIWI_Counter,theCmd);
-			// Add message to the fifo (id, followed by the text)
-            MyMIWI_InsertMsg(TxtMsg);
-            MyConsole_SendMsg("Send MIWI Broadcast Msg: ");
-            MyConsole_SendMsg(TxtMsg); MyConsole_SendMsg("\n>");
-            if (MIWI_Counter<32) MIWI_Counter = MIWI_Counter + 1;
-            else MIWI_Counter = 1;
+            MyMIWI_InsertMsg(theCmd);
             MB_bool = 0;
         } else MB_bool = 1;
 
     } else if (strcmp(theCmd, "MU") == 0 || MU_bool) {
         if (MU_bool) {
-            char *TxtMsg;
-            sprintf(TxtMsg,"%d%s",MIWI_Counter,theCmd);
-            MyMIWI_InsertMsg(TxtMsg);
-            MyConsole_SendMsg("Send MIWI Unicast Msg: ");
-            MyConsole_SendMsg(TxtMsg); MyConsole_SendMsg("\n>");
-            if (MIWI_Counter<32) MIWI_Counter = MIWI_Counter + 1;
-            else MIWI_Counter = 1;
+            MyMIWI_InsertMsg(theCmd);
             MU_bool = 0;
         } else MU_bool = 1;
 

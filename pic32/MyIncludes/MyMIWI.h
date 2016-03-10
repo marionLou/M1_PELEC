@@ -96,7 +96,7 @@ extern BYTE             TxData;
 
 fifo_t * fifo_buf;
 int acks[32];
-//int done[32];
+int MIWI_Counter;
 int done;
 int acquis;
 int limit;

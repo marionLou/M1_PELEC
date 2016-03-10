@@ -40,7 +40,6 @@ void ConsolePutROMString(ROM char* str);
 
 char theCmd[64], *ptrCmd;
 BOOL MB_bool, MU_bool, Level_bool, MIWI_Check, Write_bool;
-int MIWI_Counter;
 
 #endif
 
