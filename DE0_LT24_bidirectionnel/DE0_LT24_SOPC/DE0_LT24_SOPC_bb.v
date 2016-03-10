@@ -27,6 +27,11 @@ module DE0_LT24_SOPC (
 	lt24_touch_spi_MOSI,
 	lt24_touch_spi_SCLK,
 	lt24_touch_spi_SS_n,
+	lt_pic32_int_cs,
+	lt_pic32_int_sdo,
+	lt_pic32_int_sclk,
+	lt_pic32_int_sint,
+	lt_pic32_int_sdi,
 	pic_mem_s2_address,
 	pic_mem_s2_chipselect,
 	pic_mem_s2_clken,
@@ -44,12 +49,7 @@ module DE0_LT24_SOPC (
 	sdram_wire_dqm,
 	sdram_wire_ras_n,
 	sdram_wire_we_n,
-	to_led_export,
-	lt_pic32_int_cs,
-	lt_pic32_int_sdi,
-	lt_pic32_int_sdo,
-	lt_pic32_int_sclk,
-	lt_pic32_int_sint);	
+	to_led_export);	
 
 	input		alt_pll_areset_conduit_export;
 	output		alt_pll_c1_clk;
@@ -78,6 +78,11 @@ module DE0_LT24_SOPC (
 	output		lt24_touch_spi_MOSI;
 	output		lt24_touch_spi_SCLK;
 	output		lt24_touch_spi_SS_n;
+	input		lt_pic32_int_cs;
+	output		lt_pic32_int_sdo;
+	input		lt_pic32_int_sclk;
+	output		lt_pic32_int_sint;
+	input		lt_pic32_int_sdi;
 	input	[11:0]	pic_mem_s2_address;
 	input		pic_mem_s2_chipselect;
 	input		pic_mem_s2_clken;
@@ -96,9 +101,4 @@ module DE0_LT24_SOPC (
 	output		sdram_wire_ras_n;
 	output		sdram_wire_we_n;
 	output	[7:0]	to_led_export;
-	input		lt_pic32_int_cs;
-	input		lt_pic32_int_sdi;
-	output		lt_pic32_int_sdo;
-	input		lt_pic32_int_sclk;
-	output		lt_pic32_int_sint;
 endmodule

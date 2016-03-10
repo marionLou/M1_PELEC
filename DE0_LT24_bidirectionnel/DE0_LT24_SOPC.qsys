@@ -73,6 +73,14 @@
          type = "String";
       }
    }
+   element DE0_LT24_SOPC
+   {
+      datum _originalDeviceFamily
+      {
+         value = "Cyclone IV E";
+         type = "String";
+      }
+   }
    element JTAG_UART
    {
       datum _sortIndex
@@ -819,7 +827,8 @@
   <parameter name="width" value="1" />
  </module>
  <module name="LT_PIC32_0" kind="LT_PIC32" version="1.0" enabled="1">
-  <parameter name="A_Data" value="1" />
+  <parameter name="Data_1" value="1" />
+  <parameter name="Data_2" value="2" />
  </module>
  <module
    name="SDRAM"

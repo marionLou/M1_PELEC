@@ -306,7 +306,7 @@ void MyMIWI_TxMsg(BOOL enableBroadcast, char *theMsg)
 // When we want to send a new message, we add it in the FIFO,
 // only called from "MyConsole.c"
 void MyMIWI_InsertMsg(char *theMsg){
-    char *TxtMsg;
+    char TxtMsg[64];
     sprintf(TxtMsg,"%d%s",MIWI_Counter,theMsg);
 	// Add message to the fifo (id, followed by the text)
     fifo_add(fifo_buf, TxtMsg);

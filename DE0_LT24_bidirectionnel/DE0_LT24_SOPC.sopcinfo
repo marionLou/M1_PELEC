@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EnsembleReport name="DE0_LT24_SOPC" kind="DE0_LT24_SOPC" version="1.0" fabric="QSYS">
  <!-- Format version 15.0 145 (Future versions may contain additional information.) -->
- <!-- 2016.03.09.19:51:48 -->
+ <!-- 2016.03.10.19:18:00 -->
  <!-- A collection of modules and connections -->
  <parameter name="AUTO_GENERATION_ID">
   <type>java.lang.Integer</type>
-  <value>1457549508</value>
+  <value>1457633879</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>false</visible>
@@ -12794,12 +12794,6 @@ parameters are a RESULT of the module parameters. -->
     <role>cs</role>
    </port>
    <port>
-    <name>SPI_SDI</name>
-    <direction>Input</direction>
-    <width>1</width>
-    <role>sdi</role>
-   </port>
-   <port>
     <name>SPI_SDO</name>
     <direction>Output</direction>
     <width>1</width>
@@ -12816,6 +12810,12 @@ parameters are a RESULT of the module parameters. -->
     <direction>Output</direction>
     <width>1</width>
     <role>sint</role>
+   </port>
+   <port>
+    <name>SPI_SDI</name>
+    <direction>Input</direction>
+    <width>1</width>
+    <role>sdi</role>
    </port>
   </interface>
  </module>

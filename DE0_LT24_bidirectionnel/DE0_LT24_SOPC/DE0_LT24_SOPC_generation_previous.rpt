@@ -1,6 +1,6 @@
 Info: Starting: Create block symbol file (.bsf)
-Info: qsys-generate C:\UCL\DE0_LT24_student\DE0_LT24_SOPC.qsys --block-symbol-file --output-directory=C:\UCL\DE0_LT24_student\DE0_LT24_SOPC --family="Cyclone IV E" --part=EP4CE22F17C6
-Progress: Loading DE0_LT24_student/DE0_LT24_SOPC.qsys
+Info: qsys-generate C:\UCL\M1_PELEC\DE0_LT24_bidirectionnel\DE0_LT24_SOPC.qsys --block-symbol-file --output-directory=C:\UCL\M1_PELEC\DE0_LT24_bidirectionnel\DE0_LT24_SOPC --family="Cyclone IV E" --part=EP4CE22F17C6
+Progress: Loading DE0_LT24_bidirectionnel/DE0_LT24_SOPC.qsys
 Progress: Reading input file
 Progress: Adding ALT_PLL [altpll 15.0]
 Progress: Parameterizing module ALT_PLL
@@ -48,8 +48,8 @@ Info: ip-generate succeeded.
 Info: Finished: Create block symbol file (.bsf)
 Info: 
 Info: Starting: Create HDL design files for synthesis
-Info: qsys-generate C:\UCL\DE0_LT24_student\DE0_LT24_SOPC.qsys --synthesis=VERILOG --output-directory=C:\UCL\DE0_LT24_student\DE0_LT24_SOPC\synthesis --family="Cyclone IV E" --part=EP4CE22F17C6
-Progress: Loading DE0_LT24_student/DE0_LT24_SOPC.qsys
+Info: qsys-generate C:\UCL\M1_PELEC\DE0_LT24_bidirectionnel\DE0_LT24_SOPC.qsys --synthesis=VERILOG --output-directory=C:\UCL\M1_PELEC\DE0_LT24_bidirectionnel\DE0_LT24_SOPC\synthesis --family="Cyclone IV E" --part=EP4CE22F17C6
+Progress: Loading DE0_LT24_bidirectionnel/DE0_LT24_SOPC.qsys
 Progress: Reading input file
 Progress: Adding ALT_PLL [altpll 15.0]
 Progress: Parameterizing module ALT_PLL
@@ -112,68 +112,68 @@ Info: Inserting clock-crossing logic between rsp_demux_013.src0 and rsp_mux.sink
 Info: Inserting clock-crossing logic between rsp_demux_014.src0 and rsp_mux.sink14
 Info: ALT_PLL: "DE0_LT24_SOPC" instantiated altpll "ALT_PLL"
 Info: CPU: Starting RTL generation for module 'DE0_LT24_SOPC_CPU'
-Info: CPU:   Generation command is [exec C:/altera/15.0/quartus/bin64/eperlcmd.exe -I C:/altera/15.0/quartus/bin64/perl/lib -I C:/altera/15.0/quartus/sopc_builder/bin/europa -I C:/altera/15.0/quartus/sopc_builder/bin/perl_lib -I C:/altera/15.0/quartus/sopc_builder/bin -I C:/altera/15.0/quartus/../ip/altera/nios2_ip/altera_nios2/cpu_lib -I C:/altera/15.0/quartus/../ip/altera/nios2_ip/altera_nios2/nios_lib -I C:/altera/15.0/quartus/../ip/altera/nios2_ip/altera_nios2 -I C:/altera/15.0/quartus/../ip/altera/nios2_ip/altera_nios2 -- C:/altera/15.0/quartus/../ip/altera/nios2_ip/altera_nios2/generate_rtl.epl --name=DE0_LT24_SOPC_CPU --dir=C:/Users/LOUISM~1/AppData/Local/Temp/alt6868_1786886079765292579.dir/0004_CPU_gen/ --quartus_bindir=C:/altera/15.0/quartus/bin64 --verilog --config=C:/Users/LOUISM~1/AppData/Local/Temp/alt6868_1786886079765292579.dir/0004_CPU_gen//DE0_LT24_SOPC_CPU_processor_configuration.pl  --do_build_sim=0  ]
-Info: CPU: # 2016.03.08 16:59:01 (*) Starting Nios II generation
-Info: CPU: # 2016.03.08 16:59:01 (*)   Checking for plaintext license.
-Info: CPU: # 2016.03.08 16:59:03 (*)   Plaintext license not found.
-Info: CPU: # 2016.03.08 16:59:03 (*)   Checking for encrypted license (non-evaluation).
-Info: CPU: # 2016.03.08 16:59:05 (*)   Encrypted license not found.  Defaulting to OCP evaluation license (produces a time-limited SOF)
-Info: CPU: # 2016.03.08 16:59:05 (*)   Elaborating CPU configuration settings
-Info: CPU: # 2016.03.08 16:59:05 (*)   Creating all objects for CPU
-Info: CPU: # 2016.03.08 16:59:05 (*)     Testbench
-Info: CPU: # 2016.03.08 16:59:06 (*)     Instruction decoding
-Info: CPU: # 2016.03.08 16:59:06 (*)       Instruction fields
-Info: CPU: # 2016.03.08 16:59:06 (*)       Instruction decodes
-Info: CPU: # 2016.03.08 16:59:07 (*)       Signals for RTL simulation waveforms
-Info: CPU: # 2016.03.08 16:59:07 (*)       Instruction controls
-Info: CPU: # 2016.03.08 16:59:07 (*)     Pipeline frontend
-Info: CPU: # 2016.03.08 16:59:07 (*)     Pipeline backend
-Info: CPU: # 2016.03.08 16:59:11 (*)   Generating RTL from CPU objects
-Info: CPU: # 2016.03.08 16:59:16 (*)   Creating encrypted RTL
-Info: CPU: # 2016.03.08 16:59:17 (*) Done Nios II generation
+Info: CPU:   Generation command is [exec C:/altera/15.0/quartus/bin64/eperlcmd.exe -I C:/altera/15.0/quartus/bin64/perl/lib -I C:/altera/15.0/quartus/sopc_builder/bin/europa -I C:/altera/15.0/quartus/sopc_builder/bin/perl_lib -I C:/altera/15.0/quartus/sopc_builder/bin -I C:/altera/15.0/quartus/../ip/altera/nios2_ip/altera_nios2/cpu_lib -I C:/altera/15.0/quartus/../ip/altera/nios2_ip/altera_nios2/nios_lib -I C:/altera/15.0/quartus/../ip/altera/nios2_ip/altera_nios2 -I C:/altera/15.0/quartus/../ip/altera/nios2_ip/altera_nios2 -- C:/altera/15.0/quartus/../ip/altera/nios2_ip/altera_nios2/generate_rtl.epl --name=DE0_LT24_SOPC_CPU --dir=C:/Users/LOUISM~1/AppData/Local/Temp/alt6870_8976411195781286470.dir/0004_CPU_gen/ --quartus_bindir=C:/altera/15.0/quartus/bin64 --verilog --config=C:/Users/LOUISM~1/AppData/Local/Temp/alt6870_8976411195781286470.dir/0004_CPU_gen//DE0_LT24_SOPC_CPU_processor_configuration.pl  --do_build_sim=0  ]
+Info: CPU: # 2016.03.10 18:33:25 (*) Starting Nios II generation
+Info: CPU: # 2016.03.10 18:33:25 (*)   Checking for plaintext license.
+Info: CPU: # 2016.03.10 18:33:28 (*)   Plaintext license not found.
+Info: CPU: # 2016.03.10 18:33:28 (*)   Checking for encrypted license (non-evaluation).
+Info: CPU: # 2016.03.10 18:33:30 (*)   Encrypted license not found.  Defaulting to OCP evaluation license (produces a time-limited SOF)
+Info: CPU: # 2016.03.10 18:33:30 (*)   Elaborating CPU configuration settings
+Info: CPU: # 2016.03.10 18:33:30 (*)   Creating all objects for CPU
+Info: CPU: # 2016.03.10 18:33:30 (*)     Testbench
+Info: CPU: # 2016.03.10 18:33:30 (*)     Instruction decoding
+Info: CPU: # 2016.03.10 18:33:30 (*)       Instruction fields
+Info: CPU: # 2016.03.10 18:33:31 (*)       Instruction decodes
+Info: CPU: # 2016.03.10 18:33:32 (*)       Signals for RTL simulation waveforms
+Info: CPU: # 2016.03.10 18:33:32 (*)       Instruction controls
+Info: CPU: # 2016.03.10 18:33:32 (*)     Pipeline frontend
+Info: CPU: # 2016.03.10 18:33:32 (*)     Pipeline backend
+Info: CPU: # 2016.03.10 18:33:36 (*)   Generating RTL from CPU objects
+Info: CPU: # 2016.03.10 18:33:40 (*)   Creating encrypted RTL
+Info: CPU: # 2016.03.10 18:33:41 (*) Done Nios II generation
 Info: CPU: Done RTL generation for module 'DE0_LT24_SOPC_CPU'
 Info: CPU: "DE0_LT24_SOPC" instantiated altera_nios2_qsys "CPU"
 Info: JTAG_UART: Starting RTL generation for module 'DE0_LT24_SOPC_JTAG_UART'
-Info: JTAG_UART:   Generation command is [exec C:/altera/15.0/quartus/bin64/perl/bin/perl.exe -I C:/altera/15.0/quartus/bin64/perl/lib -I C:/altera/15.0/quartus/sopc_builder/bin/europa -I C:/altera/15.0/quartus/sopc_builder/bin/perl_lib -I C:/altera/15.0/quartus/sopc_builder/bin -I C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart -- C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart/generate_rtl.pl --name=DE0_LT24_SOPC_JTAG_UART --dir=C:/Users/LOUISM~1/AppData/Local/Temp/alt6868_1786886079765292579.dir/0005_JTAG_UART_gen/ --quartus_dir=C:/altera/15.0/quartus --verilog --config=C:/Users/LOUISM~1/AppData/Local/Temp/alt6868_1786886079765292579.dir/0005_JTAG_UART_gen//DE0_LT24_SOPC_JTAG_UART_component_configuration.pl  --do_build_sim=0  ]
+Info: JTAG_UART:   Generation command is [exec C:/altera/15.0/quartus/bin64/perl/bin/perl.exe -I C:/altera/15.0/quartus/bin64/perl/lib -I C:/altera/15.0/quartus/sopc_builder/bin/europa -I C:/altera/15.0/quartus/sopc_builder/bin/perl_lib -I C:/altera/15.0/quartus/sopc_builder/bin -I C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart -- C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart/generate_rtl.pl --name=DE0_LT24_SOPC_JTAG_UART --dir=C:/Users/LOUISM~1/AppData/Local/Temp/alt6870_8976411195781286470.dir/0005_JTAG_UART_gen/ --quartus_dir=C:/altera/15.0/quartus --verilog --config=C:/Users/LOUISM~1/AppData/Local/Temp/alt6870_8976411195781286470.dir/0005_JTAG_UART_gen//DE0_LT24_SOPC_JTAG_UART_component_configuration.pl  --do_build_sim=0  ]
 Info: JTAG_UART: Done RTL generation for module 'DE0_LT24_SOPC_JTAG_UART'
 Info: JTAG_UART: "DE0_LT24_SOPC" instantiated altera_avalon_jtag_uart "JTAG_UART"
 Info: KEY: Starting RTL generation for module 'DE0_LT24_SOPC_KEY'
-Info: KEY:   Generation command is [exec C:/altera/15.0/quartus/bin64/perl/bin/perl.exe -I C:/altera/15.0/quartus/bin64/perl/lib -I C:/altera/15.0/quartus/sopc_builder/bin/europa -I C:/altera/15.0/quartus/sopc_builder/bin/perl_lib -I C:/altera/15.0/quartus/sopc_builder/bin -I C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=DE0_LT24_SOPC_KEY --dir=C:/Users/LOUISM~1/AppData/Local/Temp/alt6868_1786886079765292579.dir/0006_KEY_gen/ --quartus_dir=C:/altera/15.0/quartus --verilog --config=C:/Users/LOUISM~1/AppData/Local/Temp/alt6868_1786886079765292579.dir/0006_KEY_gen//DE0_LT24_SOPC_KEY_component_configuration.pl  --do_build_sim=0  ]
+Info: KEY:   Generation command is [exec C:/altera/15.0/quartus/bin64/perl/bin/perl.exe -I C:/altera/15.0/quartus/bin64/perl/lib -I C:/altera/15.0/quartus/sopc_builder/bin/europa -I C:/altera/15.0/quartus/sopc_builder/bin/perl_lib -I C:/altera/15.0/quartus/sopc_builder/bin -I C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=DE0_LT24_SOPC_KEY --dir=C:/Users/LOUISM~1/AppData/Local/Temp/alt6870_8976411195781286470.dir/0006_KEY_gen/ --quartus_dir=C:/altera/15.0/quartus --verilog --config=C:/Users/LOUISM~1/AppData/Local/Temp/alt6870_8976411195781286470.dir/0006_KEY_gen//DE0_LT24_SOPC_KEY_component_configuration.pl  --do_build_sim=0  ]
 Info: KEY: Done RTL generation for module 'DE0_LT24_SOPC_KEY'
 Info: KEY: "DE0_LT24_SOPC" instantiated altera_avalon_pio "KEY"
 Info: LED_CTRL: "DE0_LT24_SOPC" instantiated LED_Controller "LED_CTRL"
 Info: LT24_CTRL: "DE0_LT24_SOPC" instantiated LT24_Controller "LT24_CTRL"
 Info: LT24_LCD_RSTN: Starting RTL generation for module 'DE0_LT24_SOPC_LT24_LCD_RSTN'
-Info: LT24_LCD_RSTN:   Generation command is [exec C:/altera/15.0/quartus/bin64/perl/bin/perl.exe -I C:/altera/15.0/quartus/bin64/perl/lib -I C:/altera/15.0/quartus/sopc_builder/bin/europa -I C:/altera/15.0/quartus/sopc_builder/bin/perl_lib -I C:/altera/15.0/quartus/sopc_builder/bin -I C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=DE0_LT24_SOPC_LT24_LCD_RSTN --dir=C:/Users/LOUISM~1/AppData/Local/Temp/alt6868_1786886079765292579.dir/0009_LT24_LCD_RSTN_gen/ --quartus_dir=C:/altera/15.0/quartus --verilog --config=C:/Users/LOUISM~1/AppData/Local/Temp/alt6868_1786886079765292579.dir/0009_LT24_LCD_RSTN_gen//DE0_LT24_SOPC_LT24_LCD_RSTN_component_configuration.pl  --do_build_sim=0  ]
+Info: LT24_LCD_RSTN:   Generation command is [exec C:/altera/15.0/quartus/bin64/perl/bin/perl.exe -I C:/altera/15.0/quartus/bin64/perl/lib -I C:/altera/15.0/quartus/sopc_builder/bin/europa -I C:/altera/15.0/quartus/sopc_builder/bin/perl_lib -I C:/altera/15.0/quartus/sopc_builder/bin -I C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=DE0_LT24_SOPC_LT24_LCD_RSTN --dir=C:/Users/LOUISM~1/AppData/Local/Temp/alt6870_8976411195781286470.dir/0009_LT24_LCD_RSTN_gen/ --quartus_dir=C:/altera/15.0/quartus --verilog --config=C:/Users/LOUISM~1/AppData/Local/Temp/alt6870_8976411195781286470.dir/0009_LT24_LCD_RSTN_gen//DE0_LT24_SOPC_LT24_LCD_RSTN_component_configuration.pl  --do_build_sim=0  ]
 Info: LT24_LCD_RSTN: Done RTL generation for module 'DE0_LT24_SOPC_LT24_LCD_RSTN'
 Info: LT24_LCD_RSTN: "DE0_LT24_SOPC" instantiated altera_avalon_pio "LT24_LCD_RSTN"
 Info: LT24_TOUCH_BUSY: Starting RTL generation for module 'DE0_LT24_SOPC_LT24_TOUCH_BUSY'
-Info: LT24_TOUCH_BUSY:   Generation command is [exec C:/altera/15.0/quartus/bin64/perl/bin/perl.exe -I C:/altera/15.0/quartus/bin64/perl/lib -I C:/altera/15.0/quartus/sopc_builder/bin/europa -I C:/altera/15.0/quartus/sopc_builder/bin/perl_lib -I C:/altera/15.0/quartus/sopc_builder/bin -I C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=DE0_LT24_SOPC_LT24_TOUCH_BUSY --dir=C:/Users/LOUISM~1/AppData/Local/Temp/alt6868_1786886079765292579.dir/0010_LT24_TOUCH_BUSY_gen/ --quartus_dir=C:/altera/15.0/quartus --verilog --config=C:/Users/LOUISM~1/AppData/Local/Temp/alt6868_1786886079765292579.dir/0010_LT24_TOUCH_BUSY_gen//DE0_LT24_SOPC_LT24_TOUCH_BUSY_component_configuration.pl  --do_build_sim=0  ]
+Info: LT24_TOUCH_BUSY:   Generation command is [exec C:/altera/15.0/quartus/bin64/perl/bin/perl.exe -I C:/altera/15.0/quartus/bin64/perl/lib -I C:/altera/15.0/quartus/sopc_builder/bin/europa -I C:/altera/15.0/quartus/sopc_builder/bin/perl_lib -I C:/altera/15.0/quartus/sopc_builder/bin -I C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=DE0_LT24_SOPC_LT24_TOUCH_BUSY --dir=C:/Users/LOUISM~1/AppData/Local/Temp/alt6870_8976411195781286470.dir/0010_LT24_TOUCH_BUSY_gen/ --quartus_dir=C:/altera/15.0/quartus --verilog --config=C:/Users/LOUISM~1/AppData/Local/Temp/alt6870_8976411195781286470.dir/0010_LT24_TOUCH_BUSY_gen//DE0_LT24_SOPC_LT24_TOUCH_BUSY_component_configuration.pl  --do_build_sim=0  ]
 Info: LT24_TOUCH_BUSY: Done RTL generation for module 'DE0_LT24_SOPC_LT24_TOUCH_BUSY'
 Info: LT24_TOUCH_BUSY: "DE0_LT24_SOPC" instantiated altera_avalon_pio "LT24_TOUCH_BUSY"
 Info: LT24_TOUCH_PENIRQ_N: Starting RTL generation for module 'DE0_LT24_SOPC_LT24_TOUCH_PENIRQ_N'
-Info: LT24_TOUCH_PENIRQ_N:   Generation command is [exec C:/altera/15.0/quartus/bin64/perl/bin/perl.exe -I C:/altera/15.0/quartus/bin64/perl/lib -I C:/altera/15.0/quartus/sopc_builder/bin/europa -I C:/altera/15.0/quartus/sopc_builder/bin/perl_lib -I C:/altera/15.0/quartus/sopc_builder/bin -I C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=DE0_LT24_SOPC_LT24_TOUCH_PENIRQ_N --dir=C:/Users/LOUISM~1/AppData/Local/Temp/alt6868_1786886079765292579.dir/0011_LT24_TOUCH_PENIRQ_N_gen/ --quartus_dir=C:/altera/15.0/quartus --verilog --config=C:/Users/LOUISM~1/AppData/Local/Temp/alt6868_1786886079765292579.dir/0011_LT24_TOUCH_PENIRQ_N_gen//DE0_LT24_SOPC_LT24_TOUCH_PENIRQ_N_component_configuration.pl  --do_build_sim=0  ]
+Info: LT24_TOUCH_PENIRQ_N:   Generation command is [exec C:/altera/15.0/quartus/bin64/perl/bin/perl.exe -I C:/altera/15.0/quartus/bin64/perl/lib -I C:/altera/15.0/quartus/sopc_builder/bin/europa -I C:/altera/15.0/quartus/sopc_builder/bin/perl_lib -I C:/altera/15.0/quartus/sopc_builder/bin -I C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=DE0_LT24_SOPC_LT24_TOUCH_PENIRQ_N --dir=C:/Users/LOUISM~1/AppData/Local/Temp/alt6870_8976411195781286470.dir/0011_LT24_TOUCH_PENIRQ_N_gen/ --quartus_dir=C:/altera/15.0/quartus --verilog --config=C:/Users/LOUISM~1/AppData/Local/Temp/alt6870_8976411195781286470.dir/0011_LT24_TOUCH_PENIRQ_N_gen//DE0_LT24_SOPC_LT24_TOUCH_PENIRQ_N_component_configuration.pl  --do_build_sim=0  ]
 Info: LT24_TOUCH_PENIRQ_N: Done RTL generation for module 'DE0_LT24_SOPC_LT24_TOUCH_PENIRQ_N'
 Info: LT24_TOUCH_PENIRQ_N: "DE0_LT24_SOPC" instantiated altera_avalon_pio "LT24_TOUCH_PENIRQ_N"
 Info: LT24_TOUCH_SPI: Starting RTL generation for module 'DE0_LT24_SOPC_LT24_TOUCH_SPI'
-Info: LT24_TOUCH_SPI:   Generation command is [exec C:/altera/15.0/quartus/bin64/perl/bin/perl.exe -I C:/altera/15.0/quartus/bin64/perl/lib -I C:/altera/15.0/quartus/sopc_builder/bin/europa -I C:/altera/15.0/quartus/sopc_builder/bin/perl_lib -I C:/altera/15.0/quartus/sopc_builder/bin -I C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_spi -- C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_spi/generate_rtl.pl --name=DE0_LT24_SOPC_LT24_TOUCH_SPI --dir=C:/Users/LOUISM~1/AppData/Local/Temp/alt6868_1786886079765292579.dir/0012_LT24_TOUCH_SPI_gen/ --quartus_dir=C:/altera/15.0/quartus --verilog --config=C:/Users/LOUISM~1/AppData/Local/Temp/alt6868_1786886079765292579.dir/0012_LT24_TOUCH_SPI_gen//DE0_LT24_SOPC_LT24_TOUCH_SPI_component_configuration.pl  --do_build_sim=0  ]
+Info: LT24_TOUCH_SPI:   Generation command is [exec C:/altera/15.0/quartus/bin64/perl/bin/perl.exe -I C:/altera/15.0/quartus/bin64/perl/lib -I C:/altera/15.0/quartus/sopc_builder/bin/europa -I C:/altera/15.0/quartus/sopc_builder/bin/perl_lib -I C:/altera/15.0/quartus/sopc_builder/bin -I C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_spi -- C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_spi/generate_rtl.pl --name=DE0_LT24_SOPC_LT24_TOUCH_SPI --dir=C:/Users/LOUISM~1/AppData/Local/Temp/alt6870_8976411195781286470.dir/0012_LT24_TOUCH_SPI_gen/ --quartus_dir=C:/altera/15.0/quartus --verilog --config=C:/Users/LOUISM~1/AppData/Local/Temp/alt6870_8976411195781286470.dir/0012_LT24_TOUCH_SPI_gen//DE0_LT24_SOPC_LT24_TOUCH_SPI_component_configuration.pl  --do_build_sim=0  ]
 Info: LT24_TOUCH_SPI: Done RTL generation for module 'DE0_LT24_SOPC_LT24_TOUCH_SPI'
 Info: LT24_TOUCH_SPI: "DE0_LT24_SOPC" instantiated altera_avalon_spi "LT24_TOUCH_SPI"
 Info: LT_PIC32_0: "DE0_LT24_SOPC" instantiated LT_PIC32 "LT_PIC32_0"
 Info: SDRAM: Starting RTL generation for module 'DE0_LT24_SOPC_SDRAM'
-Info: SDRAM:   Generation command is [exec C:/altera/15.0/quartus/bin64/perl/bin/perl.exe -I C:/altera/15.0/quartus/bin64/perl/lib -I C:/altera/15.0/quartus/sopc_builder/bin/europa -I C:/altera/15.0/quartus/sopc_builder/bin/perl_lib -I C:/altera/15.0/quartus/sopc_builder/bin -I C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_new_sdram_controller -- C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_new_sdram_controller/generate_rtl.pl --name=DE0_LT24_SOPC_SDRAM --dir=C:/Users/LOUISM~1/AppData/Local/Temp/alt6868_1786886079765292579.dir/0014_SDRAM_gen/ --quartus_dir=C:/altera/15.0/quartus --verilog --config=C:/Users/LOUISM~1/AppData/Local/Temp/alt6868_1786886079765292579.dir/0014_SDRAM_gen//DE0_LT24_SOPC_SDRAM_component_configuration.pl  --do_build_sim=0  ]
+Info: SDRAM:   Generation command is [exec C:/altera/15.0/quartus/bin64/perl/bin/perl.exe -I C:/altera/15.0/quartus/bin64/perl/lib -I C:/altera/15.0/quartus/sopc_builder/bin/europa -I C:/altera/15.0/quartus/sopc_builder/bin/perl_lib -I C:/altera/15.0/quartus/sopc_builder/bin -I C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_new_sdram_controller -- C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_new_sdram_controller/generate_rtl.pl --name=DE0_LT24_SOPC_SDRAM --dir=C:/Users/LOUISM~1/AppData/Local/Temp/alt6870_8976411195781286470.dir/0014_SDRAM_gen/ --quartus_dir=C:/altera/15.0/quartus --verilog --config=C:/Users/LOUISM~1/AppData/Local/Temp/alt6870_8976411195781286470.dir/0014_SDRAM_gen//DE0_LT24_SOPC_SDRAM_component_configuration.pl  --do_build_sim=0  ]
 Info: SDRAM: Done RTL generation for module 'DE0_LT24_SOPC_SDRAM'
 Info: SDRAM: "DE0_LT24_SOPC" instantiated altera_avalon_new_sdram_controller "SDRAM"
 Info: TIMER: Starting RTL generation for module 'DE0_LT24_SOPC_TIMER'
-Info: TIMER:   Generation command is [exec C:/altera/15.0/quartus/bin64//perl/bin/perl.exe -I C:/altera/15.0/quartus/bin64//perl/lib -I C:/altera/15.0/quartus/sopc_builder/bin/europa -I C:/altera/15.0/quartus/sopc_builder/bin/perl_lib -I C:/altera/15.0/quartus/sopc_builder/bin -I C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_timer -- C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_timer/generate_rtl.pl --name=DE0_LT24_SOPC_TIMER --dir=C:/Users/LOUISM~1/AppData/Local/Temp/alt6868_1786886079765292579.dir/0015_TIMER_gen/ --quartus_dir=C:/altera/15.0/quartus --verilog --config=C:/Users/LOUISM~1/AppData/Local/Temp/alt6868_1786886079765292579.dir/0015_TIMER_gen//DE0_LT24_SOPC_TIMER_component_configuration.pl  --do_build_sim=0  ]
+Info: TIMER:   Generation command is [exec C:/altera/15.0/quartus/bin64//perl/bin/perl.exe -I C:/altera/15.0/quartus/bin64//perl/lib -I C:/altera/15.0/quartus/sopc_builder/bin/europa -I C:/altera/15.0/quartus/sopc_builder/bin/perl_lib -I C:/altera/15.0/quartus/sopc_builder/bin -I C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_timer -- C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_timer/generate_rtl.pl --name=DE0_LT24_SOPC_TIMER --dir=C:/Users/LOUISM~1/AppData/Local/Temp/alt6870_8976411195781286470.dir/0015_TIMER_gen/ --quartus_dir=C:/altera/15.0/quartus --verilog --config=C:/Users/LOUISM~1/AppData/Local/Temp/alt6870_8976411195781286470.dir/0015_TIMER_gen//DE0_LT24_SOPC_TIMER_component_configuration.pl  --do_build_sim=0  ]
 Info: TIMER: Done RTL generation for module 'DE0_LT24_SOPC_TIMER'
 Info: TIMER: "DE0_LT24_SOPC" instantiated altera_avalon_timer "TIMER"
 Info: background_mem: Starting RTL generation for module 'DE0_LT24_SOPC_background_mem'
-Info: background_mem:   Generation command is [exec C:/altera/15.0/quartus/bin64/perl/bin/perl.exe -I C:/altera/15.0/quartus/bin64/perl/lib -I C:/altera/15.0/quartus/sopc_builder/bin/europa -I C:/altera/15.0/quartus/sopc_builder/bin/perl_lib -I C:/altera/15.0/quartus/sopc_builder/bin -I C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2 -- C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2/generate_rtl.pl --name=DE0_LT24_SOPC_background_mem --dir=C:/Users/LOUISM~1/AppData/Local/Temp/alt6868_1786886079765292579.dir/0016_background_mem_gen/ --quartus_dir=C:/altera/15.0/quartus --verilog --config=C:/Users/LOUISM~1/AppData/Local/Temp/alt6868_1786886079765292579.dir/0016_background_mem_gen//DE0_LT24_SOPC_background_mem_component_configuration.pl  --do_build_sim=0  ]
+Info: background_mem:   Generation command is [exec C:/altera/15.0/quartus/bin64/perl/bin/perl.exe -I C:/altera/15.0/quartus/bin64/perl/lib -I C:/altera/15.0/quartus/sopc_builder/bin/europa -I C:/altera/15.0/quartus/sopc_builder/bin/perl_lib -I C:/altera/15.0/quartus/sopc_builder/bin -I C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2 -- C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2/generate_rtl.pl --name=DE0_LT24_SOPC_background_mem --dir=C:/Users/LOUISM~1/AppData/Local/Temp/alt6870_8976411195781286470.dir/0016_background_mem_gen/ --quartus_dir=C:/altera/15.0/quartus --verilog --config=C:/Users/LOUISM~1/AppData/Local/Temp/alt6870_8976411195781286470.dir/0016_background_mem_gen//DE0_LT24_SOPC_background_mem_component_configuration.pl  --do_build_sim=0  ]
 Info: background_mem: Done RTL generation for module 'DE0_LT24_SOPC_background_mem'
 Info: background_mem: "DE0_LT24_SOPC" instantiated altera_avalon_onchip_memory2 "background_mem"
 Info: pic_mem: Starting RTL generation for module 'DE0_LT24_SOPC_pic_mem'
-Info: pic_mem:   Generation command is [exec C:/altera/15.0/quartus/bin64/perl/bin/perl.exe -I C:/altera/15.0/quartus/bin64/perl/lib -I C:/altera/15.0/quartus/sopc_builder/bin/europa -I C:/altera/15.0/quartus/sopc_builder/bin/perl_lib -I C:/altera/15.0/quartus/sopc_builder/bin -I C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2 -- C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2/generate_rtl.pl --name=DE0_LT24_SOPC_pic_mem --dir=C:/Users/LOUISM~1/AppData/Local/Temp/alt6868_1786886079765292579.dir/0017_pic_mem_gen/ --quartus_dir=C:/altera/15.0/quartus --verilog --config=C:/Users/LOUISM~1/AppData/Local/Temp/alt6868_1786886079765292579.dir/0017_pic_mem_gen//DE0_LT24_SOPC_pic_mem_component_configuration.pl  --do_build_sim=0  ]
+Info: pic_mem:   Generation command is [exec C:/altera/15.0/quartus/bin64/perl/bin/perl.exe -I C:/altera/15.0/quartus/bin64/perl/lib -I C:/altera/15.0/quartus/sopc_builder/bin/europa -I C:/altera/15.0/quartus/sopc_builder/bin/perl_lib -I C:/altera/15.0/quartus/sopc_builder/bin -I C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2 -- C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2/generate_rtl.pl --name=DE0_LT24_SOPC_pic_mem --dir=C:/Users/LOUISM~1/AppData/Local/Temp/alt6870_8976411195781286470.dir/0017_pic_mem_gen/ --quartus_dir=C:/altera/15.0/quartus --verilog --config=C:/Users/LOUISM~1/AppData/Local/Temp/alt6870_8976411195781286470.dir/0017_pic_mem_gen//DE0_LT24_SOPC_pic_mem_component_configuration.pl  --do_build_sim=0  ]
 Info: pic_mem: Done RTL generation for module 'DE0_LT24_SOPC_pic_mem'
 Info: pic_mem: "DE0_LT24_SOPC" instantiated altera_avalon_onchip_memory2 "pic_mem"
 Info: avalon_st_adapter: Inserting error_adapter: error_adapter_0
@@ -208,26 +208,26 @@ Info: router_006: "mm_interconnect_0" instantiated altera_merlin_router "router_
 Info: router_008: "mm_interconnect_0" instantiated altera_merlin_router "router_008"
 Info: router_014: "mm_interconnect_0" instantiated altera_merlin_router "router_014"
 Info: CPU_data_master_limiter: "mm_interconnect_0" instantiated altera_merlin_traffic_limiter "CPU_data_master_limiter"
-Info: Reusing file C:/UCL/DE0_LT24_student/DE0_LT24_SOPC/synthesis/submodules/altera_avalon_sc_fifo.v
+Info: Reusing file C:/UCL/M1_PELEC/DE0_LT24_bidirectionnel/DE0_LT24_SOPC/synthesis/submodules/altera_avalon_sc_fifo.v
 Info: SDRAM_s1_burst_adapter: "mm_interconnect_0" instantiated altera_merlin_burst_adapter "SDRAM_s1_burst_adapter"
-Info: Reusing file C:/UCL/DE0_LT24_student/DE0_LT24_SOPC/synthesis/submodules/altera_avalon_st_pipeline_base.v
+Info: Reusing file C:/UCL/M1_PELEC/DE0_LT24_bidirectionnel/DE0_LT24_SOPC/synthesis/submodules/altera_avalon_st_pipeline_base.v
 Info: cmd_demux: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "cmd_demux"
 Info: cmd_demux_001: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "cmd_demux_001"
 Info: cmd_mux: "mm_interconnect_0" instantiated altera_merlin_multiplexer "cmd_mux"
 Info: cmd_mux_004: "mm_interconnect_0" instantiated altera_merlin_multiplexer "cmd_mux_004"
-Info: Reusing file C:/UCL/DE0_LT24_student/DE0_LT24_SOPC/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: Reusing file C:/UCL/M1_PELEC/DE0_LT24_bidirectionnel/DE0_LT24_SOPC/synthesis/submodules/altera_merlin_arbitrator.sv
 Info: rsp_demux: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "rsp_demux"
 Info: rsp_demux_003: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "rsp_demux_003"
 Info: rsp_demux_004: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "rsp_demux_004"
 Info: rsp_mux: "mm_interconnect_0" instantiated altera_merlin_multiplexer "rsp_mux"
-Info: Reusing file C:/UCL/DE0_LT24_student/DE0_LT24_SOPC/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: Reusing file C:/UCL/M1_PELEC/DE0_LT24_bidirectionnel/DE0_LT24_SOPC/synthesis/submodules/altera_merlin_arbitrator.sv
 Info: rsp_mux_001: "mm_interconnect_0" instantiated altera_merlin_multiplexer "rsp_mux_001"
-Info: Reusing file C:/UCL/DE0_LT24_student/DE0_LT24_SOPC/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: Reusing file C:/UCL/M1_PELEC/DE0_LT24_bidirectionnel/DE0_LT24_SOPC/synthesis/submodules/altera_merlin_arbitrator.sv
 Info: SDRAM_s1_rsp_width_adapter: "mm_interconnect_0" instantiated altera_merlin_width_adapter "SDRAM_s1_rsp_width_adapter"
-Info: Reusing file C:/UCL/DE0_LT24_student/DE0_LT24_SOPC/synthesis/submodules/altera_merlin_address_alignment.sv
-Info: Reusing file C:/UCL/DE0_LT24_student/DE0_LT24_SOPC/synthesis/submodules/altera_merlin_burst_uncompressor.sv
+Info: Reusing file C:/UCL/M1_PELEC/DE0_LT24_bidirectionnel/DE0_LT24_SOPC/synthesis/submodules/altera_merlin_address_alignment.sv
+Info: Reusing file C:/UCL/M1_PELEC/DE0_LT24_bidirectionnel/DE0_LT24_SOPC/synthesis/submodules/altera_merlin_burst_uncompressor.sv
 Info: crosser: "mm_interconnect_0" instantiated altera_avalon_st_handshake_clock_crosser "crosser"
-Info: Reusing file C:/UCL/DE0_LT24_student/DE0_LT24_SOPC/synthesis/submodules/altera_avalon_st_pipeline_base.v
+Info: Reusing file C:/UCL/M1_PELEC/DE0_LT24_bidirectionnel/DE0_LT24_SOPC/synthesis/submodules/altera_avalon_st_pipeline_base.v
 Info: avalon_st_adapter: "mm_interconnect_0" instantiated altera_avalon_st_adapter "avalon_st_adapter"
 Info: avalon_st_adapter_006: "mm_interconnect_0" instantiated altera_avalon_st_adapter "avalon_st_adapter_006"
 Info: error_adapter_0: "avalon_st_adapter" instantiated error_adapter "error_adapter_0"

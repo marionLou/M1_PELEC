@@ -190,11 +190,11 @@ wire RST_N;
 //  Structural coding
 //=======================================================
 
-assign PIC32_SCK   = GPIO_2[2];
-assign PIC32_CS    = GPIO_2[3];
-assign PIC32_SDO   = GPIO_2[0];
-assign GPIO_2[1]   = PIC32_CS ? 1'bz : PIC32_SDI;
-//assign PIC32_SINT   = GPIO_2[4];
+assign PIC32_SCK = GPIO_2[2];
+assign PIC32_CS  = GPIO_2[3];
+assign PIC32_SDO = GPIO_2[0];
+assign GPIO_2[1] = PIC32_CS ? 1'bz : PIC32_SDI;
+assign GPIO_2[5] = PIC32_SINT;
 
 assign RST_N       = KEY[1];
 assign LT24_LCD_ON = 1'b1; //default on

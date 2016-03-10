@@ -28,10 +28,10 @@
 			lt24_touch_spi_SCLK                         : out   std_logic;                                        -- SCLK
 			lt24_touch_spi_SS_n                         : out   std_logic;                                        -- SS_n
 			lt_pic32_int_cs                             : in    std_logic                     := 'X';             -- cs
-			lt_pic32_int_sdi                            : in    std_logic                     := 'X';             -- sdi
 			lt_pic32_int_sdo                            : out   std_logic;                                        -- sdo
 			lt_pic32_int_sclk                           : in    std_logic                     := 'X';             -- sclk
 			lt_pic32_int_sint                           : out   std_logic;                                        -- sint
+			lt_pic32_int_sdi                            : in    std_logic                     := 'X';             -- sdi
 			pic_mem_s2_address                          : in    std_logic_vector(11 downto 0) := (others => 'X'); -- address
 			pic_mem_s2_chipselect                       : in    std_logic                     := 'X';             -- chipselect
 			pic_mem_s2_clken                            : in    std_logic                     := 'X';             -- clken

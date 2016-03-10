@@ -56,7 +56,19 @@ void __ISR(_EXTERNAL_2_VECTOR, My_INT_EXTERNAL_2_IPL) _External2InterruptHandler
 {
     // Clear the interrupt flags
     INTClearFlag(INT_INT2);
-    MyConsole_SendMsg("Interrupt received from INT2 - KEY1 \n>");
+    int quart = MyCyclone_Read(1);
+    char DirMsg[32];
+    switch (quart) {
+        case 1: sprintf(DirMsg, "Left");
+        case 2: sprintf(DirMsg, "Up");
+        case 3: sprintf(DirMsg, "Right");
+        case 4: sprintf(DirMsg, "Down");
+        default: sprintf(DirMsg, "Direction unknown");
+    }
+    MyMIWI_InsertMsg(DirMsg);
+    MyConsole_SendMsg("Direction sent by MIWI: ");
+    MyConsole_SendMsg(DirMsg); MyConsole_SendMsg("\n");
+    
 }
 
 /******************************************************************************/
