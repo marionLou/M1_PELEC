@@ -220,17 +220,11 @@ always @ (posedge CLOCK_50)
  *           Trigger enables writing the pixel to the SDRAM.
  */
 
-MySPI MySPI_instance (
+LT_SPI Surf (
 	.theClock(CLOCK_50), .theReset(PIC32_RESET),
 	.MySPI_clk(PIC32_SCK1A), .MySPI_cs(PIC32_CS_FPGA), .MySPI_sdi(PIC32_SDO1A), .MySPI_sdo(PIC32_SDI1A),
-	.Config(Config),
-	.Status(Status),
-	.Led70(Led70),
-	.Red(Red),
-	.Green(Green),
-	.Blue(Blue),
-	.ImgNum(ImgNum),
-	.Trigger(Trigger)
+	.Data_In(IO_A_Data_In),
+	.Data_Out(IO_A_Data_Out)
 );
 
 
@@ -420,17 +414,17 @@ logic [5:0]  counter_dly;
 // it triggers reading when it needs data.
 
 
-logic [2:0] pass;
-//assign pass = 3'b010;
-logic [31:0] BlockClock;
-always_ff @(posedge CLOCK_33)
-begin
-		BlockClock <= BlockClock + 32'b1;
-		pass <= BlockClock[31:28];
-end
+//logic [2:0] pass;
+////assign pass = 3'b010;
+//logic [31:0] BlockClock;
+//always_ff @(posedge CLOCK_33)
+//begin
+//		BlockClock <= BlockClock + 32'b1;
+//		pass <= BlockClock[31:28];
+//end
 mtl_controller mtl_controller_inst (
 	// SPI Side
-	.iSPI(pass),
+	.iSPI(IO_A_Data_Out),    /// Viens du SPI 
 	// Host Side
 	.iCLK(CLOCK_33),
 	.iRST_n(~dly_rst),

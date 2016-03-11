@@ -385,6 +385,12 @@ void MyMIWI_Task(void) {
 
 					MyConsole_SendMsg("Your difficulty level has been adapted, except if I said fuck it before!\n>");
 				}
+                else if(strcmp(token, "Color") == 0){
+                    token = strtok(NULL, " ,.-:");
+                    int cat = strtol(token, &theRest, 10);
+                    MyCyclone_Write(1,cat);
+                    sprintf(theStr, "Receive LT-TOUCH Msg '%d'\n>", cat);
+                }
 				else {
 				sprintf(theStr, "Receive MIWI Msg '%s'\n>", theRest);
 				MyConsole_SendMsg(theStr);
