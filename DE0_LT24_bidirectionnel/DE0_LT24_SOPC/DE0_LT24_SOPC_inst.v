@@ -26,6 +26,11 @@
 		.lt24_touch_spi_MOSI                         (<connected-to-lt24_touch_spi_MOSI>),                         //                                     .MOSI
 		.lt24_touch_spi_SCLK                         (<connected-to-lt24_touch_spi_SCLK>),                         //                                     .SCLK
 		.lt24_touch_spi_SS_n                         (<connected-to-lt24_touch_spi_SS_n>),                         //                                     .SS_n
+		.lt_pic32_int_cs                             (<connected-to-lt_pic32_int_cs>),                             //                         lt_pic32_int.cs
+		.lt_pic32_int_sdo                            (<connected-to-lt_pic32_int_sdo>),                            //                                     .sdo
+		.lt_pic32_int_sclk                           (<connected-to-lt_pic32_int_sclk>),                           //                                     .sclk
+		.lt_pic32_int_sint                           (<connected-to-lt_pic32_int_sint>),                           //                                     .sint
+		.lt_pic32_int_sdi                            (<connected-to-lt_pic32_int_sdi>),                            //                                     .sdi
 		.pic_mem_s2_address                          (<connected-to-pic_mem_s2_address>),                          //                           pic_mem_s2.address
 		.pic_mem_s2_chipselect                       (<connected-to-pic_mem_s2_chipselect>),                       //                                     .chipselect
 		.pic_mem_s2_clken                            (<connected-to-pic_mem_s2_clken>),                            //                                     .clken
@@ -43,11 +48,6 @@
 		.sdram_wire_dqm                              (<connected-to-sdram_wire_dqm>),                              //                                     .dqm
 		.sdram_wire_ras_n                            (<connected-to-sdram_wire_ras_n>),                            //                                     .ras_n
 		.sdram_wire_we_n                             (<connected-to-sdram_wire_we_n>),                             //                                     .we_n
-		.to_led_export                               (<connected-to-to_led_export>),                               //                               to_led.export
-		.lt_pic32_int_cs                             (<connected-to-lt_pic32_int_cs>),                             //                         lt_pic32_int.cs
-		.lt_pic32_int_sdi                            (<connected-to-lt_pic32_int_sdi>),                            //                                     .sdi
-		.lt_pic32_int_sdo                            (<connected-to-lt_pic32_int_sdo>),                            //                                     .sdo
-		.lt_pic32_int_sclk                           (<connected-to-lt_pic32_int_sclk>),                           //                                     .sclk
-		.lt_pic32_int_sint                           (<connected-to-lt_pic32_int_sint>)                            //                                     .sint
+		.to_led_export                               (<connected-to-to_led_export>)                                //                               to_led.export
 	);
 

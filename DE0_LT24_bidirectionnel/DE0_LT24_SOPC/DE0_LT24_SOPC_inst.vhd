@@ -27,6 +27,11 @@
 			lt24_touch_spi_MOSI                         : out   std_logic;                                        -- MOSI
 			lt24_touch_spi_SCLK                         : out   std_logic;                                        -- SCLK
 			lt24_touch_spi_SS_n                         : out   std_logic;                                        -- SS_n
+			lt_pic32_int_cs                             : in    std_logic                     := 'X';             -- cs
+			lt_pic32_int_sdo                            : out   std_logic;                                        -- sdo
+			lt_pic32_int_sclk                           : in    std_logic                     := 'X';             -- sclk
+			lt_pic32_int_sint                           : out   std_logic;                                        -- sint
+			lt_pic32_int_sdi                            : in    std_logic                     := 'X';             -- sdi
 			pic_mem_s2_address                          : in    std_logic_vector(11 downto 0) := (others => 'X'); -- address
 			pic_mem_s2_chipselect                       : in    std_logic                     := 'X';             -- chipselect
 			pic_mem_s2_clken                            : in    std_logic                     := 'X';             -- clken
@@ -44,12 +49,7 @@
 			sdram_wire_dqm                              : out   std_logic_vector(1 downto 0);                     -- dqm
 			sdram_wire_ras_n                            : out   std_logic;                                        -- ras_n
 			sdram_wire_we_n                             : out   std_logic;                                        -- we_n
-			to_led_export                               : out   std_logic_vector(7 downto 0);                     -- export
-			lt_pic32_int_cs                             : in    std_logic                     := 'X';             -- cs
-			lt_pic32_int_sdi                            : in    std_logic                     := 'X';             -- sdi
-			lt_pic32_int_sdo                            : out   std_logic;                                        -- sdo
-			lt_pic32_int_sclk                           : in    std_logic                     := 'X';             -- sclk
-			lt_pic32_int_sint                           : out   std_logic                                         -- sint
+			to_led_export                               : out   std_logic_vector(7 downto 0)                      -- export
 		);
 	end component DE0_LT24_SOPC;
 
@@ -82,6 +82,11 @@
 			lt24_touch_spi_MOSI                         => CONNECTED_TO_lt24_touch_spi_MOSI,                         --                                     .MOSI
 			lt24_touch_spi_SCLK                         => CONNECTED_TO_lt24_touch_spi_SCLK,                         --                                     .SCLK
 			lt24_touch_spi_SS_n                         => CONNECTED_TO_lt24_touch_spi_SS_n,                         --                                     .SS_n
+			lt_pic32_int_cs                             => CONNECTED_TO_lt_pic32_int_cs,                             --                         lt_pic32_int.cs
+			lt_pic32_int_sdo                            => CONNECTED_TO_lt_pic32_int_sdo,                            --                                     .sdo
+			lt_pic32_int_sclk                           => CONNECTED_TO_lt_pic32_int_sclk,                           --                                     .sclk
+			lt_pic32_int_sint                           => CONNECTED_TO_lt_pic32_int_sint,                           --                                     .sint
+			lt_pic32_int_sdi                            => CONNECTED_TO_lt_pic32_int_sdi,                            --                                     .sdi
 			pic_mem_s2_address                          => CONNECTED_TO_pic_mem_s2_address,                          --                           pic_mem_s2.address
 			pic_mem_s2_chipselect                       => CONNECTED_TO_pic_mem_s2_chipselect,                       --                                     .chipselect
 			pic_mem_s2_clken                            => CONNECTED_TO_pic_mem_s2_clken,                            --                                     .clken
@@ -99,11 +104,6 @@
 			sdram_wire_dqm                              => CONNECTED_TO_sdram_wire_dqm,                              --                                     .dqm
 			sdram_wire_ras_n                            => CONNECTED_TO_sdram_wire_ras_n,                            --                                     .ras_n
 			sdram_wire_we_n                             => CONNECTED_TO_sdram_wire_we_n,                             --                                     .we_n
-			to_led_export                               => CONNECTED_TO_to_led_export,                               --                               to_led.export
-			lt_pic32_int_cs                             => CONNECTED_TO_lt_pic32_int_cs,                             --                         lt_pic32_int.cs
-			lt_pic32_int_sdi                            => CONNECTED_TO_lt_pic32_int_sdi,                            --                                     .sdi
-			lt_pic32_int_sdo                            => CONNECTED_TO_lt_pic32_int_sdo,                            --                                     .sdo
-			lt_pic32_int_sclk                           => CONNECTED_TO_lt_pic32_int_sclk,                           --                                     .sclk
-			lt_pic32_int_sint                           => CONNECTED_TO_lt_pic32_int_sint                            --                                     .sint
+			to_led_export                               => CONNECTED_TO_to_led_export                                --                               to_led.export
 		);
 

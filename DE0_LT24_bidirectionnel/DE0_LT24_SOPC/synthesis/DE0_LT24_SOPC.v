@@ -32,10 +32,10 @@ module DE0_LT24_SOPC (
 		output wire        lt24_touch_spi_SCLK,                         //                                     .SCLK
 		output wire        lt24_touch_spi_SS_n,                         //                                     .SS_n
 		input  wire        lt_pic32_int_cs,                             //                         lt_pic32_int.cs
-		input  wire        lt_pic32_int_sdi,                            //                                     .sdi
 		output wire        lt_pic32_int_sdo,                            //                                     .sdo
 		input  wire        lt_pic32_int_sclk,                           //                                     .sclk
 		output wire        lt_pic32_int_sint,                           //                                     .sint
+		input  wire        lt_pic32_int_sdi,                            //                                     .sdi
 		input  wire [11:0] pic_mem_s2_address,                          //                           pic_mem_s2.address
 		input  wire        pic_mem_s2_chipselect,                       //                                     .chipselect
 		input  wire        pic_mem_s2_clken,                            //                                     .clken
@@ -338,10 +338,10 @@ module DE0_LT24_SOPC (
 		.read      (mm_interconnect_0_lt_pic32_0_avalon_slave_read),      //             .read
 		.address   (mm_interconnect_0_lt_pic32_0_avalon_slave_address),   //             .address
 		.SPI_CS    (lt_pic32_int_cs),                                     //  conduit_end.cs
-		.SPI_SDI   (lt_pic32_int_sdi),                                    //             .sdi
 		.SPI_SDO   (lt_pic32_int_sdo),                                    //             .sdo
 		.SPI_SCLK  (lt_pic32_int_sclk),                                   //             .sclk
-		.SPI_INT   (lt_pic32_int_sint)                                    //             .sint
+		.SPI_INT   (lt_pic32_int_sint),                                   //             .sint
+		.SPI_SDI   (lt_pic32_int_sdi)                                     //             .sdi
 	);
 
 	DE0_LT24_SOPC_SDRAM sdram (

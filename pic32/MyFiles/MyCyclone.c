@@ -56,7 +56,20 @@ void __ISR(_EXTERNAL_2_VECTOR, My_INT_EXTERNAL_2_IPL) _External2InterruptHandler
 {
     // Clear the interrupt flags
     INTClearFlag(INT_INT2);
-    MyConsole_SendMsg("Interrupt received from INT2 - KEY1 \n>");
+    int quart;
+    quart = MyCyclone_Read(1);
+    char DirMsg[32];
+    switch (quart) {
+        case 1 : sprintf(DirMsg, "Color:1"); break;
+        case 2 : sprintf(DirMsg, "Color:2"); break;
+        case 3 : sprintf(DirMsg, "Color:3"); break;
+        case 4 : sprintf(DirMsg, "Color:4"); break;
+        default: sprintf(DirMsg, "-%d-", quart);
+    }
+    MyMIWI_InsertMsg(DirMsg);
+    MyConsole_SendMsg("Direction sent by MIWI: ");
+    MyConsole_SendMsg(DirMsg); MyConsole_SendMsg("\n");
+    
 }
 
 /******************************************************************************/
