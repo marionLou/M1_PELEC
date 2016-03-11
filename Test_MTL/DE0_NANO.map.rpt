@@ -1,5 +1,5 @@
 Analysis & Synthesis report for DE0_NANO
-Fri Mar 11 02:15:19 2016
+Fri Mar 11 14:58:35 2016
 Quartus II 64-Bit Version 15.0.0 Build 145 04/22/2015 SJ Web Edition
 
 
@@ -119,15 +119,15 @@ agreement for further details.
 +---------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                    ;
 +------------------------------------+--------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Fri Mar 11 02:15:19 2016      ;
+; Analysis & Synthesis Status        ; Successful - Fri Mar 11 14:58:35 2016      ;
 ; Quartus II 64-Bit Version          ; 15.0.0 Build 145 04/22/2015 SJ Web Edition ;
 ; Revision Name                      ; DE0_NANO                                   ;
 ; Top-level Entity Name              ; DE0_NANO                                   ;
 ; Family                             ; Cyclone IV E                               ;
-; Total logic elements               ; 608                                        ;
-;     Total combinational functions  ; 516                                        ;
-;     Dedicated logic registers      ; 410                                        ;
-; Total registers                    ; 410                                        ;
+; Total logic elements               ; 635                                        ;
+;     Total combinational functions  ; 543                                        ;
+;     Dedicated logic registers      ; 416                                        ;
+; Total registers                    ; 416                                        ;
 ; Total pins                         ; 148                                        ;
 ; Total virtual pins                 ; 0                                          ;
 ; Total memory bits                  ; 8,256                                      ;
@@ -301,20 +301,20 @@ agreement for further details.
 +---------------------------------------------+---------------------------------------------------------------------------------------------+
 ; Resource                                    ; Usage                                                                                       ;
 +---------------------------------------------+---------------------------------------------------------------------------------------------+
-; Estimated Total logic elements              ; 608                                                                                         ;
+; Estimated Total logic elements              ; 635                                                                                         ;
 ;                                             ;                                                                                             ;
-; Total combinational functions               ; 516                                                                                         ;
+; Total combinational functions               ; 543                                                                                         ;
 ; Logic element usage by number of LUT inputs ;                                                                                             ;
-;     -- 4 input functions                    ; 201                                                                                         ;
-;     -- 3 input functions                    ; 108                                                                                         ;
-;     -- <=2 input functions                  ; 207                                                                                         ;
+;     -- 4 input functions                    ; 217                                                                                         ;
+;     -- 3 input functions                    ; 113                                                                                         ;
+;     -- <=2 input functions                  ; 213                                                                                         ;
 ;                                             ;                                                                                             ;
 ; Logic elements by mode                      ;                                                                                             ;
-;     -- normal mode                          ; 387                                                                                         ;
+;     -- normal mode                          ; 414                                                                                         ;
 ;     -- arithmetic mode                      ; 129                                                                                         ;
 ;                                             ;                                                                                             ;
-; Total registers                             ; 410                                                                                         ;
-;     -- Dedicated logic registers            ; 410                                                                                         ;
+; Total registers                             ; 416                                                                                         ;
+;     -- Dedicated logic registers            ; 416                                                                                         ;
 ;     -- I/O registers                        ; 0                                                                                           ;
 ;                                             ;                                                                                             ;
 ; I/O pins                                    ; 148                                                                                         ;
@@ -327,8 +327,8 @@ agreement for further details.
 ;                                             ;                                                                                             ;
 ; Maximum fan-out node                        ; RAM_PLL:RAM_PLL_inst|altpll:altpll_component|RAM_PLL_altpll:auto_generated|wire_pll1_clk[0] ;
 ; Maximum fan-out                             ; 320                                                                                         ;
-; Total fan-out                               ; 3481                                                                                        ;
-; Average fan-out                             ; 2.64                                                                                        ;
+; Total fan-out                               ; 3584                                                                                        ;
+; Average fan-out                             ; 2.65                                                                                        ;
 +---------------------------------------------+---------------------------------------------------------------------------------------------+
 
 
@@ -337,7 +337,7 @@ agreement for further details.
 +--------------------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+
 ; Compilation Hierarchy Node                                   ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                                                                 ; Library Name ;
 +--------------------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+
-; |DE0_NANO                                                    ; 516 (3)           ; 410 (1)      ; 8256        ; 0            ; 0       ; 0         ; 148  ; 0            ; |DE0_NANO                                                                                                                                                                           ; work         ;
+; |DE0_NANO                                                    ; 543 (3)           ; 416 (1)      ; 8256        ; 0            ; 0       ; 0         ; 148  ; 0            ; |DE0_NANO                                                                                                                                                                           ; work         ;
 ;    |LT_SPI:Surf|                                             ; 33 (33)           ; 36 (36)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE0_NANO|LT_SPI:Surf                                                                                                                                                               ; work         ;
 ;    |MTL_PLL:MTL_PLL_inst|                                    ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE0_NANO|MTL_PLL:MTL_PLL_inst                                                                                                                                                      ; work         ;
 ;       |altpll:altpll_component|                              ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE0_NANO|MTL_PLL:MTL_PLL_inst|altpll:altpll_component                                                                                                                              ; work         ;
@@ -345,8 +345,8 @@ agreement for further details.
 ;    |RAM_PLL:RAM_PLL_inst|                                    ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE0_NANO|RAM_PLL:RAM_PLL_inst                                                                                                                                                      ; work         ;
 ;       |altpll:altpll_component|                              ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE0_NANO|RAM_PLL:RAM_PLL_inst|altpll:altpll_component                                                                                                                              ; work         ;
 ;          |RAM_PLL_altpll:auto_generated|                     ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE0_NANO|RAM_PLL:RAM_PLL_inst|altpll:altpll_component|RAM_PLL_altpll:auto_generated                                                                                                ; work         ;
-;    |mtl_controller:mtl_controller_inst|                      ; 72 (56)           ; 60 (54)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE0_NANO|mtl_controller:mtl_controller_inst                                                                                                                                        ; work         ;
-;       |Color_block:Beta|                                     ; 16 (16)           ; 6 (6)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE0_NANO|mtl_controller:mtl_controller_inst|Color_block:Beta                                                                                                                       ; work         ;
+;    |mtl_controller:mtl_controller_inst|                      ; 99 (59)           ; 66 (55)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE0_NANO|mtl_controller:mtl_controller_inst                                                                                                                                        ; work         ;
+;       |Color_block:Beta|                                     ; 40 (40)           ; 11 (11)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE0_NANO|mtl_controller:mtl_controller_inst|Color_block:Beta                                                                                                                       ; work         ;
 ;    |reset_delay:reset_delay_inst|                            ; 32 (32)           ; 27 (27)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE0_NANO|reset_delay:reset_delay_inst                                                                                                                                              ; work         ;
 ;    |sdram_control:sdram_control_inst|                        ; 376 (177)         ; 286 (110)    ; 8256        ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE0_NANO|sdram_control:sdram_control_inst                                                                                                                                          ; work         ;
 ;       |Sdram_RD_FIFO:u_read1_fifo|                           ; 31 (0)            ; 31 (0)       ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE0_NANO|sdram_control:sdram_control_inst|Sdram_RD_FIFO:u_read1_fifo                                                                                                               ; work         ;
@@ -562,9 +562,10 @@ Encoding Type:  One-Hot
 ; sdram_control:sdram_control_inst|Sdram_RD_FIFO:u_read1_fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_hgj1:auto_generated|dffpipe_pe9:ws_brp|dffe15a[8..10]                               ; Lost fanout                                                              ;
 ; sdram_control:sdram_control_inst|Sdram_WR_FIFO:u_write2_fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_pej1:auto_generated|dffpipe_oe9:rs_brp|dffe12a[9]                                  ; Lost fanout                                                              ;
 ; sdram_control:sdram_control_inst|Sdram_WR_FIFO:u_write1_fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_pej1:auto_generated|dffpipe_oe9:rs_brp|dffe12a[9]                                  ; Lost fanout                                                              ;
-; mtl_controller:mtl_controller_inst|Color_block:Beta|blue[2,5,6]                                                                                                                                          ; Merged with mtl_controller:mtl_controller_inst|Color_block:Beta|blue[4]  ;
-; mtl_controller:mtl_controller_inst|Color_block:Beta|blue[0,1,7]                                                                                                                                          ; Merged with mtl_controller:mtl_controller_inst|Color_block:Beta|blue[3]  ;
-; mtl_controller:mtl_controller_inst|Color_block:Beta|green[1..7]                                                                                                                                          ; Merged with mtl_controller:mtl_controller_inst|Color_block:Beta|green[0] ;
+; mtl_controller:mtl_controller_inst|Color_block:Beta|blue[1,3,7]                                                                                                                                          ; Merged with mtl_controller:mtl_controller_inst|Color_block:Beta|blue[0]  ;
+; mtl_controller:mtl_controller_inst|Color_block:Beta|blue[4..6]                                                                                                                                           ; Merged with mtl_controller:mtl_controller_inst|Color_block:Beta|blue[2]  ;
+; mtl_controller:mtl_controller_inst|Color_block:Beta|green[3,4,7]                                                                                                                                         ; Merged with mtl_controller:mtl_controller_inst|Color_block:Beta|green[0] ;
+; mtl_controller:mtl_controller_inst|Color_block:Beta|green[2,5,6]                                                                                                                                         ; Merged with mtl_controller:mtl_controller_inst|Color_block:Beta|green[1] ;
 ; mtl_controller:mtl_controller_inst|Color_block:Beta|red[1,3,7]                                                                                                                                           ; Merged with mtl_controller:mtl_controller_inst|Color_block:Beta|red[0]   ;
 ; mtl_controller:mtl_controller_inst|Color_block:Beta|red[4..6]                                                                                                                                            ; Merged with mtl_controller:mtl_controller_inst|Color_block:Beta|red[2]   ;
 ; sdram_control:sdram_control_inst|rWR2_ADDR[0..22]                                                                                                                                                        ; Merged with sdram_control:sdram_control_inst|rWR2_ADDR[23]               ;
@@ -690,7 +691,8 @@ Encoding Type:  One-Hot
 ; sdram_control:sdram_control_inst|Sdram_WR_FIFO:u_write2_fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_pej1:auto_generated|a_graycounter_s57:rdptr_g1p|sub_parity6a0                      ; Stuck at VCC due to stuck port data_in                                   ;
 ; mtl_controller:mtl_controller_inst|read_red[0,1,3]                                                                                                                                                       ; Merged with mtl_controller:mtl_controller_inst|read_red[7]               ;
 ; mtl_controller:mtl_controller_inst|read_red[2,4,5]                                                                                                                                                       ; Merged with mtl_controller:mtl_controller_inst|read_red[6]               ;
-; mtl_controller:mtl_controller_inst|read_green[0..6]                                                                                                                                                      ; Merged with mtl_controller:mtl_controller_inst|read_green[7]             ;
+; mtl_controller:mtl_controller_inst|read_green[0,3,4]                                                                                                                                                     ; Merged with mtl_controller:mtl_controller_inst|read_green[7]             ;
+; mtl_controller:mtl_controller_inst|read_green[1,2,5]                                                                                                                                                     ; Merged with mtl_controller:mtl_controller_inst|read_green[6]             ;
 ; mtl_controller:mtl_controller_inst|read_blue[0,1,3]                                                                                                                                                      ; Merged with mtl_controller:mtl_controller_inst|read_blue[7]              ;
 ; mtl_controller:mtl_controller_inst|read_blue[2,4,5]                                                                                                                                                      ; Merged with mtl_controller:mtl_controller_inst|read_blue[6]              ;
 ; sdram_control:sdram_control_inst|Sdram_RD_FIFO:u_read1_fifo|dcfifo_mixed_widths:dcfifo_mixed_widths_component|dcfifo_hgj1:auto_generated|dffpipe_re9:ws_bwp|dffe16a[0]                                   ; Lost fanout                                                              ;
@@ -705,7 +707,7 @@ Encoding Type:  One-Hot
 ; LT_SPI:Surf|SPI_state~3                                                                                                                                                                                  ; Lost fanout                                                              ;
 ; LT_SPI:Surf|SPI_state~4                                                                                                                                                                                  ; Lost fanout                                                              ;
 ; LT_SPI:Surf|SPI_state~5                                                                                                                                                                                  ; Lost fanout                                                              ;
-; Total Number of Removed Registers = 766                                                                                                                                                                  ;                                                                          ;
+; Total Number of Removed Registers = 764                                                                                                                                                                  ;                                                                          ;
 +----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------+
 
 
@@ -1106,7 +1108,7 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 410   ;
+; Total registers                              ; 416   ;
 ; Number of registers using Synchronous Clear  ; 49    ;
 ; Number of registers using Synchronous Load   ; 23    ;
 ; Number of registers using Asynchronous Clear ; 319   ;
@@ -1134,22 +1136,24 @@ Encoding Type:  One-Hot
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                                 ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------------------------------+
 ; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |DE0_NANO|LT_SPI:Surf|SPI_counter[0]                                                       ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |DE0_NANO|sdram_control:sdram_control_inst|command:u_command|BA[1]                         ;
-; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |DE0_NANO|mtl_controller:mtl_controller_inst|read_blue[6]                                  ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE0_NANO|sdram_control:sdram_control_inst|control_interface:u_control_interface|timer[12] ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; Yes        ; |DE0_NANO|sdram_control:sdram_control_inst|command:u_command|command_delay[6]              ;
-; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |DE0_NANO|LT_SPI:Surf|Data_Out[1]                                                          ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |DE0_NANO|sdram_control:sdram_control_inst|command:u_command|BA[0]                         ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE0_NANO|mtl_controller:mtl_controller_inst|read_blue[7]                                  ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE0_NANO|sdram_control:sdram_control_inst|control_interface:u_control_interface|timer[15] ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; Yes        ; |DE0_NANO|sdram_control:sdram_control_inst|command:u_command|command_delay[2]              ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |DE0_NANO|LT_SPI:Surf|Data_Out[2]                                                          ;
 ; 3:1                ; 7 bits    ; 14 LEs        ; 0 LEs                ; 14 LEs                 ; Yes        ; |DE0_NANO|max_read_addr[15]                                                                ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |DE0_NANO|sdram_control:sdram_control_inst|mLENGTH[7]                                      ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |DE0_NANO|sdram_control:sdram_control_inst|mLENGTH[1]                                      ;
 ; 3:1                ; 23 bits   ; 46 LEs        ; 23 LEs               ; 23 LEs                 ; Yes        ; |DE0_NANO|sdram_control:sdram_control_inst|mADDR[1]                                        ;
 ; 4:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |DE0_NANO|sdram_control:sdram_control_inst|command:u_command|SA[9]                         ;
-; 4:1                ; 9 bits    ; 18 LEs        ; 18 LEs               ; 0 LEs                  ; Yes        ; |DE0_NANO|sdram_control:sdram_control_inst|command:u_command|SA[0]                         ;
-; 4:1                ; 7 bits    ; 14 LEs        ; 7 LEs                ; 7 LEs                  ; Yes        ; |DE0_NANO|LT_SPI:Surf|SPI_data[6]                                                          ;
-; 4:1                ; 23 bits   ; 46 LEs        ; 23 LEs               ; 23 LEs                 ; Yes        ; |DE0_NANO|sdram_control:sdram_control_inst|rWR1_ADDR[1]                                    ;
-; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |DE0_NANO|sdram_control:sdram_control_inst|command:u_command|rp_shift[2]                   ;
+; 4:1                ; 9 bits    ; 18 LEs        ; 18 LEs               ; 0 LEs                  ; Yes        ; |DE0_NANO|sdram_control:sdram_control_inst|command:u_command|SA[3]                         ;
+; 4:1                ; 7 bits    ; 14 LEs        ; 7 LEs                ; 7 LEs                  ; Yes        ; |DE0_NANO|LT_SPI:Surf|SPI_data[4]                                                          ;
+; 4:1                ; 23 bits   ; 46 LEs        ; 23 LEs               ; 23 LEs                 ; Yes        ; |DE0_NANO|sdram_control:sdram_control_inst|rWR1_ADDR[10]                                   ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |DE0_NANO|sdram_control:sdram_control_inst|command:u_command|rp_shift[0]                   ;
 ; 6:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |DE0_NANO|sdram_control:sdram_control_inst|CMD[0]                                          ;
-; 7:1                ; 10 bits   ; 40 LEs        ; 20 LEs               ; 20 LEs                 ; Yes        ; |DE0_NANO|sdram_control:sdram_control_inst|ST[7]                                           ;
-; 4:1                ; 17 bits   ; 34 LEs        ; 17 LEs               ; 17 LEs                 ; Yes        ; |DE0_NANO|sdram_control:sdram_control_inst|rRD1_ADDR[7]                                    ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; Yes        ; |DE0_NANO|mtl_controller:mtl_controller_inst|Color_block:Beta|blue[2]                      ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; Yes        ; |DE0_NANO|mtl_controller:mtl_controller_inst|Color_block:Beta|red[2]                       ;
+; 7:1                ; 10 bits   ; 40 LEs        ; 20 LEs               ; 20 LEs                 ; Yes        ; |DE0_NANO|sdram_control:sdram_control_inst|ST[9]                                           ;
+; 4:1                ; 17 bits   ; 34 LEs        ; 17 LEs               ; 17 LEs                 ; Yes        ; |DE0_NANO|sdram_control:sdram_control_inst|rRD1_ADDR[21]                                   ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------------------------------+
 
 
@@ -2721,7 +2725,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
 ; boundary_port         ; 148                         ;
-; cycloneiii_ff         ; 410                         ;
+; cycloneiii_ff         ; 416                         ;
 ;     CLR               ; 141                         ;
 ;     CLR SCLR          ; 7                           ;
 ;     CLR SLD           ; 16                          ;
@@ -2730,24 +2734,24 @@ Note: In order to hide this table in the UI and the text report file, please set
 ;     ENA CLR SCLR      ; 40                          ;
 ;     SCLR              ; 2                           ;
 ;     SLD               ; 7                           ;
-;     plain             ; 60                          ;
+;     plain             ; 66                          ;
 ; cycloneiii_io_obuf    ; 65                          ;
-; cycloneiii_lcell_comb ; 516                         ;
+; cycloneiii_lcell_comb ; 543                         ;
 ;     arith             ; 129                         ;
 ;         1 data inputs ; 2                           ;
 ;         2 data inputs ; 124                         ;
 ;         3 data inputs ; 3                           ;
-;     normal            ; 387                         ;
+;     normal            ; 414                         ;
 ;         0 data inputs ; 3                           ;
 ;         1 data inputs ; 18                          ;
-;         2 data inputs ; 60                          ;
-;         3 data inputs ; 105                         ;
-;         4 data inputs ; 201                         ;
+;         2 data inputs ; 66                          ;
+;         3 data inputs ; 110                         ;
+;         4 data inputs ; 217                         ;
 ; cycloneiii_pll        ; 2                           ;
 ; cycloneiii_ram_block  ; 32                          ;
 ;                       ;                             ;
 ; Max LUT depth         ; 7.00                        ;
-; Average LUT depth     ; 2.59                        ;
+; Average LUT depth     ; 2.62                        ;
 +-----------------------+-----------------------------+
 
 
@@ -2756,7 +2760,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:08     ;
+; Top            ; 00:00:05     ;
 +----------------+--------------+
 
 
@@ -2766,7 +2770,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 15.0.0 Build 145 04/22/2015 SJ Web Edition
-    Info: Processing started: Fri Mar 11 02:14:21 2016
+    Info: Processing started: Fri Mar 11 14:57:55 2016
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off DE0_NANO -c DE0_NANO
 Warning (125092): Tcl Script File sdram_control/Sdram_RD_RAM.qip not found
     Info (125063): set_global_assignment -name QIP_FILE sdram_control/Sdram_RD_RAM.qip
@@ -2808,13 +2812,14 @@ Info (12127): Elaborating entity "DE0_NANO" for the top level hierarchy
 Warning (10858): Verilog HDL warning at DE0_NANO.sv(172): object Config used but never assigned
 Warning (10036): Verilog HDL or VHDL warning at DE0_NANO.sv(173): object "Status" assigned a value but never read
 Warning (10858): Verilog HDL warning at DE0_NANO.sv(174): object Led70 used but never assigned
-Warning (10858): Verilog HDL warning at DE0_NANO.sv(479): object reg_gesture used but never assigned
+Warning (10036): Verilog HDL or VHDL warning at DE0_NANO.sv(417): object "pass" assigned a value but never read
+Warning (10858): Verilog HDL warning at DE0_NANO.sv(480): object reg_gesture used but never assigned
 Warning (10030): Net "Config[1..0]" at DE0_NANO.sv(172) has no driver or initial value, using a default initial value '0'
 Warning (10030): Net "Led70" at DE0_NANO.sv(174) has no driver or initial value, using a default initial value '0'
 Warning (10030): Net "ImgNum" at DE0_NANO.sv(178) has no driver or initial value, using a default initial value '0'
-Warning (10030): Net "reg_gesture.00010100" at DE0_NANO.sv(479) has no driver or initial value, using a default initial value '0'
-Warning (10030): Net "reg_gesture.00011100" at DE0_NANO.sv(479) has no driver or initial value, using a default initial value '0'
-Warning (10030): Net "touch_ready" at DE0_NANO.sv(480) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "reg_gesture.00010100" at DE0_NANO.sv(480) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "reg_gesture.00011100" at DE0_NANO.sv(480) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "touch_ready" at DE0_NANO.sv(481) has no driver or initial value, using a default initial value '0'
 Warning (10034): Output port "EPCS_ASDO" at DE0_NANO.sv(125) has no driver
 Warning (10034): Output port "EPCS_DCLK" at DE0_NANO.sv(127) has no driver
 Warning (10034): Output port "EPCS_NCSO" at DE0_NANO.sv(128) has no driver
@@ -3258,17 +3263,17 @@ Warning (21074): Design contains 15 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "GPIO_0_IN[0]"
     Warning (15610): No output dependent on input pin "GPIO_0_IN[1]"
     Warning (15610): No output dependent on input pin "MTL_TOUCH_INT_n"
-Info (21057): Implemented 800 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 827 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 16 input pins
     Info (21059): Implemented 67 output pins
     Info (21060): Implemented 65 bidirectional pins
-    Info (21061): Implemented 618 logic cells
+    Info (21061): Implemented 645 logic cells
     Info (21064): Implemented 32 RAM segments
     Info (21065): Implemented 2 PLLs
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 195 warnings
-    Info: Peak virtual memory: 756 megabytes
-    Info: Processing ended: Fri Mar 11 02:15:20 2016
-    Info: Elapsed time: 00:00:59
-    Info: Total CPU time (on all processors): 00:01:24
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 196 warnings
+    Info: Peak virtual memory: 746 megabytes
+    Info: Processing ended: Fri Mar 11 14:58:35 2016
+    Info: Elapsed time: 00:00:40
+    Info: Total CPU time (on all processors): 00:01:16
 
 

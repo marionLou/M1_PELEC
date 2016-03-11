@@ -414,8 +414,8 @@ logic [5:0]  counter_dly;
 // it triggers reading when it needs data.
 
 
-//logic [2:0] pass;
-////assign pass = 3'b010;
+logic [2:0] pass = 3'd5;
+
 //logic [31:0] BlockClock;
 //always_ff @(posedge CLOCK_33)
 //begin
@@ -425,6 +425,7 @@ logic [5:0]  counter_dly;
 mtl_controller mtl_controller_inst (
 	// SPI Side
 	.iSPI(IO_A_Data_Out),    /// Viens du SPI 
+//.iSPI(pass),    /// Viens du SPI 
 	// Host Side
 	.iCLK(CLOCK_33),
 	.iRST_n(~dly_rst),
