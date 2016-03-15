@@ -15,6 +15,7 @@ fifo_t * fifo_new(void);
 void fifo_add(fifo_t *f, char *data);
 int fifo_remove(fifo_t *f);
 int fifo_isEmpty(fifo_t *f);
+int fifo_getSize(fifo_t *f);
 
 int fifo_getID(fifo_t *f);
 char * fifo_getString(fifo_t *f);
