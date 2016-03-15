@@ -368,6 +368,8 @@ set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_RO
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_global_assignment -name ENABLE_SIGNALTAP ON
 set_global_assignment -name USE_SIGNALTAP_FILE stp_MTL_ports.stp
+set_global_assignment -name SYSTEMVERILOG_FILE LT_SPI.sv
+set_global_assignment -name SYSTEMVERILOG_FILE Color_block.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ../MySPI.sv
 set_global_assignment -name VERILOG_FILE sdram_control/Sdram_WR_FIFO.v
 set_global_assignment -name QIP_FILE sdram_control/Sdram_WR_FIFO.qip
@@ -386,4 +388,6 @@ set_global_assignment -name QIP_FILE MTL_PLL.qip
 set_global_assignment -name QIP_FILE RAM_PLL.qip
 set_global_assignment -name SYSTEMVERILOG_FILE mtl_controller.sv
 set_global_assignment -name QIP_FILE Loading_ROM.qip
+set_global_assignment -name SYSTEMVERILOG_FILE CUBE.sv
+set_global_assignment -name SYSTEMVERILOG_FILE LineCUBE.sv
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

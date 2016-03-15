@@ -45,6 +45,8 @@
 // --------------------------------------------------------------------
 
 module mtl_controller(
+	// SPI Side
+	iSPI,
 	// Host Side
 	iCLK, 				// Input LCD control clock
 	iRST_n, 				// Input system reset
@@ -78,7 +80,7 @@ parameter Vertical_Front_Porch = 22;
 //===========================================================================
 // PORT declarations
 //===========================================================================
-
+input		[2:0]		iSPI;
 input				iCLK;   
 input				iRST_n;
 input				iLoading;
@@ -109,6 +111,10 @@ reg			mvd;
 reg			loading_buf;
 reg			no_data_yet;
 
+logic [7:0] T_red;
+logic [7:0] T_green;
+logic [7:0] T_blue;
+
 //=============================================================================
 // Structural coding
 //=============================================================================
@@ -123,12 +129,15 @@ reg			no_data_yet;
 // Indeed, it must contain 1bit x 800 x 480 = 384000 bits of data,
 // which is more than 60% of the total memory bits of the FPGA.
 // Don't hesitate to suppress it.
+
+/*
 Loading_ROM	Loading_ROM_inst (
 	.address (address),
 	.clock (iCLK),
 	.q (q_rom),
 	.rden (iLoading)
 );
+*/
 
 // This signal controls read requests to the SDRAM.
 // When asserted, new data becomes available in iREAD_DATA
@@ -165,10 +174,31 @@ always_ff @(posedge iCLK) begin
 	end else if (display_area) begin
 		// ...and if no data has been sent yet by the PIC32,
 		// then display a white screen.
-		if (no_data_yet) begin
-			read_red 	<= 8'd255;
-			read_green 	<= 8'd255;
-			read_blue 	<= 8'd255;
+				if (no_data_yet) begin
+						read_red 	<= T_red;
+						read_green 	<= T_green;
+						read_blue 	<= T_blue;
+//							begin	 if(iSPI == 3'b1) begin
+//									read_red 	<= 8'd255;
+//									read_green 	<= 8'd0;
+//									read_blue 	<= 8'd0;	
+//										end 
+//									else if(iSPI == 3'b10) begin
+//											read_red 	<= 8'd0;
+//											read_green 	<= 8'd255;
+//											read_blue 	<= 8'd0;	
+//											end				
+//									else if(iSPI == 3'b11) begin
+//											read_red 	<= 8'd0;
+//											read_green 	<= 8'd0;
+//											read_blue 	<= 8'd255;	
+//											end
+//									else begin
+//											read_red 	<= 8'd0;
+//											read_green 	<= 8'd0;
+//											read_blue 	<= 8'd0; 
+//										end	
+//							end		
 		// ...and if the slideshow is currently loading,
 		// then display the loading screen.
 		// The current pixel is black (resp. white)
@@ -286,6 +316,25 @@ always@(posedge iCLK or negedge iRST_n) begin
 		end		
 end
 
+//Color_block Beta(
+//.clk(iCLK),
+//.Block(iSPI),
+//.Xpos(x_cnt),
+//.Ypos(y_cnt),
+//.red(T_red),
+//.green(T_green),
+//.blue(T_blue)
+//);
+CUBE Beta(
+.clk(iCLK),
+.reset(!iRST_n),
+.top_cube(iSPI),
+.Xpos(x_cnt),
+.Ypos(y_cnt),
+.red(T_red),
+.green(T_green),
+.blue(T_blue)
+);
 	
 						
 endmodule

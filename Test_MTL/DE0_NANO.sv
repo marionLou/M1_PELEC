@@ -220,22 +220,11 @@ always @ (posedge CLOCK_50)
  *           Trigger enables writing the pixel to the SDRAM.
  */
 
-MySPI MySPI_instance (
+LT_SPI Surf (
 	.theClock(CLOCK_50), .theReset(PIC32_RESET),
 	.MySPI_clk(PIC32_SCK1A), .MySPI_cs(PIC32_CS_FPGA), .MySPI_sdi(PIC32_SDO1A), .MySPI_sdo(PIC32_SDI1A),
-	.Config(Config),
-	.Status(Status),
-	.Led70(Led70),
-	.IO_A_Data_In(IO_A_Data_In), .IO_B_Data_In(IO_B_Data_In), .IO_C_Data_In(IO_C_Data_In), .IO_D_Data_In(IO_D_Data_In),
-	.IO_A_Data_Out(IO_A_Data_Out), .IO_B_Data_Out(IO_B_Data_Out), .IO_C_Data_Out(IO_C_Data_Out), .IO_D_Data_Out(IO_D_Data_Out),
-	.IO_A_Enable_Out(IO_A_Enable_Out), .IO_B_Enable_Out(IO_B_Enable_Out), .IO_C_Enable_Out(IO_C_Enable_Out), .IO_D_Enable_Out(IO_B_Enable_Out)	
-	/*
-
-	.Red(Red),
-	.Green(Green),
-	.Blue(Blue),
-	.ImgNum(ImgNum),
-	.Trigger(Trigger)*/
+	.Data_In(IO_A_Data_In),
+	.Data_Out(IO_A_Data_Out)
 );
 
 
@@ -423,7 +412,20 @@ logic [5:0]  counter_dly;
 // Here is the LCD controller.
 // Note that the read_en signal is an output from this module:
 // it triggers reading when it needs data.
+
+
+logic pass;
+
+logic [31:0] BlockClock;
+always_ff @(posedge CLOCK_33)
+begin
+		BlockClock <= BlockClock + 32'b1;
+		pass <= BlockClock[28];
+end
 mtl_controller mtl_controller_inst (
+	// SPI Side
+//	.iSPI(IO_A_Data_Out),    /// Viens du SPI 
+	.iSPI(pass),    /// Viens du SPI 
 	// Host Side
 	.iCLK(CLOCK_33),
 	.iRST_n(~dly_rst),

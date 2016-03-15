@@ -1870,77 +1870,77 @@ void HTTPPrint_MyLevel(void)
 
 void HTTPPrint_Record(WORD num)
 {
-    BYTE rec_def[32];
+    BYTE recDef[44];
     
     if (strcmp(MyDif_Level, "Easy")==0)
     {
         switch(num)
         {
             case 5:
-                sprintf(rec_def, "Easy: Mambo number 5");
+                sprintf(recDef, "Easy: Mambo number 5");
                 break;
             case 4:
-                sprintf(rec_def, "Easy: You are number 4");
+                sprintf(recDef, "Easy: You are number 4");
                 break;
             case 3:
-                sprintf(rec_def, "Easy: Triforce");
+                sprintf(recDef, "Easy: Triforce");
                 break;
             case 2:
-                sprintf(rec_def, "Easy: Jamais 2 sans 3");
+                sprintf(recDef, "Easy: Jamais 2 sans 3");
                 break;
             case 1:
-                sprintf(rec_def, "Easy: And we have a winner");
+                sprintf(recDef, "Easy: And we have a winner");
                 break;
             default:
-                sprintf(rec_def, "Easy: The odds were not in your favor");
+                sprintf(recDef, "Easy: The odds were not in your favor");
         }
     } else if (strcmp(MyDif_Level, "Medium")==0)
     {
         switch(num)
         {
             case 5:
-                sprintf(rec_def, "Medium: Mambo number 5");
+                sprintf(recDef, "Medium: Mambo number 5");
                 break;
             case 4:
-                sprintf(rec_def, "Medium: You are number 4");
+                sprintf(recDef, "Medium: You are number 4");
                 break;
             case 3:
-                sprintf(rec_def, "Medium: Triforce");
+                sprintf(recDef, "Medium: Triforce");
                 break;
             case 2:
-                sprintf(rec_def, "Medium: Jamais 2 sans 3");
+                sprintf(recDef, "Medium: Jamais 2 sans 3");
                 break;
             case 1:
-                sprintf(rec_def, "Medium: And we have a winner");
+                sprintf(recDef, "Medium: And we have a winner");
                 break;
             default:
-                sprintf(rec_def, "Medium: The odds were not in your favor");
+                sprintf(recDef, "Medium: The odds were not in your favor");
         }
     }
     else {
         switch(num)
         {
             case 5:
-                sprintf(rec_def, "Hard: Mambo number 5");
+                sprintf(recDef, "Hard: Mambo number 5");
                 break;
             case 4:
-                sprintf(rec_def, "Hard: You are number 4");
+                sprintf(recDef, "Hard: You are number 4");
                 break;
             case 3:
-                sprintf(rec_def, "Hard: Triforce");
+                sprintf(recDef, "Hard: Triforce");
                 break;
             case 2:
-                sprintf(rec_def, "Hard: Jamais 2 sans 3");
+                sprintf(recDef, "Hard: Jamais 2 sans 3");
                 break;
             case 1:
-                sprintf(rec_def, "Hard: And we have a winner");
+                sprintf(recDef, "Hard: And we have a winner");
                 break;
             default:
-                sprintf(rec_def, "Hard: The odds were not in your favor");
+                sprintf(recDef, "Hard: The odds were not in your favor");
         }
     }
 
 	// Print the output
-	TCPPut(sktHTTP, rec_def);
+	TCPPutString(sktHTTP, recDef);
 	return;
 }
