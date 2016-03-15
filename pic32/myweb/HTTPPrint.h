@@ -23,7 +23,6 @@ void HTTPPrint_cookiename(void);
 void HTTPPrint_(void);
 void HTTPPrint_builddate(void);
 void HTTPPrint_led(WORD);
-void HTTPPrint_lcdtext(void);
 void HTTPPrint_ledSelected(WORD,WORD);
 void HTTPPrint_version(void);
 void HTTPPrint_btn(WORD);
@@ -52,7 +51,7 @@ void HTTPPrint_write_comm(WORD);
 void HTTPPrint_smtps_en(void);
 void HTTPPrint_snmp_en(void);
 void HTTPPrint_MyLevel(void);
-void HTTPPrint_level(WORD);
+void HTTPPrint_Record(WORD);
 
 void HTTPPrint(DWORD callbackID)
 {
@@ -93,9 +92,6 @@ void HTTPPrint(DWORD callbackID)
 			break;
         case 0x0000000c:
 			HTTPPrint_led(1);
-			break;
-        case 0x0000000d:
-			HTTPPrint_lcdtext();
 			break;
         case 0x0000000e:
 			HTTPPrint_ledSelected(4,TRUE);
@@ -235,14 +231,20 @@ void HTTPPrint(DWORD callbackID)
         case 0x0000004a:
 			HTTPPrint_MyLevel();
 			break;
-        case 0x0000004b:
-			HTTPPrint_level(1);
+        case 0x0000005d:
+			HTTPPrint_Record(5);
 			break;
-        case 0x0000004c:
-			HTTPPrint_level(2);
+        case 0x0000005e:
+			HTTPPrint_Record(4);
 			break;
-        case 0x0000004d:
-			HTTPPrint_level(3);
+        case 0x0000005f:
+			HTTPPrint_Record(3);
+			break;
+        case 0x00000060:
+			HTTPPrint_Record(2);
+			break;
+        case 0x00000061:
+			HTTPPrint_Record(1);
 			break;
 		default:
 			// Output notification for undefined values

@@ -79,8 +79,6 @@ void MyMIWI_Init(void) {
 	// if we did not get any ack
     Delay_Message = (SYS_FREQ/2000)*500;
     FirstTime = ReadCoreTimer();
-    
-    MyConsole_SendMsg("End of MIWI_init");
 	
 	// End of modified part in "MyMIWI_Init"
 

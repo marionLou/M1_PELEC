@@ -89,6 +89,7 @@ void MyConsole_Task(void)
         MyCAN_TxMsg(0x200, "0123456");
         MyConsole_SendMsg("Send CAN Msg 0x200 '0123456'\n>");
         
+
     } else if (strcmp(theCmd, "Leds") == 0){
         MyCyclone_Write(2,8);
         sprintf(theSuper, "C est trop cool '%d'\n>", MyCyclone_Read(2));

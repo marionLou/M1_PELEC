@@ -123,8 +123,8 @@ BYTE HTTPNeedsAuth(BYTE* cFile)
 #if defined(HTTP_USE_AUTHENTICATION)
 BYTE HTTPCheckAuth(BYTE* cUser, BYTE* cPass)
 {
-	if(strcmppgm2ram((char *)cUser,(ROM char *)"admin") == 0
-		&& strcmppgm2ram((char *)cPass, (ROM char *)"microchip") == 0)
+	if(strcmppgm2ram((char *)cUser,(ROM char *)"fire") == 0
+		&& strcmppgm2ram((char *)cPass, (ROM char *)"words") == 0)
 		return 0x80;		// We accept this combination
 	
 	// You can add additional user/pass combos here.
@@ -1868,9 +1868,79 @@ void HTTPPrint_MyLevel(void)
     TCPPutString(sktHTTP,theStr);
 }
 
-void HTTPPrint_level(void)
+void HTTPPrint_Record(WORD num)
 {
-    BYTE theStr[44];
-    sprintf(theStr, "%s", MyDif_Level);
-    TCPPutString(sktHTTP,theStr);
+    BYTE rec_def[32];
+    
+    if (strcmp(MyDif_Level, "Easy")==0)
+    {
+        switch(num)
+        {
+            case 5:
+                sprintf(rec_def, "Easy: Mambo number 5");
+                break;
+            case 4:
+                sprintf(rec_def, "Easy: You are number 4");
+                break;
+            case 3:
+                sprintf(rec_def, "Easy: Triforce");
+                break;
+            case 2:
+                sprintf(rec_def, "Easy: Jamais 2 sans 3");
+                break;
+            case 1:
+                sprintf(rec_def, "Easy: And we have a winner");
+                break;
+            default:
+                sprintf(rec_def, "Easy: The odds were not in your favor");
+        }
+    } else if (strcmp(MyDif_Level, "Medium")==0)
+    {
+        switch(num)
+        {
+            case 5:
+                sprintf(rec_def, "Medium: Mambo number 5");
+                break;
+            case 4:
+                sprintf(rec_def, "Medium: You are number 4");
+                break;
+            case 3:
+                sprintf(rec_def, "Medium: Triforce");
+                break;
+            case 2:
+                sprintf(rec_def, "Medium: Jamais 2 sans 3");
+                break;
+            case 1:
+                sprintf(rec_def, "Medium: And we have a winner");
+                break;
+            default:
+                sprintf(rec_def, "Medium: The odds were not in your favor");
+        }
+    }
+    else {
+        switch(num)
+        {
+            case 5:
+                sprintf(rec_def, "Hard: Mambo number 5");
+                break;
+            case 4:
+                sprintf(rec_def, "Hard: You are number 4");
+                break;
+            case 3:
+                sprintf(rec_def, "Hard: Triforce");
+                break;
+            case 2:
+                sprintf(rec_def, "Hard: Jamais 2 sans 3");
+                break;
+            case 1:
+                sprintf(rec_def, "Hard: And we have a winner");
+                break;
+            default:
+                sprintf(rec_def, "Hard: The odds were not in your favor");
+        }
+    }
+
+	// Print the output
+	TCPPut(sktHTTP, rec_def);
+	return;
 }

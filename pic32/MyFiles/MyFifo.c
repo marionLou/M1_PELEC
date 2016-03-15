@@ -21,6 +21,7 @@ typedef struct fifonode {
 typedef struct fifo {
 	fifonode_t *f_head;
 	fifonode_t *f_tail;
+    int fSize;
 };
 
 // Create a new FIFO
@@ -29,6 +30,7 @@ fifo_t * fifo_new(void)
 	fifo_t *f;
 
 	f = calloc(1,sizeof (fifo_t));
+    f->fSize = 0;
 
 	return (f);
 }
@@ -43,6 +45,7 @@ void fifo_add(fifo_t *f, char *data)
     	fn->fn_id = id;
         fn->fn_data = data;
         fn->fn_next = NULL;
+        f->fSize = f->fSize+1;
 
 	// If the FIFO is empty, the new item becomes
 	// the head and the tail at the same time
@@ -68,6 +71,7 @@ int fifo_remove(fifo_t *f)
 	}
 
 	data = fn->fn_data;
+    f->fSize = f->fSize-1;
 	// If the fifo has only one element,
 	// it becomes empty after the removal
 	if ((f->f_head = fn->fn_next) == NULL)	f->f_tail = NULL;
@@ -81,6 +85,11 @@ int fifo_isEmpty(fifo_t *f)
 {
 	if (f->f_head == NULL) return 1;
 	else return 0;
+}
+
+int fifo_getSize(fifo_t *f)
+{
+	return f->fSize;
 }
 
 // Returns the id of the first element, else 0
