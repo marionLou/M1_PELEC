@@ -316,9 +316,19 @@ always@(posedge iCLK or negedge iRST_n) begin
 		end		
 end
 
-Color_block Beta(
+//Color_block Beta(
+//.clk(iCLK),
+//.Block(iSPI),
+//.Xpos(x_cnt),
+//.Ypos(y_cnt),
+//.red(T_red),
+//.green(T_green),
+//.blue(T_blue)
+//);
+CUBE Beta(
 .clk(iCLK),
-.Block(iSPI),
+.reset(!iRST_n),
+.top_cube(iSPI),
 .Xpos(x_cnt),
 .Ypos(y_cnt),
 .red(T_red),

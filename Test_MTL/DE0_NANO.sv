@@ -414,18 +414,18 @@ logic [5:0]  counter_dly;
 // it triggers reading when it needs data.
 
 
-logic [2:0] pass = 3'd5;
+logic pass;
 
-//logic [31:0] BlockClock;
-//always_ff @(posedge CLOCK_33)
-//begin
-//		BlockClock <= BlockClock + 32'b1;
-//		pass <= BlockClock[31:28];
-//end
+logic [31:0] BlockClock;
+always_ff @(posedge CLOCK_33)
+begin
+		BlockClock <= BlockClock + 32'b1;
+		pass <= BlockClock[28];
+end
 mtl_controller mtl_controller_inst (
 	// SPI Side
-	.iSPI(IO_A_Data_Out),    /// Viens du SPI 
-//.iSPI(pass),    /// Viens du SPI 
+//	.iSPI(IO_A_Data_Out),    /// Viens du SPI 
+	.iSPI(pass),    /// Viens du SPI 
 	// Host Side
 	.iCLK(CLOCK_33),
 	.iRST_n(~dly_rst),
