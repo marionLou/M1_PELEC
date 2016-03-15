@@ -12,11 +12,10 @@ module lineoblique(
 	parameter Htotal = 1056 - 1;
 	parameter Vtotal = 525 - 1;
 	
-	parameter x_offset = 0;
+	parameter x_offset = 100;
 	parameter y_offset = 0;
-//	parameter x_final = 1056 -1 ;
-	parameter x_final = 300 + y_final ;
-	parameter y_final = 300;
+	parameter x_final = 100 + Vtotal - 1;
+	parameter y_final = Vtotal - 1;
 	
 	logic [10:0] Xline;
 	logic [9:0] Yline;
@@ -27,10 +26,13 @@ module lineoblique(
 	
 	always_ff @(posedge clk)
 begin
- position <=  (Xpos >= Xline);
+if (done_line) start_line <=0;
+else if (Ypos == 0) start_line <= 1;
+ position <=  (Xpos >= Xline) ;
  // position <= (Xpos >= Ypos + (Xline - x_offset));
 //			position <= (Xpos >= x_offset + Ypos);
-//			if (done_line) start_line <= 0;
+
+
 			if (position) begin
 				red <= 8'd222;
 				green <= 8'd222;
@@ -45,9 +47,9 @@ begin
 end
 
 LineCUBE line(
-	.clk(clk),
+	.clk(Ypos[0]),
 	.reset(reset),
-	.start(1),
+	.start(start_line),
 	.x0(x_offset), .x1(x_final),
 	.y0(y_offset), .y1(y_final),
 	.x(Xline), 

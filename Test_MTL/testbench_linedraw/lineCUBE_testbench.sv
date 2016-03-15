@@ -63,11 +63,11 @@ LineCUBE dut(
 		#50;
 		reset	= 1'b0;
 		start_line = 1'b1;
-		x_offset = 0;
+		x_offset = 10'd0;
 		y_offset = 10'd0;
-		y_final = 10'd300;
-		x_final = 11'd50 ;
-		#400;
+		y_final = 10'd525;
+		x_final = 11'd300 ;
+	//	#400;
 	end
 	// synthesis translate_on
 endmodule

@@ -3,7 +3,11 @@
 # if {[file exists rtl_work]} {
 # 	vdel -lib rtl_work -all
 # }
+# Error 133: Unable to remove directory "C:/Users/Stephane/Documents/GitHub/M1_PELEC/Test_MTL/testbench_linedraw/simulation/modelsim/rtl_work".
 # vlib rtl_work
+# ** Error: (vlib-35) Failed to create directory "rtl_work".
+# 
+# File exists. (errno = EEXIST)
 # vmap work rtl_work
 # Model Technology ModelSim PE vmap 10.3d Lib Mapping Utility 2014.10 Oct  7 2014
 # vmap -modelsim_quiet work rtl_work 
@@ -14,29 +18,29 @@
 # 
 # vlog -sv -work work +incdir+C:/Users/Stephane/Documents/GitHub/M1_PELEC/Test_MTL/testbench_linedraw {C:/Users/Stephane/Documents/GitHub/M1_PELEC/Test_MTL/testbench_linedraw/LineCUBE.sv}
 # Model Technology ModelSim ALTERA vlog 10.3d Compiler 2014.10 Oct  7 2014
-# Start time: 15:12:12 on Mar 15,2016
+# Start time: 15:47:08 on Mar 15,2016
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/Stephane/Documents/GitHub/M1_PELEC/Test_MTL/testbench_linedraw" C:/Users/Stephane/Documents/GitHub/M1_PELEC/Test_MTL/testbench_linedraw/LineCUBE.sv 
 # -- Compiling module LineCUBE
 # 
 # Top level modules:
 # 	LineCUBE
-# End time: 15:12:13 on Mar 15,2016, Elapsed time: 0:00:01
+# End time: 15:47:08 on Mar 15,2016, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # 
 # vlog -sv -work work +incdir+C:/Users/Stephane/Documents/GitHub/M1_PELEC/Test_MTL/testbench_linedraw {C:/Users/Stephane/Documents/GitHub/M1_PELEC/Test_MTL/testbench_linedraw/lineCUBE_testbench.sv}
 # Model Technology ModelSim ALTERA vlog 10.3d Compiler 2014.10 Oct  7 2014
-# Start time: 15:12:13 on Mar 15,2016
+# Start time: 15:47:09 on Mar 15,2016
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/Stephane/Documents/GitHub/M1_PELEC/Test_MTL/testbench_linedraw" C:/Users/Stephane/Documents/GitHub/M1_PELEC/Test_MTL/testbench_linedraw/lineCUBE_testbench.sv 
 # -- Compiling module lineCUBE_testbench
 # 
 # Top level modules:
 # 	lineCUBE_testbench
-# End time: 15:12:13 on Mar 15,2016, Elapsed time: 0:00:00
+# End time: 15:47:09 on Mar 15,2016, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # 
 # vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclonev_ver -L cyclonev_hssi_ver -L cyclonev_pcie_hip_ver -L rtl_work -L work -voptargs="+acc"  lineCUBE_testbench
 # vsim -gui "+altera" -l msim_transcript -do "linedraw_run_msim_rtl_verilog.do" 
-# Start time: 15:12:13 on Mar 15,2016
+# Start time: 15:47:09 on Mar 15,2016
 # Loading sv_std.std
 # Loading work.lineCUBE_testbench
 # Loading work.LineCUBE
@@ -47,3 +51,5 @@
 # view signals
 # .main_pane.objects.interior.cs.body.tree
 # run 100 us
+# End time: 17:29:55 on Mar 15,2016, Elapsed time: 1:42:46
+# Errors: 0, Warnings: 0
