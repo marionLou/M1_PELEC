@@ -315,6 +315,16 @@ always@(posedge iCLK or negedge iRST_n) begin
 			oLCD_B <= read_blue;
 		end		
 end
+lineoblique Beta(
+.clk(iCLK),
+.reset(!iRST_n),
+//.top_cube(iSPI),
+.Xpos(x_cnt),
+.Ypos(y_cnt),
+.red(T_red),
+.green(T_green),
+.blue(T_blue)
+);
 
 //Color_block Beta(
 //.clk(iCLK),
@@ -325,16 +335,18 @@ end
 //.green(T_green),
 //.blue(T_blue)
 //);
-CUBE Beta(
-.clk(iCLK),
-.reset(!iRST_n),
-.top_cube(iSPI),
-.Xpos(x_cnt),
-.Ypos(y_cnt),
-.red(T_red),
-.green(T_green),
-.blue(T_blue)
-);
+
+//CUBE Beta(
+//.clk(iCLK),
+//.reset(!iRST_n),
+//.top_cube(iSPI),
+//.Xpos(x_cnt),
+//.Ypos(y_cnt),
+//.red(T_red),
+//.green(T_green),
+//.blue(T_blue)
+//);
+
 	
 						
 endmodule
