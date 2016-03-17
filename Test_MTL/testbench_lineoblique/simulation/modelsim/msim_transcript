@@ -3,11 +3,7 @@
 # if {[file exists rtl_work]} {
 # 	vdel -lib rtl_work -all
 # }
-# Error 133: Unable to remove directory "C:/Users/Stephane/Documents/GitHub/M1_PELEC/Test_MTL/testbench_lineoblique/simulation/modelsim/rtl_work".
 # vlib rtl_work
-# ** Error: (vlib-35) Failed to create directory "rtl_work".
-# 
-# File exists. (errno = EEXIST)
 # vmap work rtl_work
 # Model Technology ModelSim PE vmap 10.3d Lib Mapping Utility 2014.10 Oct  7 2014
 # vmap -modelsim_quiet work rtl_work 
@@ -18,65 +14,65 @@
 # 
 # vlog -sv -work work +incdir+C:/Users/Stephane/Documents/GitHub/M1_PELEC/Test_MTL/testbench_lineoblique {C:/Users/Stephane/Documents/GitHub/M1_PELEC/Test_MTL/testbench_lineoblique/lineoblique.sv}
 # Model Technology ModelSim ALTERA vlog 10.3d Compiler 2014.10 Oct  7 2014
-# Start time: 00:47:48 on Mar 16,2016
+# Start time: 03:35:49 on Mar 17,2016
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/Stephane/Documents/GitHub/M1_PELEC/Test_MTL/testbench_lineoblique" C:/Users/Stephane/Documents/GitHub/M1_PELEC/Test_MTL/testbench_lineoblique/lineoblique.sv 
 # -- Compiling module lineoblique
 # 
 # Top level modules:
 # 	lineoblique
-# End time: 00:47:48 on Mar 16,2016, Elapsed time: 0:00:00
+# End time: 03:35:50 on Mar 17,2016, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
 # vlog -sv -work work +incdir+C:/Users/Stephane/Documents/GitHub/M1_PELEC/Test_MTL/testbench_lineoblique {C:/Users/Stephane/Documents/GitHub/M1_PELEC/Test_MTL/testbench_lineoblique/LineCUBE.sv}
 # Model Technology ModelSim ALTERA vlog 10.3d Compiler 2014.10 Oct  7 2014
-# Start time: 00:47:48 on Mar 16,2016
+# Start time: 03:35:50 on Mar 17,2016
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/Stephane/Documents/GitHub/M1_PELEC/Test_MTL/testbench_lineoblique" C:/Users/Stephane/Documents/GitHub/M1_PELEC/Test_MTL/testbench_lineoblique/LineCUBE.sv 
 # -- Compiling module LineCUBE
+# -- Compiling module XYplus
 # 
 # Top level modules:
 # 	LineCUBE
-# End time: 00:47:48 on Mar 16,2016, Elapsed time: 0:00:00
+# End time: 03:35:50 on Mar 17,2016, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -sv -work work +incdir+C:/Users/Stephane/Documents/GitHub/M1_PELEC/Test_MTL/testbench_lineoblique {C:/Users/Stephane/Documents/GitHub/M1_PELEC/Test_MTL/testbench_lineoblique/XYcount.sv}
 # Model Technology ModelSim ALTERA vlog 10.3d Compiler 2014.10 Oct  7 2014
-# Start time: 00:47:48 on Mar 16,2016
+# Start time: 03:35:50 on Mar 17,2016
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/Stephane/Documents/GitHub/M1_PELEC/Test_MTL/testbench_lineoblique" C:/Users/Stephane/Documents/GitHub/M1_PELEC/Test_MTL/testbench_lineoblique/XYcount.sv 
 # -- Compiling module XYcount
 # 
 # Top level modules:
 # 	XYcount
-# End time: 00:47:48 on Mar 16,2016, Elapsed time: 0:00:00
+# End time: 03:35:50 on Mar 17,2016, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # 
 # vlog -sv -work work +incdir+C:/Users/Stephane/Documents/GitHub/M1_PELEC/Test_MTL/testbench_lineoblique {C:/Users/Stephane/Documents/GitHub/M1_PELEC/Test_MTL/testbench_lineoblique/lineoblique_testbench.sv}
 # Model Technology ModelSim ALTERA vlog 10.3d Compiler 2014.10 Oct  7 2014
-# Start time: 00:47:48 on Mar 16,2016
+# Start time: 03:35:50 on Mar 17,2016
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/Stephane/Documents/GitHub/M1_PELEC/Test_MTL/testbench_lineoblique" C:/Users/Stephane/Documents/GitHub/M1_PELEC/Test_MTL/testbench_lineoblique/lineoblique_testbench.sv 
 # -- Compiling module lineoblique_testbench
 # 
 # Top level modules:
 # 	lineoblique_testbench
-# End time: 00:47:49 on Mar 16,2016, Elapsed time: 0:00:01
+# End time: 03:35:50 on Mar 17,2016, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # 
 # vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclonev_ver -L cyclonev_hssi_ver -L cyclonev_pcie_hip_ver -L rtl_work -L work -voptargs="+acc"  lineoblique_testbench
 # vsim -gui "+altera" -l msim_transcript -do "lineoblique_test_run_msim_rtl_verilog.do" 
-# Start time: 00:47:49 on Mar 16,2016
+# Start time: 03:35:50 on Mar 17,2016
 # Loading sv_std.std
 # Loading work.lineoblique_testbench
 # Loading work.lineoblique
 # Loading work.XYcount
 # Loading work.LineCUBE
-# ** Warning: (vsim-3015) C:/Users/Stephane/Documents/GitHub/M1_PELEC/Test_MTL/testbench_lineoblique/lineoblique.sv(63): [PCDPC] - Port size (1) does not match connection size (10) for port 'clk'. The port definition is at: C:/Users/Stephane/Documents/GitHub/M1_PELEC/Test_MTL/testbench_lineoblique/LineCUBE.sv(3).
+# Loading work.XYplus
+# ** Warning: (vsim-3015) C:/Users/Stephane/Documents/GitHub/M1_PELEC/Test_MTL/testbench_lineoblique/LineCUBE.sv(87): [PCDPC] - Port size (10) does not match connection size (11) for port 'y0'. The port definition is at: C:/Users/Stephane/Documents/GitHub/M1_PELEC/Test_MTL/testbench_lineoblique/LineCUBE.sv(155).
 # 
-#         Region: /lineoblique_testbench/dut/line
+#         Region: /lineoblique_testbench/dut/line/SD
 # 
 # add wave *
 # view structure
 # .main_pane.structure.interior.cs.body.struct
 # view signals
 # .main_pane.objects.interior.cs.body.tree
-# run 40 us
-# WARNING: No extended dataflow license exists
-# WARNING: No extended dataflow license exists
-# End time: 00:58:10 on Mar 16,2016, Elapsed time: 0:10:21
-# Errors: 0, Warnings: 3
+# run 200 us
+# End time: 03:43:04 on Mar 17,2016, Elapsed time: 0:07:14
+# Errors: 0, Warnings: 1

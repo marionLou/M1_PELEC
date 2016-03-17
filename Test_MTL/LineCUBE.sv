@@ -61,6 +61,7 @@ module LineCUBE(
 					else y <= y - 10'd1;
 				end
 			end
+			
 			default:
 				state <= IDLE;
 			endcase

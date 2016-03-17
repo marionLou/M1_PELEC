@@ -30,10 +30,9 @@ module lineoblique(
 	
 	always_ff @(posedge clk)
 begin
-if (done_line) start_line <=0;
-else if (Ypos == 0) start_line <= 1;
+
  position <=  (Xpos >= Xline) ;
- // position <= (Xpos >= Ypos + (Xline - x_offset));
+// position <= (Xpos >= Ypos + (Xline - x_offset));
 //			position <= (Xpos >= x_offset + Ypos);
 
 
@@ -61,22 +60,24 @@ XYcount cnt(
 );
 
 LineCUBE line(
-	.clk(Ypos),
+	.clk(clk),
 	.reset(reset),
 	.start(start_line),
 	.x0(x_offset), .x1(x_final),
 	.y0(y_offset), .y1(y_final),
-	.x(Xdraw), 
-	.y(Ydraw),
-	.x_count(),
-	.done(done_line),
-	.plot()
+	.x_cnt(Xpos),
+	.y_cnt(Ypos),
+	.x_line(Xdraw), 
+	.y_line(Ydraw),
+	.done(done_line)
 );
 
 assign Xcount = Xpos;
 assign Ycount = Ypos;
 assign Xline = Xdraw;
 assign Yline = Ydraw;
+assign start_mark = start_line;
+assign done_mark = done_line; 
 assign curseur = position;
 
 endmodule

@@ -53,10 +53,15 @@ module lineoblique_testbench();
 		#50;
 		reset	= 1'b0;
 		#20;
-		x_offset = 10'd3;
+		reset	= 1'b0;
+		x_offset = 10'd50;
 		y_offset = 10'd0;
-		y_final = 10'd4;
-		x_final = 11'd12 ;	
+		x_final = 11'd90;
+		y_final = 10'd30 ;
+//		x_offset = 10'd3;
+//		y_offset = 10'd0;
+//		x_final = 11'd12;
+//		y_final = 10'd4;	
 		end
 	// synthesis translate_on
 endmodule
