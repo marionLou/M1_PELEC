@@ -51,13 +51,14 @@ module LineCUBE(
 				state <= IDLE;
 			end else begin
 //			  if (x_cnt == 0 && y_cnt == y_plus) begin
-			  if (x_cnt == 0) begin
+			  if (x_cnt == 0 && y_n != y1) begin
 			  x_n <= x_plus;
 			  y_n <= y_plus;
 			  x_line <= x_n;
 			  y_line <= y_n;
 			  end
-			  else if (x_cnt == x_n && y_cnt == y_plus) begin
+//			  else if (x_cnt == x_n && y_cnt == y_plus) begin
+			  else if (x_cnt == x_n && y_n == y_plus) begin
 			  x_n <= x_plus;
 			  y_n <= y_plus;
 			  x_line <= x_n;
@@ -69,12 +70,12 @@ module LineCUBE(
 			  x_line <= x_n;
 			  y_line <= y_n;
 			  end
-//			  else if (x_n == x1 && y_n != y1) begin
-//			  x_n <= x_plus;
-//			  y_n <= y_plus;
-//			  x_line <= x_n;
-//			  y_line <= y_n;
-//			  end
+			  else if (x_n == x1 && y_n != y1) begin
+			  y_n <= y_plus;
+			  
+			  x_line <= x_n;
+			  y_line <= y_n;
+			  end
 			  else begin
 			  x_line <= x_n;
 			  y_line <= y_n;

@@ -32,6 +32,7 @@ module lineoblique(
 begin
 
  position <=  (Xpos >= Xline) ;
+//position <=  (Ypos >= Yline) ;
 // position <= (Xpos >= Ypos + (Xline - x_offset));
 //			position <= (Xpos >= x_offset + Ypos);
 

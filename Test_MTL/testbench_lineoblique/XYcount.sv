@@ -13,8 +13,10 @@ module XYcount(
 	
 //	parameter H_LINE = 1056; 
 //	parameter V_LINE = 525;
-	parameter H_LINE = 100; 
-	parameter V_LINE = 40;
+	parameter H_LINE = 20; 
+	parameter V_LINE = 10;
+//	parameter H_LINE = 100; 
+//	parameter V_LINE = 40;
 //	parameter H_LINE = 16; 
 //	parameter V_LINE = 5;
 	
