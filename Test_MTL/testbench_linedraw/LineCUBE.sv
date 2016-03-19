@@ -7,6 +7,9 @@ module LineCUBE(
 	input logic [9:0] y0,y1,
 	output logic done,
 	output logic plot,
+	output logic droit, bas,
+	output logic [11:0] delta_x, delta_y,
+	output logic [11:0] error, error2,
 	output logic [10:0] x_count,
 	output logic [10:0] x,
 	output logic [9:0] y
@@ -65,6 +68,13 @@ module LineCUBE(
 				state <= IDLE;
 			endcase
 			end
+			
 assign x_count = count + x0;
+assign delta_x = dx;
+assign delta_y = dy;
+assign error = err;
+assign error2 = e2;
+assign droit = right;
+assign bas = down;
 
 endmodule

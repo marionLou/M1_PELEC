@@ -14,29 +14,29 @@
 # 
 # vlog -sv -work work +incdir+C:/Users/Stephane/Documents/GitHub/M1_PELEC/Test_MTL/testbench_linedraw {C:/Users/Stephane/Documents/GitHub/M1_PELEC/Test_MTL/testbench_linedraw/LineCUBE.sv}
 # Model Technology ModelSim ALTERA vlog 10.3d Compiler 2014.10 Oct  7 2014
-# Start time: 15:07:53 on Mar 17,2016
+# Start time: 21:08:38 on Mar 17,2016
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/Stephane/Documents/GitHub/M1_PELEC/Test_MTL/testbench_linedraw" C:/Users/Stephane/Documents/GitHub/M1_PELEC/Test_MTL/testbench_linedraw/LineCUBE.sv 
 # -- Compiling module LineCUBE
 # 
 # Top level modules:
 # 	LineCUBE
-# End time: 15:07:53 on Mar 17,2016, Elapsed time: 0:00:00
+# End time: 21:08:38 on Mar 17,2016, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # 
 # vlog -sv -work work +incdir+C:/Users/Stephane/Documents/GitHub/M1_PELEC/Test_MTL/testbench_linedraw {C:/Users/Stephane/Documents/GitHub/M1_PELEC/Test_MTL/testbench_linedraw/lineCUBE_testbench.sv}
 # Model Technology ModelSim ALTERA vlog 10.3d Compiler 2014.10 Oct  7 2014
-# Start time: 15:07:53 on Mar 17,2016
+# Start time: 21:08:38 on Mar 17,2016
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/Stephane/Documents/GitHub/M1_PELEC/Test_MTL/testbench_linedraw" C:/Users/Stephane/Documents/GitHub/M1_PELEC/Test_MTL/testbench_linedraw/lineCUBE_testbench.sv 
 # -- Compiling module lineCUBE_testbench
 # 
 # Top level modules:
 # 	lineCUBE_testbench
-# End time: 15:07:54 on Mar 17,2016, Elapsed time: 0:00:01
+# End time: 21:08:38 on Mar 17,2016, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # 
 # vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclonev_ver -L cyclonev_hssi_ver -L cyclonev_pcie_hip_ver -L rtl_work -L work -voptargs="+acc"  lineCUBE_testbench
 # vsim -gui "+altera" -l msim_transcript -do "linedraw_run_msim_rtl_verilog.do" 
-# Start time: 15:07:54 on Mar 17,2016
+# Start time: 21:08:38 on Mar 17,2016
 # Loading sv_std.std
 # Loading work.lineCUBE_testbench
 # Loading work.LineCUBE
@@ -47,5 +47,5 @@
 # view signals
 # .main_pane.objects.interior.cs.body.tree
 # run 10 us
-# End time: 15:26:44 on Mar 17,2016, Elapsed time: 0:18:50
+# End time: 21:21:54 on Mar 17,2016, Elapsed time: 0:13:16
 # Errors: 0, Warnings: 0

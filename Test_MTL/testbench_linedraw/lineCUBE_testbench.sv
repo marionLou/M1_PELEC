@@ -24,6 +24,10 @@ module lineCUBE_testbench();
 	reg [10:0]	x_final;
 	wire [10:0] Xline;
 	wire [9:0] Yline;
+	wire [11:0] delta_x, delta_y;
+	wire [11:0] error, error2;
+	wire droit, bas;
+	
 	reg start_line;//, start_line;
 	
 
@@ -39,7 +43,8 @@ LineCUBE dut(
 	.y(Yline),
 	.x_count(),
 	.done(),
-	.plot()
+	.plot(),
+	.*
 );
 
 	
@@ -63,10 +68,14 @@ LineCUBE dut(
 		#50;
 		reset	= 1'b0;
 		start_line = 1'b1;
-		x_offset = 10'd15;
+//		x_offset = 10'd15;
+//		y_offset = 10'd0;
+//		x_final = 11'd10;
+//		y_final = 10'd9;
+		x_offset = 10'd50;
 		y_offset = 10'd0;
-		x_final = 11'd10;
-		y_final = 10'd9;
+		x_final = 11'd90;
+		y_final = 10'd39 ;
 	//	#400;
 	end
 	// synthesis translate_on

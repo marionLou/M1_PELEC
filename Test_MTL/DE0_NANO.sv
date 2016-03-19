@@ -416,12 +416,12 @@ logic [5:0]  counter_dly;
 
 logic pass;
 
-logic [31:0] BlockClock;
-always_ff @(posedge CLOCK_33)
-begin
-		BlockClock <= BlockClock + 32'b1;
-		pass <= BlockClock[28];
-end
+//logic [31:0] BlockClock;
+//always_ff @(posedge CLOCK_33)
+//begin
+//		BlockClock <= BlockClock + 32'b1;
+//		pass <= BlockClock[28];
+//end
 mtl_controller mtl_controller_inst (
 	// SPI Side
 //	.iSPI(IO_A_Data_Out),    /// Viens du SPI 
