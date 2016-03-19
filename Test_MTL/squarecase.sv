@@ -45,8 +45,8 @@ module squarecase(
 
 	L1_Out_XY0 <= {L1_Out_x_offset , L1_Out_y_offset};
 	L1_Out_XY3 <= {L1_Out_x_offset , L1_Out_y_offset + Out_length};
-	L1_Out_XY1 <= {L1_Out_x_offset + L1_Out_length , L1_Out_y_offset};
-	L1_Out_XY2 <= {L1_Out_x_offset + L1_Out_length , L1_Out_y_offset + Out_length};
+	L1_Out_XY1 <= {L1_Out_x_offset + Out_length , L1_Out_y_offset};
+	L1_Out_XY2 <= {L1_Out_x_offset + Out_length , L1_Out_y_offset + Out_length};
 	
 	L1_In_XY0 <= {L1_In_x_offset , L1_In_y_offset};
 	L1_In_XY3 <= {L1_In_x_offset , L1_In_y_offset + In_length};

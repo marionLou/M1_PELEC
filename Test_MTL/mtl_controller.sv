@@ -315,15 +315,15 @@ always@(posedge iCLK or negedge iRST_n) begin
 			oLCD_B <= read_blue;
 		end		
 end
-squarecase Beta(
-.clk(iCLK),
-//.Block(iSPI),
-.Xpos(x_cnt),
-.Ypos(y_cnt),
-.red(T_red),
-.green(T_green),
-.blue(T_blue)
-);
+//squarecase Beta(
+//.clk(iCLK),
+////.Block(iSPI),
+//.Xpos(x_cnt),
+//.Ypos(y_cnt),
+//.red(T_red),
+//.green(T_green),
+//.blue(T_blue)
+//);
 
 //lineoblique Beta(
 //.clk(iCLK),
@@ -347,16 +347,16 @@ squarecase Beta(
 //.blue(T_blue)
 //);
 
-//CUBE Beta(
-//.clk(iCLK),
-//.reset(!iRST_n),
-//.top_cube(iSPI),
-//.Xpos(x_cnt),
-//.Ypos(y_cnt),
-//.red(T_red),
-//.green(T_green),
-//.blue(T_blue)
-//);
+CUBE Beta(
+.clk(iCLK),
+.reset(!iRST_n),
+.top_cube(iSPI),
+.x_cnt(x_cnt),
+.y_cnt(y_cnt),
+.red(T_red),
+.green(T_green),
+.blue(T_blue)
+);
 
 	
 						

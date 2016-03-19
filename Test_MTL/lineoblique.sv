@@ -26,8 +26,8 @@ module lineoblique(
 	
 	always_ff @(posedge clk)
 begin
-if (done_line) start_line <=0;
-else if (Ypos == 0) start_line <= 1;
+//if (done_line) start_line <=0;
+//else if (Ypos == 0) start_line <= 1;
  position <=  (Xpos >= Xline) ;
  // position <= (Xpos >= Ypos + (Xline - x_offset));
 //			position <= (Xpos >= x_offset + Ypos);
@@ -47,15 +47,14 @@ else if (Ypos == 0) start_line <= 1;
 end
 
 LineCUBE line(
-	.clk(Ypos[0]),
+	.clk(clk),
 	.reset(reset),
 	.start(start_line),
 	.x0(x_offset), .x1(x_final),
 	.y0(y_offset), .y1(y_final),
-	.x(Xline), 
-	.y(Yline),
-	.x_count(),
-	.done(done_line),
-	.plot()
+	.x_cnt(Xpos), .y_cnt(Ypos),
+	.x_line(Xline), 
+	.y_line(Yline),
+	.done(done_line)
 );
 endmodule
