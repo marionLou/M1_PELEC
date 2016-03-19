@@ -1,0 +1,52 @@
+module mtl_controller(
+	// Host Side
+	iCLK, 				// Input LCD control clock
+	iRST_n, 				// Input system reset
+
+	oHD,					// Output LCD horizontal sync 
+	oVD,					// Output LCD vertical sync 
+	oLCD_R,				// Output LCD red color data 
+	oLCD_G,           // Output LCD green color data  
+	oLCD_B            // Output LCD blue color data  
+);
+
+
+
+always@(posedge iCLK or negedge iRST_n) begin
+	if (!iRST_n)
+	begin
+		x_cnt <= 11'd0;	
+		mhd  <= 1'd0;  
+	end	
+	else if (x_cnt == (H_LINE-1))
+	begin
+		x_cnt <= 11'd0;
+		mhd  <= 1'd0;
+	end	   
+	else
+	begin
+		x_cnt <= x_cnt + 11'd1;
+		mhd  <= 1'd1;
+	end	
+end
+
+always@(posedge iCLK or negedge iRST_n) begin
+	if (!iRST_n)
+		y_cnt <= 10'd0;
+	else if (x_cnt == (H_LINE-1))
+	begin
+		if (y_cnt == (V_LINE-1))
+			y_cnt <= 10'd0;
+		else
+			y_cnt <= y_cnt + 10'd1;	
+	end
+end
+
+always@(posedge iCLK  or negedge iRST_n) begin
+	if (!iRST_n)
+		mvd  <= 1'b1;
+	else if (y_cnt == 10'd0)
+		mvd  <= 1'b0;
+	else
+		mvd  <= 1'b1;
+end	
