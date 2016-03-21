@@ -1,0 +1,101 @@
+module Qbert_Map2(
+	input logic clk,
+	input logic reset,
+	input logic top_cube,
+	input logic [10:0] x_cnt, 
+	input logic [9:0] y_cnt,
+	output logic [7:0] red,
+	output logic [7:0] green,
+	output logic [7:0] blue
+	);
+	
+
+	parameter RANK1_X_OFFSET = 11'd400;
+	parameter RANK1_Y_OFFSET = 10'd90;
+	parameter XLENGTH = 11'd80;
+	parameter XDIAG_DEMI = 11'd30;
+	parameter YDIAG_DEMI = 10'd50;
+	
+	logic R1_left_face_n1, R1_left_face_n2, R1_left_face_n3;
+	logic R1_right_face_n1, R1_right_face_n2, R1_right_face_n3;
+	logic [3:0] R1_top_face_n1, R1_top_face_n2, R1_top_face_n3;
+	
+//	
+	logic [10:0] R1_x_offset_n1, R1_x_offset_n2, R1_x_offset_n3;
+	logic [9:0] R1_y_offset_n1, R1_y_offset_n2, R1_y_offset_n3;
+
+	{R1_x_offset_n1, R1_y_offset_n1} = {RANK1_X_OFFSET,RANK1_Y_OFFSET};
+	{R1_x_offset_n1, R1_y_offset_n1} = {RANK1_X_OFFSET,RANK1_Y_OFFSET + 2*(YDIAG_DEMI+1)};
+	{R1_x_offset_n1, R1_y_offset_n1} = {RANK1_X_OFFSET,RANK1_Y_OFFSET + 4*(YDIAG_DEMI+1)};
+	
+	logic [2:0] R1_left_face;
+	logic [2:0] R1_right_face;
+	logic [11:0] R1_top_face;
+	
+	
+	always_ff @(posedge clk) begin
+	
+	R1_left_face <= {R1_left_face_n1, R1_left_face_n2, R1_left_face_n3};
+	R1_right_face <= {R1_right_face_n1, R1_right_face_n2, R1_right_face_n3};
+	R1_top_face <= {R1_top_face_n1, R1_top_face_n2, R1_top_face_n3};
+						
+		if(R1_left_face[0]||R1_left_face[1]||R1_left_face[2]) begin
+			red 	<= 8'd86;
+			green <= 8'd169;
+			blue 	<= 8'd152;
+		end
+		else if(R1_right_face[0]||R1_right_face[1]||R1_right_face[2]) begin
+			red <= 8'd49;
+			green <= 8'd70;
+			blue <= 8'd70;
+		end
+		else if(R1_top_face != 0) begin
+			if (top_cube) begin
+				red <= 8'd222;
+				green <= 8'd222;
+				blue <= 8'd0;
+				end
+			else begin
+				red <= 8'd86;
+				green <= 8'd70;
+				blue <= 8'd239;
+				end
+		end
+		else begin
+		red 	<= 8'd0;
+		green <= 8'd0;
+		blue 	<= 8'd0;
+		end
+		
+
+	end
+
+cube_generator  #( 11'd120, 11'd50, 10'd90) rank1_n1( 
+	.x_offset(R1_x_offset_n1),
+	.y_offset(R1_y_offset_n1),
+	.left_face(R1_left_face_n1),
+	.right_face(R1_right_face_n1),
+	.top_face(R1_top_face_n1),
+	.*
+	);
+	
+cube_generator  #( 11'd120, 11'd50, 10'd90) rank1_n2( 
+	.x_offset(R1_x_offset_n2),
+	.y_offset(R1_y_offset_n2),
+	.left_face(R1_left_face_n2),
+	.right_face(R1_right_face_n2),
+	.top_face(R1_top_face_n2),
+	.*
+	);
+
+cube_generator  #( 11'd120, 11'd50, 10'd90) rank1_n3( 
+	.x_offset(R1_x_offset_n3),
+	.y_offset(R1_y_offset_n3),
+	.left_face(R1_left_face_n3),
+	.right_face(R1_right_face_n3),
+	.top_face(R1_top_face_n3),
+	.*
+	);
+
+	
+endmodule
