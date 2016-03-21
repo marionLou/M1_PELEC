@@ -315,39 +315,19 @@ always@(posedge iCLK or negedge iRST_n) begin
 			oLCD_B <= read_blue;
 		end		
 end
-//squarecase Beta(
-//.clk(iCLK),
-////.Block(iSPI),
-//.Xpos(x_cnt),
-//.Ypos(y_cnt),
-//.red(T_red),
-//.green(T_green),
-//.blue(T_blue)
-//);
 
-//lineoblique Beta(
+//Qbert_Map Beta(
 //.clk(iCLK),
 //.reset(!iRST_n),
-////.top_cube(iSPI),
-//.Xpos(x_cnt),
-//.Ypos(y_cnt),
+//.top_cube(iSPI),
+//.x_cnt(x_cnt),
+//.y_cnt(y_cnt),
 //.red(T_red),
 //.green(T_green),
 //.blue(T_blue)
 //);
 
-
-//Color_block Beta(
-//.clk(iCLK),
-//.Block(iSPI),
-//.Xpos(x_cnt),
-//.Ypos(y_cnt),
-//.red(T_red),
-//.green(T_green),
-//.blue(T_blue)
-//);
-
-CUBE Beta(
+Qbert_Map2 Beta(
 .clk(iCLK),
 .reset(!iRST_n),
 .top_cube(iSPI),
@@ -357,6 +337,28 @@ CUBE Beta(
 .green(T_green),
 .blue(T_blue)
 );
+
+//squarecase Beta(
+//.clk(iCLK),
+//.Block(iSPI),
+//.Xpos(x_cnt),
+//.Ypos(y_cnt),
+//.red(T_red),
+//.green(T_green),
+//.blue(T_blue)
+//);
+
+
+//CUBE Beta(
+//.clk(iCLK),
+//.reset(!iRST_n),
+//.top_cube(iSPI),
+//.x_cnt(x_cnt),
+//.y_cnt(y_cnt),
+//.red(T_red),
+//.green(T_green),
+//.blue(T_blue)
+//);
 
 	
 						

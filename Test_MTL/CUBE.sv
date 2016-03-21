@@ -42,7 +42,7 @@ the position of each point
 	parameter xdiag = 11'd50;
 	parameter ydiag = 10'd90;
 	parameter x_offset = 11'd400;
-	parameter y_offset = 10'd200;
+	parameter y_offset = 10'd300;
 	
 	parameter offset = 10'd2;
  
@@ -106,10 +106,10 @@ begin
 //					&&(y_cnt > XY6[8:0] & y_cnt < XY4[8:0])};
 //	
 	
-	left_face <= {(x_cnt >= X_line_06 && x_cnt <= X_line_12) 
+	right_face <= {(x_cnt >= X_line_06 && x_cnt <= X_line_12) 
 					&&(y_cnt >= XY0[9:0] && y_cnt < XY6[9:0])}; 
 									
-	right_face <= {(x_cnt >= X_line_64 && x_cnt <= X_line_23) 
+	left_face <= {(x_cnt >= X_line_64 && x_cnt <= X_line_23) 
 					&&(y_cnt >= XY6[9:0] && y_cnt <= XY4[9:0])};
 									
 //	top_face[0] <= {(x_cnt >= X_line_50 && x_cnt < X_line_06)  

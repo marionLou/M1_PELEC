@@ -55,8 +55,10 @@ module squarecase(
 	
 	case ({Xpos,Ypos})
 	{11'd99,10'd99} : {L1_Out_x_offset,L1_Out_y_offset} <= {11'd99 + 11'd1, 10'd100};
-//	{11'd200,10'd99} : {Out_x_offset,Out_y_offset} <= {11'd200 + 11'd1, 10'd99 + 10'd1};
-	{11'd99,10'd209} : {L1_Out_x_offset,L1_Out_y_offset} <= {11'd99 + 11'd1, 10'd210 + 10'd1};
+//	{11'd200,10'd99-40} : {Out_x_offset,Out_y_offset} <= {11'd200 + 11'd1, 10'd99 + 10'd1};
+	{11'd99,10'd199} : {L1_Out_x_offset,L1_Out_y_offset} <= {11'd99 + 11'd1, 10'd199 + 10'd1};
+	{11'd99,10'd299} : {L1_Out_x_offset,L1_Out_y_offset} <= {11'd99 + 11'd1, 10'd299 + 10'd1};
+//	{11'd99,10'd399-20} : {L1_Out_x_offset,L1_Out_y_offset} <= {11'd99 + 11'd1, 10'd399 + 10'd1-20};
 //	default : {Out_x_offset,Out_y_offset} <= {11'd99 + 11'd1, 10'd100};
 	endcase
 	end
