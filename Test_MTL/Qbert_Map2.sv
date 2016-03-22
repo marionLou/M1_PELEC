@@ -65,8 +65,12 @@ module Qbert_Map2(
 	logic  R3_left_face;
 	logic  R3_right_face;
 	logic [3:0] R3_top_face;
+	
+// -- Qbert and co ---------------------------------------------//
 
-// -- Plot 5 cubes----------------------------------------------//
+	logic [5:0] le_qbert;
+
+// -- Plot 6 cubes----------------------------------------------//
  	
 	always_ff  @(posedge clk) begin
 	
@@ -93,13 +97,17 @@ module Qbert_Map2(
 	is_left_face <= (R1_left_face != 0) || (R2_left_face != 0) || (R3_left_face != 0);
 	is_right_face <= (R1_right_face != 0) || (R2_right_face != 0) || (R3_right_face != 0);
 	is_top_face <= (R1_top_face != 0) || (R2_top_face != 0) || (R3_top_face != 0);
-//		if(R1_left_face[0]||R1_left_face[1]||R1_left_face[2]) begin
-		if(is_left_face !=0) begin
+	
+		if (le_qbert !=0) begin
+			red <= 8'd216;
+			green <= 8'd95;
+			blue <= 8'd2;
+		end
+		else if(is_left_face !=0) begin
 			red 	<= 8'd86;
 			green <= 8'd169;
 			blue 	<= 8'd152;
 		end
-//		else if(R1_right_face[0]||R1_right_face[1]||R1_right_face[2]) begin
 		else if(is_right_face != 0) begin
 			red <= 8'd49;
 			green <= 8'd70;
@@ -125,6 +133,16 @@ module Qbert_Map2(
 		
 
 	end
+	
+qbert_orange_bas_gauche #( XLENGTH, XDIAG_DEMI, YDIAG_DEMI) Beta(
+.clk(clk),
+.reset(reset),
+.x_cnt(x_cnt),
+.y_cnt(y_cnt),
+.x_offset(R3_x_offset_n1),
+.y_offset(R3_y_offset_n1),
+.le_qbert(le_qbert)
+);
 
 //cube_generator  #( 11'd120, 11'd50, 10'd90) rank1_n1(
 cube_generator  #( XLENGTH, XDIAG_DEMI, YDIAG_DEMI) rank1_n1(  

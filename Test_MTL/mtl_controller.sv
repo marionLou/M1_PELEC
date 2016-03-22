@@ -316,6 +316,21 @@ always@(posedge iCLK or negedge iRST_n) begin
 		end		
 end
 
+//qbert_orange_bas_gauche Beta(
+//.clk(iCLK),
+//.reset(!iRST_n),
+////.top_cube(iSPI),
+//.x_cnt(x_cnt),
+//.y_cnt(y_cnt),
+//.x_offset(11'd400),
+//.y_offset(10'd100),
+//.red(T_red),
+//.green(T_green),
+//.blue(T_blue),
+//.le_qbert()
+//);
+
+
 //Qbert_Map Beta(
 //.clk(iCLK),
 //.reset(!iRST_n),
