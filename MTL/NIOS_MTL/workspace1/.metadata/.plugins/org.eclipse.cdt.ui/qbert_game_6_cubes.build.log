@@ -1,0 +1,9 @@
+21:20:10 **** Incremental Build of configuration Nios II for project qbert_game_6_cubes ****
+make all 
+Info: Building ../qbert_game_6_cubes_bsp/
+C:/altera/15.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../qbert_game_6_cubes_bsp/
+[BSP build complete]
+[qbert_game_6_cubes build complete]
+
+21:20:15 Build Finished (took 4s.308ms)
+

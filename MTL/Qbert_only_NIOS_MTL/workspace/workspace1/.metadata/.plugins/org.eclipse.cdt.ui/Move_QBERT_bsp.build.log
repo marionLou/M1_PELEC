@@ -1,0 +1,6 @@
+12:39:31 **** Clean-only build of configuration Nios II for project Move_QBERT_bsp ****
+make clean 
+[BSP clean complete]
+
+12:39:46 Build Finished (took 14s.267ms)
+

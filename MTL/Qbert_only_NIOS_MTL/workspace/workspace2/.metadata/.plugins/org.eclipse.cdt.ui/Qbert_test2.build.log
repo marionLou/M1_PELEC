@@ -1,0 +1,9 @@
+14:51:59 **** Incremental Build of configuration Nios II for project Qbert_test2 ****
+make all 
+Info: Building ../Qbert_test2_bsp/
+C:/altera/15.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../Qbert_test2_bsp/
+[BSP build complete]
+[Qbert_test2 build complete]
+
+14:52:01 Build Finished (took 2s.541ms)
+

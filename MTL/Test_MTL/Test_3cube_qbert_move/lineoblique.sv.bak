@@ -1,0 +1,13 @@
+module lineoblique(
+	input logic clk,
+	input logic reset,
+	input logic [10:0] Xpos, 
+	input logic [9:0] Ypos,
+	output logic [7:0] red,
+	output logic [7:0] green,
+	output logic [7:0] blue
+);
+
+	logic [11:0] count;
+	
+	always_ff @(posedge clk)

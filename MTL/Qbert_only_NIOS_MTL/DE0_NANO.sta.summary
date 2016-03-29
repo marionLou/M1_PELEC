@@ -1,0 +1,245 @@
+------------------------------------------------------------
+TimeQuest Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow 1200mV 85C Model Setup 'MTL_PLL_inst|altpll_component|auto_generated|pll1|clk[0]'
+Slack : -20.695
+TNS   : -206.295
+
+Type  : Slow 1200mV 85C Model Setup 'RAM_PLL_inst|altpll_component|auto_generated|pll1|clk[0]'
+Slack : -2.968
+TNS   : -117.358
+
+Type  : Slow 1200mV 85C Model Setup 'CLOCK_50'
+Slack : 7.246
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Setup 'altera_reserved_tck'
+Slack : 47.631
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'CLOCK_50'
+Slack : 0.330
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'RAM_PLL_inst|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 0.357
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'altera_reserved_tck'
+Slack : 0.358
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'MTL_PLL_inst|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 0.501
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Recovery 'MTL_PLL_inst|altpll_component|auto_generated|pll1|clk[0]'
+Slack : -2.975
+TNS   : -128.013
+
+Type  : Slow 1200mV 85C Model Recovery 'RAM_PLL_inst|altpll_component|auto_generated|pll1|clk[0]'
+Slack : -2.349
+TNS   : -4.698
+
+Type  : Slow 1200mV 85C Model Recovery 'CLOCK_50'
+Slack : 16.009
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Recovery 'altera_reserved_tck'
+Slack : 48.313
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Removal 'altera_reserved_tck'
+Slack : 0.885
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Removal 'RAM_PLL_inst|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 0.927
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Removal 'MTL_PLL_inst|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 2.265
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Removal 'CLOCK_50'
+Slack : 3.284
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'RAM_PLL_inst|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 4.747
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'CLOCK_50'
+Slack : 9.485
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'MTL_PLL_inst|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 14.904
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'altera_reserved_tck'
+Slack : 49.538
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Setup 'MTL_PLL_inst|altpll_component|auto_generated|pll1|clk[0]'
+Slack : -18.407
+TNS   : -181.136
+
+Type  : Slow 1200mV 0C Model Setup 'RAM_PLL_inst|altpll_component|auto_generated|pll1|clk[0]'
+Slack : -2.654
+TNS   : -104.424
+
+Type  : Slow 1200mV 0C Model Setup 'CLOCK_50'
+Slack : 8.507
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Setup 'altera_reserved_tck'
+Slack : 47.948
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'CLOCK_50'
+Slack : 0.311
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'RAM_PLL_inst|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 0.311
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'altera_reserved_tck'
+Slack : 0.311
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'MTL_PLL_inst|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 0.452
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Recovery 'MTL_PLL_inst|altpll_component|auto_generated|pll1|clk[0]'
+Slack : -2.556
+TNS   : -109.687
+
+Type  : Slow 1200mV 0C Model Recovery 'RAM_PLL_inst|altpll_component|auto_generated|pll1|clk[0]'
+Slack : -2.065
+TNS   : -4.130
+
+Type  : Slow 1200mV 0C Model Recovery 'CLOCK_50'
+Slack : 16.447
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Recovery 'altera_reserved_tck'
+Slack : 48.557
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Removal 'altera_reserved_tck'
+Slack : 0.789
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Removal 'RAM_PLL_inst|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 0.837
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Removal 'MTL_PLL_inst|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 2.009
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Removal 'CLOCK_50'
+Slack : 2.959
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'RAM_PLL_inst|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 4.744
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'CLOCK_50'
+Slack : 9.485
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'MTL_PLL_inst|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 14.895
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'altera_reserved_tck'
+Slack : 49.497
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Setup 'MTL_PLL_inst|altpll_component|auto_generated|pll1|clk[0]'
+Slack : -11.257
+TNS   : -108.283
+
+Type  : Fast 1200mV 0C Model Setup 'RAM_PLL_inst|altpll_component|auto_generated|pll1|clk[0]'
+Slack : -1.619
+TNS   : -64.022
+
+Type  : Fast 1200mV 0C Model Setup 'CLOCK_50'
+Slack : 12.632
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Setup 'altera_reserved_tck'
+Slack : 48.941
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'CLOCK_50'
+Slack : 0.162
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'RAM_PLL_inst|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 0.186
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'altera_reserved_tck'
+Slack : 0.187
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'MTL_PLL_inst|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 0.259
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Recovery 'MTL_PLL_inst|altpll_component|auto_generated|pll1|clk[0]'
+Slack : -1.496
+TNS   : -63.682
+
+Type  : Fast 1200mV 0C Model Recovery 'RAM_PLL_inst|altpll_component|auto_generated|pll1|clk[0]'
+Slack : -1.301
+TNS   : -2.602
+
+Type  : Fast 1200mV 0C Model Recovery 'CLOCK_50'
+Slack : 17.621
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Recovery 'altera_reserved_tck'
+Slack : 49.342
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Removal 'altera_reserved_tck'
+Slack : 0.494
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Removal 'RAM_PLL_inst|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 0.508
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Removal 'MTL_PLL_inst|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 1.229
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Removal 'CLOCK_50'
+Slack : 1.898
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'RAM_PLL_inst|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 4.754
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'CLOCK_50'
+Slack : 9.206
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'MTL_PLL_inst|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 14.934
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'altera_reserved_tck'
+Slack : 49.311
+TNS   : 0.000
+
+------------------------------------------------------------

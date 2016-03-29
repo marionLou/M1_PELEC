@@ -1,0 +1,147 @@
+Info: Starting: Create block symbol file (.bsf)
+Info: qsys-generate C:\Users\Stephane\Documents\GitHub\M1_PELEC\MTL\Qbert_only_NIOS_MTL\qbert_only.qsys --block-symbol-file --output-directory=C:\Users\Stephane\Documents\GitHub\M1_PELEC\MTL\Qbert_only_NIOS_MTL\qbert_only --family="Cyclone IV E" --part=EP4CE22F17C6
+Progress: Loading Qbert_only_NIOS_MTL/qbert_only.qsys
+Progress: Reading input file
+Progress: Adding Button [altera_avalon_pio 15.0]
+Progress: Parameterizing module Button
+Progress: Adding LEDS [altera_avalon_pio 15.0]
+Progress: Parameterizing module LEDS
+Progress: Adding Switch [altera_avalon_pio 15.0]
+Progress: Parameterizing module Switch
+Progress: Adding clk_0 [clock_source 15.0]
+Progress: Parameterizing module clk_0
+Progress: Adding cpu [altera_nios2_gen2 15.0]
+Progress: Parameterizing module cpu
+Progress: Adding jtag_uart_0 [altera_avalon_jtag_uart 15.0]
+Progress: Parameterizing module jtag_uart_0
+Progress: Adding onchip_mem [altera_avalon_onchip_memory2 15.0]
+Progress: Parameterizing module onchip_mem
+Progress: Adding qbert_move_0 [qbert_move 1.0]
+Progress: Parameterizing module qbert_move_0
+Progress: Adding sysid_qsys_0 [altera_avalon_sysid_qsys 15.0]
+Progress: Parameterizing module sysid_qsys_0
+Progress: Adding timer_timestamp [altera_avalon_timer 15.0]
+Progress: Parameterizing module timer_timestamp
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: qbert_only.Button: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: qbert_only.Switch: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: qbert_only.sysid_qsys_0: System ID is not assigned automatically. Edit the System ID parameter to provide a unique ID
+Info: qbert_only.sysid_qsys_0: Time stamp will be automatically updated when this component is generated.
+Info: ip-generate succeeded.
+Info: Finished: Create block symbol file (.bsf)
+Info: 
+Info: Starting: Create HDL design files for synthesis
+Info: qsys-generate C:\Users\Stephane\Documents\GitHub\M1_PELEC\MTL\Qbert_only_NIOS_MTL\qbert_only.qsys --synthesis=VERILOG --output-directory=C:\Users\Stephane\Documents\GitHub\M1_PELEC\MTL\Qbert_only_NIOS_MTL\qbert_only\synthesis --family="Cyclone IV E" --part=EP4CE22F17C6
+Progress: Loading Qbert_only_NIOS_MTL/qbert_only.qsys
+Progress: Reading input file
+Progress: Adding Button [altera_avalon_pio 15.0]
+Progress: Parameterizing module Button
+Progress: Adding LEDS [altera_avalon_pio 15.0]
+Progress: Parameterizing module LEDS
+Progress: Adding Switch [altera_avalon_pio 15.0]
+Progress: Parameterizing module Switch
+Progress: Adding clk_0 [clock_source 15.0]
+Progress: Parameterizing module clk_0
+Progress: Adding cpu [altera_nios2_gen2 15.0]
+Progress: Parameterizing module cpu
+Progress: Adding jtag_uart_0 [altera_avalon_jtag_uart 15.0]
+Progress: Parameterizing module jtag_uart_0
+Progress: Adding onchip_mem [altera_avalon_onchip_memory2 15.0]
+Progress: Parameterizing module onchip_mem
+Progress: Adding qbert_move_0 [qbert_move 1.0]
+Progress: Parameterizing module qbert_move_0
+Progress: Adding sysid_qsys_0 [altera_avalon_sysid_qsys 15.0]
+Progress: Parameterizing module sysid_qsys_0
+Progress: Adding timer_timestamp [altera_avalon_timer 15.0]
+Progress: Parameterizing module timer_timestamp
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: qbert_only.Button: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: qbert_only.Switch: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info: qbert_only.sysid_qsys_0: System ID is not assigned automatically. Edit the System ID parameter to provide a unique ID
+Info: qbert_only.sysid_qsys_0: Time stamp will be automatically updated when this component is generated.
+Info: qbert_only: Generating qbert_only "qbert_only" for QUARTUS_SYNTH
+Info: Button: Starting RTL generation for module 'qbert_only_Button'
+Info: Button:   Generation command is [exec C:/altera/15.0/quartus/bin64/perl/bin/perl.exe -I C:/altera/15.0/quartus/bin64/perl/lib -I C:/altera/15.0/quartus/sopc_builder/bin/europa -I C:/altera/15.0/quartus/sopc_builder/bin/perl_lib -I C:/altera/15.0/quartus/sopc_builder/bin -I C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=qbert_only_Button --dir=C:/Users/Stephane/AppData/Local/Temp/alt6889_8425125493489780251.dir/0028_Button_gen/ --quartus_dir=C:/altera/15.0/quartus --verilog --config=C:/Users/Stephane/AppData/Local/Temp/alt6889_8425125493489780251.dir/0028_Button_gen//qbert_only_Button_component_configuration.pl  --do_build_sim=0  ]
+Info: Button: Done RTL generation for module 'qbert_only_Button'
+Info: Button: "qbert_only" instantiated altera_avalon_pio "Button"
+Info: LEDS: Starting RTL generation for module 'qbert_only_LEDS'
+Info: LEDS:   Generation command is [exec C:/altera/15.0/quartus/bin64/perl/bin/perl.exe -I C:/altera/15.0/quartus/bin64/perl/lib -I C:/altera/15.0/quartus/sopc_builder/bin/europa -I C:/altera/15.0/quartus/sopc_builder/bin/perl_lib -I C:/altera/15.0/quartus/sopc_builder/bin -I C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=qbert_only_LEDS --dir=C:/Users/Stephane/AppData/Local/Temp/alt6889_8425125493489780251.dir/0029_LEDS_gen/ --quartus_dir=C:/altera/15.0/quartus --verilog --config=C:/Users/Stephane/AppData/Local/Temp/alt6889_8425125493489780251.dir/0029_LEDS_gen//qbert_only_LEDS_component_configuration.pl  --do_build_sim=0  ]
+Info: LEDS: Done RTL generation for module 'qbert_only_LEDS'
+Info: LEDS: "qbert_only" instantiated altera_avalon_pio "LEDS"
+Info: Switch: Starting RTL generation for module 'qbert_only_Switch'
+Info: Switch:   Generation command is [exec C:/altera/15.0/quartus/bin64/perl/bin/perl.exe -I C:/altera/15.0/quartus/bin64/perl/lib -I C:/altera/15.0/quartus/sopc_builder/bin/europa -I C:/altera/15.0/quartus/sopc_builder/bin/perl_lib -I C:/altera/15.0/quartus/sopc_builder/bin -I C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=qbert_only_Switch --dir=C:/Users/Stephane/AppData/Local/Temp/alt6889_8425125493489780251.dir/0030_Switch_gen/ --quartus_dir=C:/altera/15.0/quartus --verilog --config=C:/Users/Stephane/AppData/Local/Temp/alt6889_8425125493489780251.dir/0030_Switch_gen//qbert_only_Switch_component_configuration.pl  --do_build_sim=0  ]
+Info: Switch: Done RTL generation for module 'qbert_only_Switch'
+Info: Switch: "qbert_only" instantiated altera_avalon_pio "Switch"
+Info: cpu: "qbert_only" instantiated altera_nios2_gen2 "cpu"
+Info: jtag_uart_0: Starting RTL generation for module 'qbert_only_jtag_uart_0'
+Info: jtag_uart_0:   Generation command is [exec C:/altera/15.0/quartus/bin64/perl/bin/perl.exe -I C:/altera/15.0/quartus/bin64/perl/lib -I C:/altera/15.0/quartus/sopc_builder/bin/europa -I C:/altera/15.0/quartus/sopc_builder/bin/perl_lib -I C:/altera/15.0/quartus/sopc_builder/bin -I C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart -- C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart/generate_rtl.pl --name=qbert_only_jtag_uart_0 --dir=C:/Users/Stephane/AppData/Local/Temp/alt6889_8425125493489780251.dir/0031_jtag_uart_0_gen/ --quartus_dir=C:/altera/15.0/quartus --verilog --config=C:/Users/Stephane/AppData/Local/Temp/alt6889_8425125493489780251.dir/0031_jtag_uart_0_gen//qbert_only_jtag_uart_0_component_configuration.pl  --do_build_sim=0  ]
+Info: jtag_uart_0: Done RTL generation for module 'qbert_only_jtag_uart_0'
+Info: jtag_uart_0: "qbert_only" instantiated altera_avalon_jtag_uart "jtag_uart_0"
+Info: onchip_mem: Starting RTL generation for module 'qbert_only_onchip_mem'
+Info: onchip_mem:   Generation command is [exec C:/altera/15.0/quartus/bin64/perl/bin/perl.exe -I C:/altera/15.0/quartus/bin64/perl/lib -I C:/altera/15.0/quartus/sopc_builder/bin/europa -I C:/altera/15.0/quartus/sopc_builder/bin/perl_lib -I C:/altera/15.0/quartus/sopc_builder/bin -I C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2 -- C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2/generate_rtl.pl --name=qbert_only_onchip_mem --dir=C:/Users/Stephane/AppData/Local/Temp/alt6889_8425125493489780251.dir/0032_onchip_mem_gen/ --quartus_dir=C:/altera/15.0/quartus --verilog --config=C:/Users/Stephane/AppData/Local/Temp/alt6889_8425125493489780251.dir/0032_onchip_mem_gen//qbert_only_onchip_mem_component_configuration.pl  --do_build_sim=0  ]
+Info: onchip_mem: Done RTL generation for module 'qbert_only_onchip_mem'
+Info: onchip_mem: "qbert_only" instantiated altera_avalon_onchip_memory2 "onchip_mem"
+Info: qbert_move_0: "qbert_only" instantiated qbert_move "qbert_move_0"
+Info: sysid_qsys_0: "qbert_only" instantiated altera_avalon_sysid_qsys "sysid_qsys_0"
+Info: timer_timestamp: Starting RTL generation for module 'qbert_only_timer_timestamp'
+Info: timer_timestamp:   Generation command is [exec C:/altera/15.0/quartus/bin64//perl/bin/perl.exe -I C:/altera/15.0/quartus/bin64//perl/lib -I C:/altera/15.0/quartus/sopc_builder/bin/europa -I C:/altera/15.0/quartus/sopc_builder/bin/perl_lib -I C:/altera/15.0/quartus/sopc_builder/bin -I C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_timer -- C:/altera/15.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_timer/generate_rtl.pl --name=qbert_only_timer_timestamp --dir=C:/Users/Stephane/AppData/Local/Temp/alt6889_8425125493489780251.dir/0035_timer_timestamp_gen/ --quartus_dir=C:/altera/15.0/quartus --verilog --config=C:/Users/Stephane/AppData/Local/Temp/alt6889_8425125493489780251.dir/0035_timer_timestamp_gen//qbert_only_timer_timestamp_component_configuration.pl  --do_build_sim=0  ]
+Info: timer_timestamp: Done RTL generation for module 'qbert_only_timer_timestamp'
+Info: timer_timestamp: "qbert_only" instantiated altera_avalon_timer "timer_timestamp"
+Info: avalon_st_adapter: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_001: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_002: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_003: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_004: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_005: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_006: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_007: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_008: Inserting error_adapter: error_adapter_0
+Info: mm_interconnect_0: "qbert_only" instantiated altera_mm_interconnect "mm_interconnect_0"
+Info: irq_mapper: "qbert_only" instantiated altera_irq_mapper "irq_mapper"
+Info: rst_controller: "qbert_only" instantiated altera_reset_controller "rst_controller"
+Info: cpu: Starting RTL generation for module 'qbert_only_cpu_cpu'
+Info: cpu:   Generation command is [exec C:/altera/15.0/quartus/bin64/eperlcmd.exe -I C:/altera/15.0/quartus/bin64/perl/lib -I C:/altera/15.0/quartus/sopc_builder/bin/europa -I C:/altera/15.0/quartus/sopc_builder/bin/perl_lib -I C:/altera/15.0/quartus/sopc_builder/bin -I C:/altera/15.0/quartus/../ip/altera/nios2_ip/altera_nios2_gen2/cpu_lib -I C:/altera/15.0/quartus/../ip/altera/nios2_ip/altera_nios2_gen2/nios_lib -I C:/altera/15.0/quartus/../ip/altera/nios2_ip/altera_nios2_gen2 -I C:/altera/15.0/quartus/../ip/altera/nios2_ip/altera_nios2_gen2 -- C:/altera/15.0/quartus/../ip/altera/nios2_ip/altera_nios2_gen2/generate_rtl.epl --name=qbert_only_cpu_cpu --dir=C:/Users/Stephane/AppData/Local/Temp/alt6889_8425125493489780251.dir/0038_cpu_gen/ --quartus_bindir=C:/altera/15.0/quartus/bin64 --verilog --config=C:/Users/Stephane/AppData/Local/Temp/alt6889_8425125493489780251.dir/0038_cpu_gen//qbert_only_cpu_cpu_processor_configuration.pl  --do_build_sim=0  ]
+Info: cpu: # 2016.03.29 17:00:09 (*) Starting Nios II generation
+Info: cpu: # 2016.03.29 17:00:09 (*)   Checking for plaintext license.
+Info: cpu: # 2016.03.29 17:00:12 (*)   Couldn't query license setup in Quartus directory C:/altera/15.0/quartus/bin64
+Info: cpu: # 2016.03.29 17:00:12 (*)   Defaulting to contents of LM_LICENSE_FILE environment variable
+Info: cpu: # 2016.03.29 17:00:12 (*)   LM_LICENSE_FILE environment variable is empty
+Info: cpu: # 2016.03.29 17:00:12 (*)   Plaintext license not found.
+Info: cpu: # 2016.03.29 17:00:12 (*)   No license required to generate encrypted Nios II/e.
+Info: cpu: # 2016.03.29 17:00:12 (*)   Elaborating CPU configuration settings
+Info: cpu: # 2016.03.29 17:00:12 (*)   Creating all objects for CPU
+Info: cpu: # 2016.03.29 17:00:16 (*)   Generating RTL from CPU objects
+Info: cpu: # 2016.03.29 17:00:16 (*)   Creating plain-text RTL
+Info: cpu: # 2016.03.29 17:00:21 (*) Done Nios II generation
+Info: cpu: Done RTL generation for module 'qbert_only_cpu_cpu'
+Info: cpu: "cpu" instantiated altera_nios2_gen2_unit "cpu"
+Info: cpu_data_master_translator: "mm_interconnect_0" instantiated altera_merlin_master_translator "cpu_data_master_translator"
+Info: qbert_move_0_avalon_translator: "mm_interconnect_0" instantiated altera_merlin_slave_translator "qbert_move_0_avalon_translator"
+Info: cpu_data_master_agent: "mm_interconnect_0" instantiated altera_merlin_master_agent "cpu_data_master_agent"
+Info: qbert_move_0_avalon_agent: "mm_interconnect_0" instantiated altera_merlin_slave_agent "qbert_move_0_avalon_agent"
+Info: qbert_move_0_avalon_agent_rsp_fifo: "mm_interconnect_0" instantiated altera_avalon_sc_fifo "qbert_move_0_avalon_agent_rsp_fifo"
+Info: router: "mm_interconnect_0" instantiated altera_merlin_router "router"
+Info: router_001: "mm_interconnect_0" instantiated altera_merlin_router "router_001"
+Info: router_002: "mm_interconnect_0" instantiated altera_merlin_router "router_002"
+Info: router_005: "mm_interconnect_0" instantiated altera_merlin_router "router_005"
+Info: cmd_demux: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "cmd_demux"
+Info: cmd_demux_001: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "cmd_demux_001"
+Info: cmd_mux: "mm_interconnect_0" instantiated altera_merlin_multiplexer "cmd_mux"
+Info: cmd_mux_003: "mm_interconnect_0" instantiated altera_merlin_multiplexer "cmd_mux_003"
+Info: Reusing file C:/Users/Stephane/Documents/GitHub/M1_PELEC/MTL/Qbert_only_NIOS_MTL/qbert_only/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: rsp_demux: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "rsp_demux"
+Info: rsp_mux: "mm_interconnect_0" instantiated altera_merlin_multiplexer "rsp_mux"
+Info: Reusing file C:/Users/Stephane/Documents/GitHub/M1_PELEC/MTL/Qbert_only_NIOS_MTL/qbert_only/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: rsp_mux_001: "mm_interconnect_0" instantiated altera_merlin_multiplexer "rsp_mux_001"
+Info: Reusing file C:/Users/Stephane/Documents/GitHub/M1_PELEC/MTL/Qbert_only_NIOS_MTL/qbert_only/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: avalon_st_adapter: "mm_interconnect_0" instantiated altera_avalon_st_adapter "avalon_st_adapter"
+Info: error_adapter_0: "avalon_st_adapter" instantiated error_adapter "error_adapter_0"
+Info: qbert_only: Done "qbert_only" with 32 modules, 46 files
+Info: ip-generate succeeded.
+Info: Finished: Create HDL design files for synthesis

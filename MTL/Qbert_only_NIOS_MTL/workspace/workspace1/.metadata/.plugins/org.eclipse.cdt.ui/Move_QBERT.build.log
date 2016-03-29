@@ -1,0 +1,20 @@
+13:38:20 **** Build of configuration Nios II for project Move_QBERT ****
+make all 
+Info: Building ../Move_QBERT_bsp/
+C:/altera/15.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../Move_QBERT_bsp/
+[BSP build complete]
+Info: Compiling hello_world.c to obj/default/hello_world.o
+nios2-elf-gcc -xc -MP -MMD -c -I../Move_QBERT_bsp//HAL/inc -I../Move_QBERT_bsp/ -I../Move_QBERT_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx  -o obj/default/hello_world.o hello_world.c
+Info: Linking Move_QBERT.elf
+nios2-elf-g++  -T'../Move_QBERT_bsp//linker.x' -msys-crt0='../Move_QBERT_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../Move_QBERT_bsp/   -Wl,-Map=Move_QBERT.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx  -o Move_QBERT.elf obj/default/hello_world.o -lm -msys-lib=m
+c:/altera/15.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/4.9.1/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: Move_QBERT.elf section `.text' will not fit in region `onchip_mem'
+c:/altera/15.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/4.9.1/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0xf108 of Move_QBERT.elf section `.rwdata' is not within region `onchip_mem'
+c:/altera/15.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/4.9.1/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x10cc8 of Move_QBERT.elf section `.bss' is not within region `onchip_mem'
+c:/altera/15.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/4.9.1/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0xf108 of Move_QBERT.elf section `.rwdata' is not within region `onchip_mem'
+c:/altera/15.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/4.9.1/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x10cc8 of Move_QBERT.elf section `.bss' is not within region `onchip_mem'
+c:/altera/15.0/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/4.9.1/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: region `onchip_mem' overflowed by 16040 bytes
+collect2.exe: error: ld returned 1 exit status
+make: *** [Move_QBERT.elf] Error 1
+
+13:38:24 Build Finished (took 3s.522ms)
+
