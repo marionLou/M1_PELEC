@@ -142,7 +142,7 @@ logic [9:0] QBERT_POSITION_Y1;
 
 logic [20:0] qbert_position_xy0;
 logic [20:0] qbert_position_xy1;
-logic  		 qbert_jump; 	
+logic [3:0]		 qbert_jump; 	
 
 logic [4:0] A_qbert_position_xy0 = 4'd4;
 logic [4:0] A_qbert_position_xy1 = 4'd5;
@@ -166,7 +166,7 @@ begin
 		rank1_xy_offset <= 21'd0;
 		qbert_position_xy0 <= 21'd0;
 		qbert_position_xy1 <= 21'd0;
-		qbert_jump <= 1'd0;
+		qbert_jump <= 4'd0;
 	end
 	else begin 
 		if (Avalon_write) begin 
@@ -177,7 +177,7 @@ begin
 				A_rank1_xy_offset : rank1_xy_offset <= Avalon_writedata[20:0];
 				A_qbert_position_xy0 : qbert_position_xy0 <= Avalon_writedata[20:0];
 				A_qbert_position_xy1 : qbert_position_xy1 <= Avalon_writedata[20:0];
-				A_qbert_jump : qbert_jump <= Avalon_writedata[0];
+				A_qbert_jump : qbert_jump <= Avalon_writedata[3:0];
 				default;
 			endcase
 		end
@@ -190,7 +190,7 @@ begin
 				A_rank1_xy_offset : reg_readdata <= {11'b0,rank1_xy_offset};
 				A_qbert_position_xy0 : reg_readdata <= {11'b0,qbert_position_xy0};
 				A_qbert_position_xy1 : reg_readdata <= {11'b0,qbert_position_xy1};
-				A_qbert_jump : reg_readdata <= {31'b0,qbert_jump};
+				A_qbert_jump : reg_readdata <= {28'b0,qbert_jump};
 				A_iSPI : reg_readdata <= {24'b0, iSPI};
 				default;
 			endcase

@@ -2,8 +2,8 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>Mar 29, 2016 8:37:40 PM</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1459276660589</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>30-mars-2016 1:02:57</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1459292577044</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>C:\Users\Stephane\Documents\GitHub\M1_PELEC\MTL\NIOS_MTL\software\qbert_game_6_cubes_bsp</BspGeneratedLocation>
         <BspSettingsFile>settings.bsp</BspSettingsFile>
         <SopcDesignFile>..\..\nios_mtl.sopcinfo</SopcDesignFile>

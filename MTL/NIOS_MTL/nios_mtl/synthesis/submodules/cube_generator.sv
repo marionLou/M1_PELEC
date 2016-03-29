@@ -8,7 +8,8 @@ module cube_generator(
 	output logic qbert_top_face,
 	output logic left_face,
 	output logic right_face,
-	output logic [3:0] top_face
+//	output logic [3:0] top_face
+	output logic top_face
 	);
 	/*
  A beautiful cube with 
@@ -133,7 +134,7 @@ count <= count + 32'b1;
 end
 
 //assign passage_qbert = passage_qbert_reg;
-assign top_face = top_reg;
+assign top_face = top_reg[3]|top_reg[2]|top_reg[1]|top_reg[0];
 assign left_face = left_reg;
 assign right_face = right_reg;
 assign qbert_top_face = qbert_top_face_reg;
