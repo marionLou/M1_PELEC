@@ -85,20 +85,20 @@ begin
   right_reg <= {(x_cnt >= X_line_06 && x_cnt <= X_line_12) 
 					&&(y_cnt >= XY0[9:0] && y_cnt < XY6[9:0])}; 
 									
-  top_reg[0] <= {(x_cnt >= XY0[20:10] && x_cnt < X_line_06)  
-					&& (y_cnt > XY0[9:0] && y_cnt <= XY6[9:0])};
+  top_reg[0] <= {(x_cnt >= XY0[20:10] && x_cnt <= X_line_06)  
+					&& (y_cnt >= XY0[9:0] && y_cnt <= XY6[9:0])};
 		
-  top_reg[1] <= {(x_cnt >= X_line_50 && x_cnt < XY0[20:10])  
-					&& (y_cnt > XY0[9:0] && y_cnt <= XY6[9:0])};
+  top_reg[1] <= {(x_cnt >= X_line_50 && x_cnt <= XY0[20:10])  
+					&& (y_cnt >= XY0[9:0] && y_cnt <= XY6[9:0])};
 					
   top_reg[2] <= {(x_cnt >= XY0[20:10] && x_cnt < X_line_64)  
-					&&(y_cnt > XY6[9:0] && y_cnt < XY4[9:0])};
+					&&(y_cnt >= XY6[9:0] && y_cnt <= XY4[9:0])};
 	
-  top_reg[3] <= {(x_cnt >= X_line_45 && x_cnt < XY0[20:10])  
-					&&(y_cnt > XY6[9:0] && y_cnt < XY4[9:0])};
+  top_reg[3] <= {(x_cnt >= X_line_45 && x_cnt <= XY0[20:10])  
+					&&(y_cnt >= XY6[9:0] && y_cnt <= XY4[9:0])};
 					
 
-if ( (nios_top_color & top_face_cnt ) == 1'b1)
+if ( (nios_top_color & top_face_cnt ) != 6'b0)
  qbert_top_face_reg <= 1'b1; 
 else qbert_top_face_reg <= 1'b0;
 					

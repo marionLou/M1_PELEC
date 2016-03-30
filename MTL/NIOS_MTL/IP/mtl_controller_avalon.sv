@@ -129,9 +129,12 @@ logic [9:0] RANK1_Y_OFFSET;
 logic [20:0] xydiag_demi;
 logic [20:0] rank1_xy_offset;
 
+logic [5:0] hitbox_top;
+
 logic [4:0] A_XLENGTH = 4'd1;
 logic [4:0] A_xydiag_demi = 4'd2;
 logic [4:0] A_rank1_xy_offset = 4'd3;
+logic [4:0] A_hitbox_top = 4'd4;
 
 // ---- Qbert definition -----------//
 
@@ -145,17 +148,17 @@ logic [20:0] qbert_position_xy1;
 logic [5:0] 	nios_top_color;
 logic [3:0]		 qbert_jump; 	
 
-logic [4:0] A_qbert_position_xy0 = 4'd4;
-logic [4:0] A_qbert_position_xy1 = 4'd5;
-logic [4:0] A_nios_top_color = 4'd6;
-logic [4:0] A_qbert_jump = 4'd7;
+logic [4:0] A_qbert_position_xy0 = 4'd5;
+logic [4:0] A_qbert_position_xy1 = 4'd6;
+logic [4:0] A_nios_top_color = 4'd7;
+logic [4:0] A_qbert_jump = 4'd8;
 
 
 // ---- SPI definition -----------//
 
 reg [31:0] reg_readdata;
 
-logic [4:0] A_iSPI = 4'd7;
+logic [4:0] A_iSPI = 4'd9;
 
 // ---- READ & WRITE -----------//
 
@@ -196,6 +199,7 @@ begin
 				A_qbert_position_xy1 : reg_readdata <= {11'b0,qbert_position_xy1};
 				A_nios_top_color : reg_readdata <= {26'b0,nios_top_color};
 				A_qbert_jump : reg_readdata <= {28'b0,qbert_jump};
+				A_hitbox_top : reg_readdata <= {26'b0,hitbox_top};
 				A_iSPI : reg_readdata <= {24'b0, iSPI};
 				default;
 			endcase
