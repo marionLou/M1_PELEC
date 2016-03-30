@@ -1,6 +1,0 @@
-20:32:50 **** Clean-only build of configuration Nios II for project qbert_game_6_cubes_bsp ****
-make clean 
-[BSP clean complete]
-
-20:33:03 Build Finished (took 13s.327ms)
-

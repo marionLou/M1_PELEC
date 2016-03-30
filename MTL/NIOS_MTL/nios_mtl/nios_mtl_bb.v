@@ -3,8 +3,6 @@ module nios_mtl (
 	button_external_connection_export,
 	clk_clk,
 	leds_external_connection_export,
-	reset_reset_n,
-	switch_external_connection_export,
 	nios_mtl_controller_0_mtl_controller_spi,
 	nios_mtl_controller_0_mtl_controller_clk,
 	nios_mtl_controller_0_mtl_controller_reset_n,
@@ -17,13 +15,13 @@ module nios_mtl (
 	nios_mtl_controller_0_mtl_controller_vd,
 	nios_mtl_controller_0_mtl_controller_lcd_r,
 	nios_mtl_controller_0_mtl_controller_lcd_g,
-	nios_mtl_controller_0_mtl_controller_lcd_b);	
+	nios_mtl_controller_0_mtl_controller_lcd_b,
+	reset_reset_n,
+	switch_external_connection_export);	
 
 	input		button_external_connection_export;
 	input		clk_clk;
 	output	[7:0]	leds_external_connection_export;
-	input		reset_reset_n;
-	input	[3:0]	switch_external_connection_export;
 	input	[7:0]	nios_mtl_controller_0_mtl_controller_spi;
 	input		nios_mtl_controller_0_mtl_controller_clk;
 	input		nios_mtl_controller_0_mtl_controller_reset_n;
@@ -37,4 +35,6 @@ module nios_mtl (
 	output	[7:0]	nios_mtl_controller_0_mtl_controller_lcd_r;
 	output	[7:0]	nios_mtl_controller_0_mtl_controller_lcd_g;
 	output	[7:0]	nios_mtl_controller_0_mtl_controller_lcd_b;
+	input		reset_reset_n;
+	input	[3:0]	switch_external_connection_export;
 endmodule

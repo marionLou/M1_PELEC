@@ -78,7 +78,7 @@ if(qbert_jump != 4'b0000) begin
  move_count <= move_count + 32'd1;
 
 	case(move_state)
-		IDLE : if( move_count[14] == 1'b1 ) begin
+		IDLE : if( move_count[15] == 1'b1 ) begin
 					if (qbert_jump == 4'b0001) begin
 						if (YC > y0) 
 							{XC,YC} <= {XC , YC - 10'd1}; 
@@ -108,7 +108,7 @@ if(qbert_jump != 4'b0000) begin
 						move_state <= RUN;
 					end
 				end 
-		RUN : if(move_count[14] == 1'b0) move_state <= IDLE;
+		RUN : if(move_count[15] == 1'b0) move_state <= IDLE;
 		default : begin 
 					move_state <= IDLE;
 					{XC,YC} <= {x0 , y0 + YDIAG_DEMI};

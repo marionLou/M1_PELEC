@@ -105,6 +105,14 @@
          type = "String";
       }
    }
+   element nios_mtl
+   {
+      datum _originalDeviceFamily
+      {
+         value = "Cyclone IV E";
+         type = "String";
+      }
+   }
    element nios_mtl_controller_0
    {
       datum _sortIndex
@@ -126,14 +134,6 @@
       datum baseAddress
       {
          value = "32768";
-         type = "String";
-      }
-   }
-   element qbert_move_0.avalon
-   {
-      datum baseAddress
-      {
-         value = "69632";
          type = "String";
       }
    }

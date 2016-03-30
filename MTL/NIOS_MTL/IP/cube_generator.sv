@@ -5,6 +5,8 @@ module cube_generator(
 	input logic [9:0] y_cnt, y_offset, YDIAG_DEMI,
 	input logic [10:0] qbert_x,  
 	input logic [9:0] qbert_y,
+	input logic [5:0] top_face_cnt,
+	input logic [5:0] nios_top_color,
 	output logic qbert_top_face,
 	output logic left_face,
 	output logic right_face,
@@ -60,7 +62,7 @@ the position of each point
 	logic left_reg;
 	logic right_reg;
 	logic [3:0] top_reg;
-	logic qbert_zone;
+//	logic qbert_zone;
 	logic qbert_top_face_reg;
 	
 	
@@ -69,14 +71,13 @@ the position of each point
 always_ff @(posedge clk)
 begin
 	
-   XY0 <= {x_offset , y_offset};
-   XY1 <= {x_offset + XLENGTH , y_offset};
+	XY0 <= {x_offset , y_offset};
+	XY1 <= {x_offset + XLENGTH , y_offset};
 	XY2 <= {x_offset + XLENGTH + XDIAG_DEMI , y_offset + YDIAG_DEMI};
 	XY3 <= {x_offset + XLENGTH , y_offset + YDIAG_DEMI + YDIAG_DEMI};
 	XY4 <= {x_offset , y_offset + YDIAG_DEMI + YDIAG_DEMI};
 	XY5 <= { x_offset - XDIAG_DEMI , y_offset + YDIAG_DEMI};
 	XY6 <= { x_offset + XDIAG_DEMI , y_offset + YDIAG_DEMI};
-//	XYcenter <= {x_offset , y_offset + YDIAG_DEMI};
 	
   left_reg <= {(x_cnt >= X_line_64 && x_cnt <= X_line_23) 
 					&&(y_cnt >= XY6[9:0] && y_cnt <= XY4[9:0])};
@@ -96,44 +97,46 @@ begin
   top_reg[3] <= {(x_cnt >= X_line_45 && x_cnt < XY0[20:10])  
 					&&(y_cnt > XY6[9:0] && y_cnt < XY4[9:0])};
 					
-	qbert_zone <= {(qbert_x < XY0[20:10] + XDIAG_DEMI && qbert_x > XY0[20:10] - XDIAG_DEMI) 
-				&& (qbert_y < XY0[9:0] + YDIAG_DEMI + YDIAG_DEMI && qbert_y > XY0[9:0] )};
+
+if ( (nios_top_color & top_face_cnt ) == 1'b1)
+ qbert_top_face_reg <= 1'b1; 
+else qbert_top_face_reg <= 1'b0;
+					
+//	qbert_zone <= {(qbert_x < XY0[20:10] + XDIAG_DEMI && qbert_x > XY0[20:10] - XDIAG_DEMI) 
+//				&& (qbert_y < XY0[9:0] + YDIAG_DEMI + YDIAG_DEMI && qbert_y > XY0[9:0] )};
 		
 end
 
-logic [31:0] count;
+//----------------------------------------------------//
 
-typedef enum logic {IDLE, RUN} state_t;
-state_t state;
+// logic [31:0] count;
 
-always_ff @(posedge clk) begin
+// typedef enum logic {IDLE, RUN} state_t;
+// state_t state;
 
-//-----------------Qbert------------------------------//
+//always_ff @(posedge clk) begin
 
-count <= count + 32'b1;
-	case(state)
-		IDLE : begin
-					begin
-						if ( qbert_zone) state <= RUN;
-						else qbert_top_face_reg <= 1'b0; 
-					end
-				end
-		RUN : begin
-					 // qbert_top_face_reg <= 1'b1;
-					 // state <= IDLE;
-					if (count[16] == 1'b1)
-					qbert_top_face_reg <= 1'b1 ;
-					else state <= IDLE;
-				end
-		default : begin
-						state <= IDLE;
-						qbert_top_face_reg <= 1'b0;
-					end
-	endcase
+// count <= count + 32'b1;
+	// case(state)
+		// IDLE : begin
+					// begin
+						// if ( qbert_zone) state <= RUN;
+						// else qbert_top_face_reg <= 1'b0; 
+					// end
+				// end
+		// RUN : begin
+					// if (count[16] == 1'b1)
+					// qbert_top_face_reg <= 1'b1 ;
+					// else state <= IDLE;
+				// end
+		// default : begin
+						// state <= IDLE;
+						// qbert_top_face_reg <= 1'b0;
+					// end
+	// endcase
 
-end
+//end
 
-//assign passage_qbert = passage_qbert_reg;
 assign top_face = top_reg[3]|top_reg[2]|top_reg[1]|top_reg[0];
 assign left_face = left_reg;
 assign right_face = right_reg;

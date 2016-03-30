@@ -142,11 +142,13 @@ logic [9:0] QBERT_POSITION_Y1;
 
 logic [20:0] qbert_position_xy0;
 logic [20:0] qbert_position_xy1;
+logic [5:0] 	nios_top_color;
 logic [3:0]		 qbert_jump; 	
 
 logic [4:0] A_qbert_position_xy0 = 4'd4;
 logic [4:0] A_qbert_position_xy1 = 4'd5;
-logic [4:0] A_qbert_jump = 4'd6;
+logic [4:0] A_nios_top_color = 4'd6;
+logic [4:0] A_qbert_jump = 4'd7;
 
 
 // ---- SPI definition -----------//
@@ -166,6 +168,7 @@ begin
 		rank1_xy_offset <= 21'd0;
 		qbert_position_xy0 <= 21'd0;
 		qbert_position_xy1 <= 21'd0;
+		nios_top_color <= 6'd0;
 		qbert_jump <= 4'd0;
 	end
 	else begin 
@@ -177,6 +180,7 @@ begin
 				A_rank1_xy_offset : rank1_xy_offset <= Avalon_writedata[20:0];
 				A_qbert_position_xy0 : qbert_position_xy0 <= Avalon_writedata[20:0];
 				A_qbert_position_xy1 : qbert_position_xy1 <= Avalon_writedata[20:0];
+				A_nios_top_color : nios_top_color <= Avalon_writedata[5:0];
 				A_qbert_jump : qbert_jump <= Avalon_writedata[3:0];
 				default;
 			endcase
@@ -190,6 +194,7 @@ begin
 				A_rank1_xy_offset : reg_readdata <= {11'b0,rank1_xy_offset};
 				A_qbert_position_xy0 : reg_readdata <= {11'b0,qbert_position_xy0};
 				A_qbert_position_xy1 : reg_readdata <= {11'b0,qbert_position_xy1};
+				A_nios_top_color : reg_readdata <= {26'b0,nios_top_color};
 				A_qbert_jump : reg_readdata <= {28'b0,qbert_jump};
 				A_iSPI : reg_readdata <= {24'b0, iSPI};
 				default;
@@ -410,8 +415,7 @@ end
 // QBERT GAME
 //=============================================================================
 
-
-Qbert_Map2 Beta(
+Qbert_Map_Color Beta(
 	.CLK_33(iCLK),
 	.reset(!iRST_n),
 	.red(QBERT_GAME_red),
@@ -419,6 +423,14 @@ Qbert_Map2 Beta(
 	.blue(QBERT_GAME_blue),
 	.*
 );
+//Qbert_Map2 Beta(
+//	.CLK_33(iCLK),
+//	.reset(!iRST_n),
+//	.red(QBERT_GAME_red),
+//	.green(QBERT_GAME_green),
+//	.blue(QBERT_GAME_blue),
+//	.*
+//);
 
 	
 						

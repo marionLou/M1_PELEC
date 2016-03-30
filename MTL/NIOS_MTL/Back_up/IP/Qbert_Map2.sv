@@ -10,7 +10,7 @@ module Qbert_Map2(
 	
 // --- Qbert position ------------//
 
-	input logic qbert_jump,
+	input logic [3:0] qbert_jump,
 	input logic [10:0] QBERT_POSITION_X0,
 	input logic [10:0] QBERT_POSITION_X1,
 	input logic [9:0] QBERT_POSITION_Y0,
@@ -49,7 +49,8 @@ module Qbert_Map2(
 // --- Rank 1 --------------------------------------------------//	
 	logic R1_left_face_n1, R1_left_face_n2, R1_left_face_n3;
 	logic R1_right_face_n1, R1_right_face_n2, R1_right_face_n3;
-	logic [3:0] R1_top_face_n1, R1_top_face_n2, R1_top_face_n3;
+	logic R1_top_face_n1, R1_top_face_n2, R1_top_face_n3;
+//	logic [3:0] R1_top_face_n1, R1_top_face_n2, R1_top_face_n3;
 	logic R1_qbert_top_face_n1, R1_qbert_top_face_n2, R1_qbert_top_face_n3;
 	
 	logic [10:0] R1_x_offset_n1, R1_x_offset_n2, R1_x_offset_n3;
@@ -66,13 +67,14 @@ module Qbert_Map2(
 	
 	logic [2:0] R1_left_face;
 	logic [2:0] R1_right_face;
-	logic [11:0] R1_top_face;
+//	logic [11:0] R1_top_face;
 	
 // --- Rank 2 --------------------------------------------------//
 
 	logic R2_left_face_n1, R2_left_face_n2;
 	logic R2_right_face_n1, R2_right_face_n2;
-	logic [3:0] R2_top_face_n1, R2_top_face_n2;
+//	logic [3:0] R2_top_face_n1, R2_top_face_n2;
+	logic R2_top_face_n1, R2_top_face_n2;
 	logic R2_qbert_top_face_n1, R2_qbert_top_face_n2;
 	
 	logic [10:0] R2_x_offset_n1, R2_x_offset_n2;
@@ -86,13 +88,14 @@ end
 	
 	logic [1:0] R2_left_face;
 	logic [1:0] R2_right_face;
-	logic [7:0] R2_top_face;
+//	logic [7:0] R2_top_face;
 	
 // --- Rank 3 --------------------------------------------------//
 
 	logic R3_left_face_n1;
 	logic R3_right_face_n1;
-	logic [3:0] R3_top_face_n1;
+	logic R3_top_face_n1;
+//	logic [3:0] R3_top_face_n1;
 	logic R3_qbert_top_face_n1;
 	
 	logic [10:0] R3_x_offset_n1;
@@ -106,7 +109,7 @@ end
 	
 	logic  R3_left_face;
 	logic  R3_right_face;
-	logic [3:0] R3_top_face;
+//	logic [3:0] R3_top_face;
 	
 // -- Qbert and co ---------------------------------------------//
 
@@ -135,31 +138,37 @@ end
 	logic [5:0] qbert_route;
 	logic is_left_face;
 	logic is_right_face;
-	logic is_top_face;
+//	logic is_top_face;
+	logic [5:0] is_top_face;
 	
 	always_ff @(posedge CLK_33) begin
 
 	
 	R1_left_face <= {R1_left_face_n1, R1_left_face_n2, R1_left_face_n3};
 	R1_right_face <= {R1_right_face_n1, R1_right_face_n2, R1_right_face_n3};
-	R1_top_face <= {R1_top_face_n1, R1_top_face_n2, R1_top_face_n3};
+//	R1_top_face <= {R1_top_face_n1, R1_top_face_n2, R1_top_face_n3};
+
 	
 	R2_left_face <= {R2_left_face_n1, R2_left_face_n2};
 	R2_right_face <= {R2_right_face_n1, R2_right_face_n2};
-	R2_top_face <= {R2_top_face_n1, R2_top_face_n2};
+//	R2_top_face <= {R2_top_face_n1, R2_top_face_n2};
 	
 	R3_left_face <= R3_left_face_n1;
 	R3_right_face <= R3_right_face_n1;
-	R3_top_face <= R3_top_face_n1;
+//	R3_top_face <= R3_top_face_n1;
 	
 	qbert_route <= {R1_qbert_top_face_n1, R1_qbert_top_face_n2, R1_qbert_top_face_n3,
 					R2_qbert_top_face_n1, R2_qbert_top_face_n2,
 					R3_qbert_top_face_n1};
+					
+	is_top_face <= {R1_top_face_n1 , R1_top_face_n2 , R1_top_face_n3,
+						R2_top_face_n1 , R2_top_face_n2,
+						R3_top_face_n1};
 	
 
 	is_left_face <= (R1_left_face != 0) || (R2_left_face != 0) || (R3_left_face != 0);
 	is_right_face <= (R1_right_face != 0) || (R2_right_face != 0) || (R3_right_face != 0);
-	is_top_face <= (R1_top_face != 0) || (R2_top_face != 0) || (R3_top_face != 0);
+//	is_top_face <= (R1_top_face != 0) || (R2_top_face != 0) || (R3_top_face != 0);
 	
 		if (le_qbert !=0) begin
 			red <= 8'd216;
@@ -177,7 +186,7 @@ end
 			blue <= 8'd70;
 		end
 		else if(is_top_face != 0) begin
-			if (qbert_route !=1'b0) begin
+			if (qbert_route == is_top_face) begin
 				red <= 8'd86;
 				green <= 8'd70;
 				blue <= 8'd239;
