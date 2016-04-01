@@ -1,5 +1,5 @@
 Analysis & Synthesis report for DE0_NANO
-Wed Mar 30 17:18:32 2016
+Thu Mar 31 09:50:46 2016
 Quartus II 64-Bit Version 15.0.0 Build 145 04/22/2015 SJ Web Edition
 
 
@@ -299,7 +299,7 @@ agreement for further details.
 +---------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                    ;
 +------------------------------------+--------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Wed Mar 30 17:18:31 2016      ;
+; Analysis & Synthesis Status        ; Successful - Thu Mar 31 09:50:45 2016      ;
 ; Quartus II 64-Bit Version          ; 15.0.0 Build 145 04/22/2015 SJ Web Edition ;
 ; Revision Name                      ; DE0_NANO                                   ;
 ; Top-level Entity Name              ; DE0_NANO                                   ;
@@ -8016,7 +8016,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 15.0.0 Build 145 04/22/2015 SJ Web Edition
-    Info: Processing started: Wed Mar 30 17:15:54 2016
+    Info: Processing started: Thu Mar 31 09:47:45 2016
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off DE0_NANO -c DE0_NANO
 Warning (125092): Tcl Script File sdram_control/Sdram_RD_RAM.qip not found
     Info (125063): set_global_assignment -name QIP_FILE sdram_control/Sdram_RD_RAM.qip
@@ -8667,7 +8667,7 @@ Info (12128): Elaborating entity "altera_reset_synchronizer" for hierarchy "nios
 Info (12128): Elaborating entity "altera_reset_synchronizer" for hierarchy "nios_mtl:u0|altera_reset_controller:rst_controller|altera_reset_synchronizer:alt_rst_req_sync_uq1"
 Info (12128): Elaborating entity "touch_buffer" for hierarchy "touch_buffer:touch_buffer_west"
 Info (11170): Start IP generation for the debug fabric within sld_hub.
-Info (11172): 2016.03.30.17:17:07 Progress: Loading sld7325694e/alt_sld_fab_wrapper_hw.tcl
+Info (11172): 2016.03.31.09:49:13 Progress: Loading sld7325694e/alt_sld_fab_wrapper_hw.tcl
 Info (11172): Alt_sld_fab.alt_sld_fab: SLD fabric agents which did not specify prefer_host were connected to JTAG
 Info (11172): Alt_sld_fab: Generating alt_sld_fab "alt_sld_fab" for QUARTUS_SYNTH
 Info (11172): Alt_sld_fab: "alt_sld_fab" instantiated alt_sld_fab "alt_sld_fab"
@@ -8902,10 +8902,10 @@ Info (21057): Implemented 10151 device resources after synthesis - the final res
     Info (21064): Implemented 176 RAM segments
     Info (21065): Implemented 2 PLLs
 Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 187 warnings
-    Info: Peak virtual memory: 902 megabytes
-    Info: Processing ended: Wed Mar 30 17:18:33 2016
-    Info: Elapsed time: 00:02:39
-    Info: Total CPU time (on all processors): 00:03:54
+    Info: Peak virtual memory: 893 megabytes
+    Info: Processing ended: Thu Mar 31 09:50:46 2016
+    Info: Elapsed time: 00:03:01
+    Info: Total CPU time (on all processors): 00:03:55
 
 
 +------------------------------------------+
