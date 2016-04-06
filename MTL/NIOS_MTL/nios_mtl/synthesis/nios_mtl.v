@@ -160,7 +160,9 @@ module nios_mtl (
 		.Horizontal_Blank       (46),
 		.Horizontal_Front_Porch (210),
 		.Vertical_Blank         (23),
-		.Vertical_Front_Porch   (22)
+		.Vertical_Front_Porch   (22),
+		.k                      (27),
+		.i                      (6)
 	) nios_mtl_controller_0 (
 		.Avalon_address   (mm_interconnect_0_nios_mtl_controller_0_avalon_address),   //         avalon.address
 		.Avalon_read      (mm_interconnect_0_nios_mtl_controller_0_avalon_read),      //               .read

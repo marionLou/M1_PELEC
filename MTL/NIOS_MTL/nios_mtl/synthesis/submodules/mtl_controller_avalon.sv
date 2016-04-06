@@ -1,47 +1,12 @@
 
-// --------------------------------------------------------------------
-// Copyright (c) 2007 by Terasic Technologies Inc. 
-// --------------------------------------------------------------------
-//
-// Permission:
-//
-//   Terasic grants permission to use and modify this code for use
-//   in synthesis for all Terasic Development Boards and Altera Development 
-//   Kits made by Terasic.  Other use of this code, including the selling 
-//   ,duplication, or modification of any portion is strictly prohibited.
-//
-// Disclaimer:
-//
-//   This VHDL/Verilog or C/C++ source code is intended as a design reference
-//   which illustrates how these types of functions can be implemented.
-//   It is the user's responsibility to verify their design for
-//   consistency and functionality through the use of formal
-//   verification methods.  Terasic provides no warranty regarding the use 
-//   or functionality of this code.
-//
-// --------------------------------------------------------------------
-//           
-//                     Terasic Technologies Inc
-//                     356 Fu-Shin E. Rd Sec. 1. JhuBei City,
-//                     HsinChu County, Taiwan
-//                     302
-//
-//                     web: http://www.terasic.com/
-//                     email: support@terasic.com
-//
-// --------------------------------------------------------------------
-//
-// Major Functions of V2.0:	MTL controller adapted to a slideshow application
-//										on the DE0-Nano board.
-//
-// --------------------------------------------------------------------
-//
+
 // Revision History :
 // --------------------------------------------------------------------
 //   Ver  :| Author            		:| Mod. Date :| Changes Made:
 //   V1.0 :| Johnny Fan					:| 07/06/30  :| Initial Revision
 //	  V2.0 :| Charlotte Frenkel      :| 14/08/03  :| Improvements and adaptation to a
 //																	 slideshow application on the DE0-Nano
+// V3.0 :| Fokou stephane & Marion Louis : 01/04/2016 :Adding Avalon interface
 // --------------------------------------------------------------------
 
 module mtl_controller_avalon(
@@ -114,51 +79,44 @@ logic [7:0] QBERT_GAME_blue;
 // AVALON interface
 // ===========================================================================
 
+reg [31:0] reg_readdata;
+
 logic enable;
-logic [4:0] A_enable = 4'd0;
+
+logic [4:0] A_enable = 5'd0;
+logic [4:0] A_iSPI = 5'd1;
+
 
 // ---- Cube definition ------------//
+parameter k = 27; // nombre de cubes = k + 1 = 28
+parameter i = 6; // nombre de rangées = k + 1 = 28
 
 logic [10:0] XLENGTH;
-logic [10:0] XDIAG_DEMI;
-logic [9:0] YDIAG_DEMI;
+logic [20:0] XYDIAG_DEMI;
+logic [20:0] RANK1_XY_OFFSET;
+logic [k:0]  nios_top_color;
 
-logic [10:0] RANK1_X_OFFSET;
-logic [9:0] RANK1_Y_OFFSET;
-
-logic [20:0] xydiag_demi;
-logic [20:0] rank1_xy_offset;
-
-logic [5:0] hitbox_top;
-
-logic [4:0] A_XLENGTH = 4'd1;
-logic [4:0] A_xydiag_demi = 4'd2;
-logic [4:0] A_rank1_xy_offset = 4'd3;
-logic [4:0] A_hitbox_top = 4'd4;
+logic [4:0] A_XLENGTH = 5'd2;
+logic [4:0] A_XYDIAG_DEMI = 5'd3;
+logic [4:0] A_RANK1_XY_OFFSET = 5'd4;
+logic [4:0] A_nios_top_color = 5'd5;
 
 // ---- Qbert definition -----------//
 
-logic [10:0] QBERT_POSITION_X0;
-logic [10:0] QBERT_POSITION_X1;
-logic [9:0] QBERT_POSITION_Y0;
-logic [9:0] QBERT_POSITION_Y1;
+logic [20:0] QBERT_POSITION_XY0;
+logic [20:0] QBERT_POSITION_XY1;
+logic [2:0]	 qbert_jump;
+logic nios_start_qbert;
+logic bad_jump;
+logic done_move; 	
 
-logic [20:0] qbert_position_xy0;
-logic [20:0] qbert_position_xy1;
-logic [5:0] 	nios_top_color;
-logic [3:0]		 qbert_jump; 	
+logic [4:0] A_QBERT_POSITION_XY0 = 5'd4;
+logic [4:0] A_QBERT_POSITION_XY1 = 5'd5;
+logic [4:0] A_qbert_jump = 5'd7;
+logic [4:0] A_nios_start_qbert = 5'd8;
+logic [4:0] A_bad_jump = 5'd9;
+logic [4:0] A_done_move = 4'd10;
 
-logic [4:0] A_qbert_position_xy0 = 4'd5;
-logic [4:0] A_qbert_position_xy1 = 4'd6;
-logic [4:0] A_nios_top_color = 4'd7;
-logic [4:0] A_qbert_jump = 4'd8;
-
-
-// ---- SPI definition -----------//
-
-reg [31:0] reg_readdata;
-
-logic [4:0] A_iSPI = 4'd9;
 
 // ---- READ & WRITE -----------//
 
@@ -166,25 +124,34 @@ always @ (posedge Avalon_CLK_50)
 begin
 	if (Avalon_reset) begin
 		enable <= 1'd0;
+		
 		XLENGTH <= 11'd0;
-		xydiag_demi <= 21'd0;
-		rank1_xy_offset <= 21'd0;
-		qbert_position_xy0 <= 21'd0;
-		qbert_position_xy1 <= 21'd0;
+		XYDIAG_DEMI <= 21'd0;
+		RANK1_XY_OFFSET <= 21'd0;
+		
+		QBERT_POSITION_XY0 <= 21'd0;
+		QBERT_POSITION_XY1 <= 21'd0;
 		nios_top_color <= 6'd0;
-		qbert_jump <= 4'd0;
+		nios_start_qbert <= 1'd0;
+		qbert_jump <= 3'd0;
+		bad_jump <= 1'd0;
 	end
 	else begin 
 		if (Avalon_write) begin 
 			case(Avalon_address)
 				A_enable : enable <= Avalon_writedata[0];
+				
 				A_XLENGTH : XLENGTH <= Avalon_writedata[10:0];
-				A_xydiag_demi : xydiag_demi <= Avalon_writedata[20:0];
-				A_rank1_xy_offset : rank1_xy_offset <= Avalon_writedata[20:0];
-				A_qbert_position_xy0 : qbert_position_xy0 <= Avalon_writedata[20:0];
-				A_qbert_position_xy1 : qbert_position_xy1 <= Avalon_writedata[20:0];
-				A_nios_top_color : nios_top_color <= Avalon_writedata[5:0];
-				A_qbert_jump : qbert_jump <= Avalon_writedata[3:0];
+				A_XYDIAG_DEMI : XYDIAG_DEMI <= Avalon_writedata[20:0];
+				A_RANK1_XY_OFFSET : RANK1_XY_OFFSET <= Avalon_writedata[20:0];
+				A_nios_top_color : nios_top_color <= Avalon_writedata[k:0];
+				
+				A_QBERT_POSITION_XY0 : QBERT_POSITION_XY0 <= Avalon_writedata[20:0];
+				A_QBERT_POSITION_XY1 : QBERT_POSITION_XY1 <= Avalon_writedata[20:0];
+				A_qbert_jump : qbert_jump <= Avalon_writedata[2:0];
+				A_nios_start_qbert : nios_start_qbert <= Avalon_writedata[0];
+				A_bad_jump : bad_jump <= Avalon_writedata[0];
+				
 				default;
 			endcase
 		end
@@ -192,15 +159,19 @@ begin
 	 	if (Avalon_read) begin 
 			case(Avalon_address)
 				A_enable : reg_readdata <= {31'b0,enable};
-				A_XLENGTH : reg_readdata <= {21'b0,XLENGTH};  
-				A_xydiag_demi : reg_readdata <= {11'b0,xydiag_demi};
-				A_rank1_xy_offset : reg_readdata <= {11'b0,rank1_xy_offset};
-				A_qbert_position_xy0 : reg_readdata <= {11'b0,qbert_position_xy0};
-				A_qbert_position_xy1 : reg_readdata <= {11'b0,qbert_position_xy1};
-				A_nios_top_color : reg_readdata <= {26'b0,nios_top_color};
-				A_qbert_jump : reg_readdata <= {28'b0,qbert_jump};
-				A_hitbox_top : reg_readdata <= {26'b0,hitbox_top};
 				A_iSPI : reg_readdata <= {24'b0, iSPI};
+				
+				A_XLENGTH : reg_readdata <= {21'b0,XLENGTH};  
+				A_XYDIAG_DEMI : reg_readdata <= {11'b0,XYDIAG_DEMI};
+				A_RANK1_XY_OFFSET : reg_readdata <= {11'b0,RANK1_XY_OFFSET};
+				
+				
+				A_QBERT_POSITION_XY0 : reg_readdata <= {11'b0,QBERT_POSITION_XY0};
+				A_QBERT_POSITION_XY1 : reg_readdata <= {11'b0,QBERT_POSITION_XY1};
+				A_nios_top_color : reg_readdata <= {26'b0,nios_top_color};
+				A_qbert_jump : reg_readdata <= {29'b0,qbert_jump};
+				A_done_move : reg_readdata <= {31'b0,done_move};
+
 				default;
 			endcase
 		end				 
@@ -208,15 +179,6 @@ begin
 end
 
 assign Avalon_readdata = reg_readdata;
-
-
-always_ff @(posedge Avalon_CLK_50)
-begin
-	{XDIAG_DEMI, YDIAG_DEMI} <= xydiag_demi;
-	{RANK1_X_OFFSET, RANK1_Y_OFFSET} <= rank1_xy_offset;
-	{QBERT_POSITION_X0, QBERT_POSITION_Y0} <= qbert_position_xy0;
-	{QBERT_POSITION_X1, QBERT_POSITION_Y1} <= qbert_position_xy1;
-end
 
 
 //=============================================================================
@@ -419,22 +381,36 @@ end
 // QBERT GAME
 //=============================================================================
 
-Qbert_Map_Color Beta(
+Qbert_Map_Color #(.N_cube(k), .N_rank(i)) Beta(
 	.CLK_33(iCLK),
 	.reset(!iRST_n),
+
+	
+// --- Qbert position ------------//
+
+	.bad_jump,
+	.nios_start_qbert,
+	.qbert_jump, 
+	.QBERT_POSITION_XY0,
+	.QBERT_POSITION_XY1,
+	.done_move,
+
+// --- Map parameters ------------//
+
+	.XLENGTH,
+	.XYDIAG_DEMI,
+	.RANK1_XY_OFFSET,
+	.nios_top_color,
+	
+// --- MTL parameters ------------//
+	
+	.x_cnt, 
+	.y_cnt,
 	.red(QBERT_GAME_red),
 	.green(QBERT_GAME_green),
-	.blue(QBERT_GAME_blue),
-	.*
+	.blue(QBERT_GAME_blue)
 );
-//Qbert_Map2 Beta(
-//	.CLK_33(iCLK),
-//	.reset(!iRST_n),
-//	.red(QBERT_GAME_red),
-//	.green(QBERT_GAME_green),
-//	.blue(QBERT_GAME_blue),
-//	.*
-//);
+
 
 	
 						

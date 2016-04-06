@@ -5,8 +5,6 @@ module Draw_Line(
 	input logic reset,
 	input logic [10:0] x0,x1,x_cnt,
 	input logic [9:0] y0,y1,y_cnt,
-	output logic done,
-	output logic start,
 	output logic [10:0] x_line,
 	output logic [9:0] y_line
 	);
@@ -16,12 +14,11 @@ module Draw_Line(
 		logic [9:0] y_n, y_plus;
 		
 		logic right, down;
-
+		logic start;
 		
 		typedef enum logic {IDLE, RUN} state_t;
 		state_t state;
 		always_ff @(posedge clk) begin
-		done <= 0;
 		start <= (x_cnt == 0) && (y_cnt == y0);
 		if (reset) state <= IDLE;
 		else case (state)
@@ -49,7 +46,6 @@ module Draw_Line(
 			if (x_n == x1 && y_n == y1) begin
 				x_line <= x_n;
 			   y_line <= y_n;
-				done <= 1;
 				state <= IDLE;
 			end else begin
 //			  if (x_cnt == 0 && y_cnt == y_plus) begin
